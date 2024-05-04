@@ -1,0 +1,109 @@
+/*Css Landing Inicio Isaac*/
+body{
+    background-color: #FCFFE0;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    color: #e3e7e9;
+    font-size: 24px;
+    transition: 0.3s color;
+}
+
+.navbar {
+    height: 100px;
+    border-radius: 16px;
+    padding: 0.5rem;
+    background-color: #FFBE98;
+}
+
+
+.login-button {
+    background-color: #AAC4FF;
+    color: #f1faf8;
+    font-size: 18px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+    font-weight: 500;
+}
+
+.login-button:hover {
+    background-color: #5b61b8;
+}
+
+.navbar-togger {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-togger:focus, .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: #666777;
+    font-weight: 500;
+    position: relative;
+    font-size: 20px;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #000;
+}
+
+@media (min-width:991px){
+
+    .nav-link::before {
+
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: #FFFBDA;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before {
+        width: 100%;
+        visibility: visible;
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    max-width: 1100px;
+}
+
+.card {
+    width: 100%;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 1px 10px rgb(0, 0, 0, 0, 2);
+    cursor: default;
+    transition: all 400ms ease;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3%);
+}
+
+.card-header{
+background-color: #9D9D9D;
+}
+footer{
+    height: 100px;
+    background-color: #D6DAC8;
+    text-align: center;
+}
+/*FIN Css Landing Inicio Isaac*/

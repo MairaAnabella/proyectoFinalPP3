@@ -1,36 +1,52 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+
 }
 
+body {
+    color: #332622 !important;
+    background-color: #fbf2db !important;
+}
+
+/* ESTILOS NAVBAR Y LOADING PAGE */
 .navbar-brand {
+    margin-left: 30px;
     font-weight: 500;
-    color: mediumseagreen;
+    color: #ffc594 !important; /* logo */
     font-size: 24px;
     transition: 0.3s color;
 }
 
+nav {
+    width: auto;
+}
+
 .navbar {
-    height: 80px;
-    border-radius: 16px;
+    background-color: #ff8040 !important;
+    /*  width: 100%; */
+    /* height: 80px; */
+    /* border-radius: 16px; */
     padding: 0.5rem;
 }
 
 
 .login-button {
-    background-color: mediumseagreen;
-    color: #fff;
+    background-color: #ffc594 ;
+    color: #e66c2c;
     font-size: 14px;
     padding: 8px 20px;
     border-radius: 50px;
     text-decoration: none;
     transition: 0.3s background-color;
+    margin-right: 30px;
 }
 
 .login-button:hover {
-    background-color: #41C9E2;
+    background-color: #e66c2c ;
+    color: #ffc594;
 }
 
 .navbar-togger {
@@ -38,22 +54,29 @@
     font-size: 1.25rem;
 }
 
-.navbar-togger:focus, .btn-close:focus {
+.navbar-togger:focus,
+.btn-close:focus {
     box-shadow: none;
     outline: none;
 }
 
 .nav-link {
-    color: #666777;
+    color: #f6c0a1 !important;
     font-weight: 500;
     position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
+
+
+/* .nav-link:hover, .nav-link.active {
     color: #000;
+    
+} */
+.col-6 {
+    margin-top: 55px !important;
 }
 
-@media (min-width:991px){
+@media (min-width:991px) {
 
     .nav-link::before {
 
@@ -64,7 +87,7 @@
         transform: translateX(-50%);
         width: 0;
         height: 2px;
-        background-color: mediumseagreen;
+        background-color: #ee9564;
         visibility: hidden;
         transition: 0.3s ease-in-out;
     }
@@ -96,3 +119,48 @@
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-3%);
 }
+
+
+/* COMIENZO DE ESTILOS SOBRE NOSOTROS */
+.cont-carrusel {
+    display: grid;
+    justify-items: center;
+    margin-top: 2%;
+
+}
+
+.carousel-caption1{
+    position: absolute;
+    right: 15%;
+    left: 30%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control-next, .carousel-control-prev {
+  margin-top: 20% !important;
+  top: unset !important;
+    bottom: unset !important;
+    
+}
+/* .img-card{
+   object-fit:;
+    height: 10px !important;
+} */
+.h-90 {
+    
+    height: 85% !important;
+}
+footer {
+    height: 100px; /* Altura del footer */
+    background-color: #00000070;
+    color: white; /* Cambiar color de texto a blanco */
+    text-align: center; /* Centrar texto */
+    padding-top: 30px; /* Espacio arriba del texto */
+}
+/* FIN DE ESTILO SOBRE NOSOTROS */

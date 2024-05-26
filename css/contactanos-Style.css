@@ -1,0 +1,194 @@
+
+.img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* Esto es para hacerlo compatible con IE */
+}
+
+
+
+.contenedor-form {
+    
+    background-image: url(/image/fondo.svg);
+    background-size: cover; /* Para cubrir todo el contenedor */
+    background-position: center; /* Para centrar la imagen de fondo */
+    height: 100%;
+}
+
+.titulo ,.sub-titulo{
+    margin-top: 15px;
+    font-size: 30px;
+    color: #fd7e14;
+    font-weight:500; 
+}
+
+.sub-titulo{
+    margin-top: 0;
+    font-size:18px ;
+}
+form{
+    display: grid;
+    justify-content: center;
+}
+
+.custom-container {
+    background: #fd7d1463;
+    padding: 0 !important;
+    width: 50% !important;
+    height: 400px; /* Cambia el valor según tu preferencia */
+    overflow: hidden;
+}
+
+.btn-enviar{
+
+    margin-top: 10px;
+    width:  60% !important; 
+    border-radius: 15px; 
+    border: none;
+    color: aliceblue;
+    background-color: #f7ab54 ;
+}
+.btn-enviar:hover{
+    background-color: antiquewhite;
+    color: #fd7e14;
+}
+
+
+  
+  input.input1 {
+    height: 30px;
+    border-radius: 25px;
+    padding: 0 30px;
+  }
+  
+  
+  textarea.input1 {
+    min-height: 150px;
+    border-radius: 25px;
+    padding: 12px 30px;
+  }
+ 
+  
+  /*---------------------------------------------*/
+  .wrap-input1 {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    
+  }
+  
+  .input1 {
+    margin-top: 15px;
+    border: none;
+   
+    background: #e6e6e6;
+    
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+  }
+  
+  .shadow-input1 {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: calc(100% - 20px); /* Ajusta el tamaño de la sombra según el tamaño del input */
+    height: calc(100% - 27px); /* Ajusta el tamaño de la sombra según el tamaño del input */
+    box-shadow: 0px 0px 0px 0px;
+    color: #f7ab54;
+    border-radius: 25px; 
+}
+.input1:focus {
+    outline: none;
+}
+  
+  .input1:focus + .shadow-input1 {
+    -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+    animation: anim-shadow 0.5s ease-in-out forwards;
+  }
+  
+  @-webkit-keyframes anim-shadow {
+    to {
+      box-shadow: 0px 0px 80px 30px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes anim-shadow {
+    to {
+      box-shadow: 0px 0px 80px 30px;
+      opacity: 0;
+    }
+  }
+  
+
+  @media (max-width: 1200px) {
+    .contact1-pic {
+      width: 33.5%;
+    }
+  
+    .contact1-form {
+      width: 44%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .container{
+      display: block;
+    }
+    .custom-container {
+      padding: 90px 80px 88px 90px;
+    }
+  
+    .contact1-pic {
+      width: 35%;
+    }
+  
+    .contact1-form {
+      width: 55%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container{
+      display: block;
+    }
+    .custom-container {
+      padding: 90px 80px 88px 80px;
+    }
+  
+    .contact1-pic {
+      display: none;
+    }
+  
+    .contact1-form {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container{
+      display: block;
+    }
+    .custom-container{
+      padding: 90px 15px 88px 15px;
+    }
+  }
+ 
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+
+  
+  
+ 
+  

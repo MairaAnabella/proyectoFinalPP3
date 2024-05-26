@@ -1,0 +1,17 @@
+/* Hoja de estilos del Formulario de contactos. */
+
+body{
+    background: #ffe259;
+    background: linear-gradient(to right,#874C62,#ffa751);
+}
+
+.bg{
+    background-image: url(assets/contactanos.png);
+    background-position: center center;
+}
+
+.form{
+    background: #F1935C;
+}
+
+/*Final de la Hoja de estilos del Formulario de contactos. */

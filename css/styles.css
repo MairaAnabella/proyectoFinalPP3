@@ -1,0 +1,236 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif !important;
+    font-weight: 400;
+}
+/* ESTOS ESTILOS NO PONEN LOS SCROLL */
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 0px;
+    height: 0px;
+}
+
+/* ESTILOS NAVBAR Y LOADING PAGE */
+.nav{
+    height: 70px; 
+    background-color: #343A40;
+}
+.img-nav{
+    width: 100px;  
+}
+.titulo-nav{
+    color:#fd7e14; 
+    margin-bottom: 15px; 
+    font-size: 19px;
+    font-weight:400;
+}
+.nav-link {
+    color: #fd7e14 !important;
+    font-weight: 500;
+    position: relative; 
+}
+
+.login-button {
+    width: 100px;
+    height: 40px;
+    margin-right: 25px;
+    background-color: transparent;
+    border: #fd7e14 2px solid;
+    color: #fd7e14 ;
+    font-size: 13px;
+    border-radius: 50px;
+   font-weight: 500;
+}
+
+.login-button:hover , .btn-card:hover {
+    background-color: #fd7e14;
+    color:white;
+}
+
+
+
+
+
+.col-6 {
+    margin-top: 55px !important;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    max-width: 1100px;
+}
+
+
+.promo{
+    font-size: 30px;
+    margin-top: 150px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: #fd7e14;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.container-card{
+    display: flex; 
+    justify-content:space-between ; 
+    margin-bottom: 5%;
+}
+.card {
+    width: 90%;
+     margin: 20px; 
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 1px 10px rgb(0, 0, 0, 0, 2);
+    cursor: default;
+    transition: all 400ms ease;
+    
+}
+
+li{
+    font-size: small;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3%);
+}
+
+.card-header{
+background-color: #fd7e14;
+
+}
+.btn-card{
+    width: 160px !important;
+    background-color: transparent;
+    border: #fd7e14 2px solid;
+    color: #fd7e14 ;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 50px;
+   font-weight: 500;
+}
+
+
+/* COMIENZO DE ESTILOS SOBRE NOSOTROS */
+.cont-carrusel {
+    display: grid;
+    justify-items: center;
+    margin-top: 2%;
+
+}
+
+.carousel-caption1{
+    position: absolute;
+    right: 15%;
+    left: 30%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-inner img {
+  max-width: 100%; /* Para asegurar que la imagen no se salga del contenedor */
+  height: auto;
+}
+
+
+
+
+.h-90 {
+    
+    height: 85% !important;
+}
+footer {
+    height: 100px; /* Altura del footer */
+    background-color: #00000070;
+    color: white; /* Cambiar color de texto a blanco */
+    text-align: center; /* Centrar texto */
+    padding-top: 30px; /* Espacio arriba del texto */
+}
+/* FIN DE ESTILO SOBRE NOSOTROS */
+
+@media (max-width: 1200px) {
+    .contact1-pic {
+      width: 33.5%;
+    }
+  
+    .contact1-form {
+      width: 44%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .container{
+      display: block;
+    }
+    .custom-container {
+      padding: 90px 80px 88px 90px;
+    }
+  
+    .contact1-pic {
+      width: 35%;
+    }
+  
+    .contact1-form {
+      width: 55%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container{
+      display: block;
+    }
+
+  
+  }
+  
+  @media (max-width: 576px) {
+    .container{
+      display: block;
+    }
+ 
+  }
+
+/* media nav */
+
+ @media (min-width:991px) {
+    .navbar-toggler{
+      margin-bottom: 15px;
+    }
+
+    .nav-link::before {
+
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: #fd7e14;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before {
+        width: 100%;
+        visibility: visible;
+    }
+} 
+/* media slide */
+
+@media screen and (max-width: 768px) {
+  .carousel-caption1 {
+      left: 5%; /* Ajustar la posición en pantallas más pequeñas */
+  }
+
+}

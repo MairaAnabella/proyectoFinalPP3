@@ -5,9 +5,9 @@
     --sidebar:#ffd6a3;
     --letra: #142f30;
     --fondo: #f8f6f4;
-    --hover: #faad8e;
-    --opcion1: #fdffd9;
-    --opcion2: #fff0b8;
+    --hover: #fd7e14;
+    --opcion1: #fd7d1463;
+    --opcion2: #f7ab54;
 }
 
 *{
@@ -82,6 +82,11 @@ body ul {
 
 
 /*Nombre de la página */
+
+
+
+
+
 .barra-lateral .nombre-pagina{
     width: 100%;
     height: 45px;
@@ -97,6 +102,7 @@ body ul {
     cursor: pointer;
 }
 .barra-lateral .nombre-pagina span{
+ 
     margin-left: 15px;
     font-size: 25px;
 }
@@ -150,11 +156,34 @@ body ul {
     text-decoration: none;
     border-radius: 10px;
     color: var(--color);
+    transition: background-color 0.3s ease; 
 }
 
-.barra-lateral .navegacion a:hover{
+.barra-lateral .navegacion a:hover {
+    color: #f8f6f4;
     background-color: var(--hover);
     color: var(--color);
+}
+.btnSalir {
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+   
+    border: none;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center; /* Centra verticalmente */
+    
+    gap: 8px; /* Espacio entre el icono y el texto */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+.btnSalir:hover{
+    
+    background-color: var(--hover);
+    color: var(--color); 
+}
+ .navegacion li:hover {
+    color: #f8f6f4;
 }
 .barra-lateral .navegacion ion-icon{
     min-width: 50px;
@@ -205,7 +234,7 @@ main.min-main{
 }
 
 .card-no-border .card {
-    border-color: #d7dfe3;
+    /*border-color: #d7dfe3;*/
     border-radius: 4px;
     margin-bottom: 30px;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
@@ -241,12 +270,13 @@ main.min-main{
     font-size: 20px;
     border-radius: 20px;
     padding: 7px 18px;
-    background-color:var(--sidebar);
+    background-color:var(--opcion1);
     color: var(--letra);
-    border: 3px solid
+   
 }
 
 .boton-card:hover{
+    color: #f8f6f4;
     cursor: pointer;
     background-color: var(--hover);
 }

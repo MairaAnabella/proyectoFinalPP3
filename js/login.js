@@ -32,9 +32,14 @@ function login() {
             var nombre=data.nombre;
             var apellido=data.apellido;
             var rol=data.rol;
-            localStorage.setItem('userId',data.userId);
-            console.log(localStorage.getItem(userId));
-            var url="userHome.html?nombre="+nombre+'&apellido='+apellido + '&rol='+rol;
+            var userId = data.userId;
+
+            sessionStorage.setItem('nombre',nombre);
+            sessionStorage.setItem('apellido',apellido);
+            sessionStorage.setItem('rol',rol);
+            sessionStorage.setItem('userId',userId);
+           
+            var url="userHome.html";
             window.location.href=url;
 
 

@@ -1,9 +1,9 @@
 
 /* obtener datos del login */
-var datosLogin= new URLSearchParams(window.location.search);
-var nombre=datosLogin.get('nombre');
-var apellido=datosLogin.get('apellido');
-var rolUser=datosLogin.get('rol');
+const nombre=sessionStorage.getItem('nombre');
+const apellido=sessionStorage.getItem('apellido');
+const rolUser=sessionStorage.getItem('rol');
+const userId=sessionStorage.getItem('userId');
 
 /* asigno nombre de usuario al mensaje en HTML*/
 var nombreUser=document.getElementById('nombreUser');
@@ -34,10 +34,16 @@ if(rolUser==4){
 var btnSalir=document.getElementById('btnSalir');
 
 btnSalir.addEventListener('click',()=>{
-   console.log(localStorage.getItem(userId));
-    localStorage.removeItem('userId');
+   logout();
     window.location.href='index.html';
 })
+
+function logout(){
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('nombre');
+    sessionStorage.removeItem('apellido');
+    sessionStorage.removeItem('rol');
+}
 
 /*Boton para ocultar en modo escritorio y volverlo hacer visible en modo movil, tambien realizar que con un boton se oculta la barra lateral*/ 
 const cloud = document.getElementById("school");

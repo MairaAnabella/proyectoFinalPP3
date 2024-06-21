@@ -29,22 +29,20 @@ function login() {
     .then(data => {
         console.log(data);
          if (data.success) {
-            var nombre=data.nombre;
-            var apellido=data.apellido;
-            var rol=data.rol;
+            var nombre = data.nombre;
+            var apellido = data.apellido;
+            var rol = data.rol;
             var userId = data.userId;
 
-            sessionStorage.setItem('nombre',nombre);
-            sessionStorage.setItem('apellido',apellido);
-            sessionStorage.setItem('rol',rol);
-            sessionStorage.setItem('userId',userId);
-           
-            var url="userHome.html";
-            window.location.href=url;
+            localStorage.setItem('nombre', nombre);
+            localStorage.setItem('apellido', apellido);
+            localStorage.setItem('rol', rol);
+            localStorage.setItem('userId', userId);
 
+            var url = 'userHome.html';
+            window.location.href = url;
 
-            
-            /*Swal.fire({
+            /* Swal.fire({
                 title: '¡Éxito!',
                 text: data.mensaje,
                 width: 600,
@@ -53,7 +51,7 @@ function login() {
                 background: '#fff ',
                 backdrop: `
                 rgba(255, 165, 0, 0.4)
-                   /*  url("/asset/correcto.gif")
+                   url("/asset/correcto.gif")
                     left top
                     no-repeat 
                 `,
@@ -61,22 +59,41 @@ function login() {
                 confirmButtonText: 'OK'
             }); */
         } else if (data.error) {
-            Swal.fire({
-                title: 'Error',
-                text: data.error,
-                width: 600,
-                padding: '3em',
-                color: '#BD574E',
-                background: '#fff',
-                backdrop: `
-                rgba(255, 165, 0, 0.4)
-                  /*   url("/asset/credenciales.gif")
+            if (data.error.includes('bloqueada')) {
+                Swal.fire({
+                    title: 'Error',
+                    text: data.error,
+                    width: 600,
+                    padding: '3em',
+                    color: '#BD574E',
+                    background: '#fff',
+                    backdrop: `
+                    rgba(255, 165, 0, 0.4)
+                    /* url("/asset/credenciales.gif")
                     left top
                     no-repeat */
-                `,
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
+                    `,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error',
+                    text: data.error,
+                    width: 600,
+                    padding: '3em',
+                    color: '#BD574E',
+                    background: '#fff',
+                    backdrop: `
+                    rgba(255, 165, 0, 0.4)
+                    /* url("/asset/credenciales.gif")
+                    left top
+                    no-repeat */
+                    `,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
         }
         // Aquí puedes agregar código para manejar la respuesta del servidor
     })
@@ -102,6 +119,7 @@ function login() {
     });
 }
 
+
 // Escuchar el evento click en el botón de enviar
 document.getElementById('btnentrar').addEventListener('click', function(e) {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
@@ -110,8 +128,8 @@ document.getElementById('btnentrar').addEventListener('click', function(e) {
 
 
 /* visibilidad de la contraseña */
-const togglePassword = document.querySelector('#togglePassword');
-const password = document.querySelector('#password');
+ const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password'); 
 
 togglePassword.addEventListener('click', function(e) {
     // Cambia el tipo de input de password a text o viceversa
@@ -121,6 +139,35 @@ togglePassword.addEventListener('click', function(e) {
     this.textContent = type === 'password' ? 'visibility_off' : 'visibility';
 });
 
+/* controla la visibilidad  */
+document.getElementById('olvidasteContra').addEventListener('click', function() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('resetForm').style.display = 'block';
+});
+
+document.getElementById('volverLogin').addEventListener('click', function() {
+    document.getElementById('resetForm').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+});
+
+/* validacion del mail */
+
+const email = document.getElementById('email');
+const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+email.addEventListener('input', function() {
+    if (email.value.match(pattern)) {
+        // Correo válido
+       // document.getElementById('emailValidationMessage').textContent = 'Correo válido';
+        document.getElementById('emailValidationMessage').classList.add('valid');
+        document.getElementById('emailValidationMessage').classList.remove('invalid');
+    } else {
+        // Correo inválido
+        document.getElementById('emailValidationMessage').textContent = 'Correo inválido';
+        document.getElementById('emailValidationMessage').classList.add('invalid');
+        document.getElementById('emailValidationMessage').classList.remove('valid');
+    }
+});
 
 
 

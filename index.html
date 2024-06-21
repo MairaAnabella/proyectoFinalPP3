@@ -16,6 +16,24 @@
 </head>
 
 <body>
+ <!--  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var email = localStorage.getItem('email');
+    var nombre = localStorage.getItem('nombre');
+    var apellido = localStorage.getItem('apellido');
+    var rol = localStorage.getItem('rol');
+
+    if (email && nombre && apellido && rol) {
+        // Todas las variables de sesión están presentes, redirigir a userHome.html
+        console.log('Usuario autenticado. Redirigiendo a userHome.html');
+        window.location.href = 'userHome.html';
+    } else {
+        console.log('Usuario no autenticado.');
+    }
+});
+
+   history.pushState(null, '', 'userHome.html');
+</script> -->
 
   <div>
 
@@ -38,9 +56,9 @@
         <!-- Enlaces de navegación -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-           <!--  <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li> -->
+            </li> 
             <li class="nav-item">
               <a class="nav-link" href="quienesSomos.html">Sobre nosotros</a>
             </li>

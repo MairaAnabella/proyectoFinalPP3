@@ -49,7 +49,7 @@ body{
     justify-content: space-between;
     width: 250px;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden; 
     padding: 20px 15px;
     background-color: var(--sidebar);
     transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
@@ -193,7 +193,7 @@ body ul {
 
 /*main*/
 main{
-    margin-left: 250px;
+    margin-left: 90px;
     padding: 20px;
     transition: margin-left 0.5s ease;
 }

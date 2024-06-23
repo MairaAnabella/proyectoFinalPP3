@@ -36,70 +36,48 @@
 
         <div id="resetForm" class="restablecerContra">
             <h2 class="title">Restablecer contraseña</h2>
-            <h3 class="subtitle">Ingresa tu correo electrónico</h3>
+            <h3 class="subtitle">Para restablecer su contraseña,
+                introduzca su dirección de correo electrónico a continuación,<br>
+                Si podemos encontrar en la base de datos, un correo electrónico será enviado con las instrucciones de cómo obtener acceso de nuevo.</h3>
             <form class="login-form" method="post" id="form">
-                <input type="text" placeholder="Correo Electronico" name="email">
+                <input type="text" placeholder="Correo Electrónico" name="email" id="emailRecu">
                 <!-- <span id="emailValidationMessage"></span> -->
-                <button type="submit" id="btnReset">Restablecer</button>
-                <p id="volverLogin" ">Recordé mi contraseña, volver al inicio de sesión</p>
+                <button type="submit" id="btnBuscar">Buscar</button>
+                <p id="volverLogin">Recordé mi contraseña, volver al inicio de sesión</p>
+        
+                <!-- Spinner de carga -->
+                 <div id="spinner" style="display: none;">   
+                              
+                    <span style="color: #fd7e14; font-size: 19px;">Buscando...</span>
+                    <l-newtons-cradle
+                      size="90"
+                      speed="1.4"
+                      color="#fd7e14" 
+                    ></l-newtons-cradle>
+                </div>
+
+               
             </form>
         </div>
+        
     </div>
 
+   
+      
+    
+      
 
 
 
 
 
-    <!-- <main>
-        
-        <a class=" botonAtras" href="index.html"> Volver al inicio</a>
+    <script src="js/login.js"></script>
+    
 
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/newtonsCradle.js"></script>
 
-                <div class="contenedorFondo">
-                    <!--CONTENEDOR DE MENSAJE INICIO DE SESION
-            <div class="contenedorLogin">
-                
-                <p>Inicia sesión con tu cuenta</p>
-                <button id="btnInicioSesion">Inicia sesión</button>
-            </div>
-            <div class="contenedorFoto">
-                <!--CONTENEDOR DE MENSAJE REGISTRARSE
-                <img src="/asset/aula.jpeg">
-            </div>
-        </div> <!--Fin de Contenedor De Fondo
+   
 
-        <!--FORMULARIOS DE LOGIN Y REGISTRO
-        <div class="contenedorLoginRegistro">
-            <!--FORMULARIO DE INICIO
-            <form  class="formLogin" method="post">
-                <h2>Iniciar Sesión</h2>
-                <input type="text" placeholder="Correo Electronico" name="email" id="email">
-                <div class="password-container">
-                    <input type="password" placeholder="Contraseña" name="password" id="password">
-                    <span class="material-symbols-outlined password-icon" id="togglePassword">
-                        
-                            visibility_off
-                            
-                        </span>
-                  
-                </div>
-                
-
-                <button type="submit" id="btnentrar">Entrar</button>
-                <p id="olvidasteContra">¿Olvidaste tu contraseña?</p>
-            </form>
-
-            <!--FORMULARIO RESTABLECER CONTRASEÑA
-            <form  class="restablecerContra" method="post">
-                <h2>Restablecer contraseña</h2>
-                <input type="text" placeholder="Correo Electronico" name="email">
-                <button type="submit" id="btnReset">Restablecer</button>
-            </form>
-        </div>
-    </main> -->
-
-                    <script src="js/login.js"></script>
 </body>
 
 </html>

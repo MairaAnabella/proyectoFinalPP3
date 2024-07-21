@@ -81,10 +81,22 @@ for(var i=0; i< arrow.length;i++){
     })
 }
 
-let sidebar = document.querySelector('.sidebar');
+/* let sidebar = document.querySelector('.close');
 let sidebarBtn = document.querySelector('.bxs-school');
 console.log(sidebar)
 
 sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-})
+    sidebar.classList.remove('close');
+}) */
+
+    let sidebar = document.querySelector('.close');
+let sidebarBtn = document.querySelector('.bxs-school');
+console.log(sidebar);
+
+sidebarBtn.addEventListener("click", () => {
+    if (sidebar.classList.contains('close')) {
+        sidebar.classList.remove('close');
+    } else {
+        sidebar.classList.add('close');
+    }
+});

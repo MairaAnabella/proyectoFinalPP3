@@ -144,7 +144,7 @@ function restablecerPass() {
         if (data.success) {
             
             Swal.fire({
-                title: 'Éxito',
+                
                 text: data.mensaje,
                 icon: 'success',
                 confirmButtonText: 'OK'
@@ -157,8 +157,9 @@ function restablecerPass() {
         } else {
             // Mostrar mensaje de error
             Swal.fire({
-                title: 'Error',
+                
                 text: data.mensaje,
+                icon: 'success',
                 width: 600,
                 padding: '3em',
                 color: '#ECB390',
@@ -166,7 +167,7 @@ function restablecerPass() {
                 backdrop: `
                     rgba(255, 165, 0, 0.4)
                 `,
-                icon: 'error',
+                
                 confirmButtonText: 'OK'
             });
         }
@@ -195,6 +196,10 @@ document.getElementById('btnBuscar').addEventListener('click', function (e) {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     restablecerPass();
 });
+document.getElementById('backHome').addEventListener('click', function() {
+    window.location.href = 'index.html'; // Cambia esto a la URL de tu página de inicio
+});
+
 
 /* visibilidad de la contraseña */
 const togglePassword = document.querySelector('#togglePassword');

@@ -1,6 +1,6 @@
 // Datos iniciales
 
-const API_URL = 'http://localhost/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 const datosIniciales = [];
 
 function cargarDatosIniciales() {
@@ -443,7 +443,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+/* fetch('menuLateral.html')
+.then(response=>response.text())
+.then(data=>{
+  document.getElementById('menu').innerHTML=data;
+}) */
 
 
 

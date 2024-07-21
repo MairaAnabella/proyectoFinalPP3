@@ -9,8 +9,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/menuLateral.css">
+   <!-- icons -->
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="js/tabla.js"></script>
+
 
   <title>Administrador de usuarios</title>
 </head>
@@ -18,65 +22,57 @@
 <body>
 
   <!-- Boton oculto para el modo movil -->
-  <div class="menu">
-    <ion-icon name="menu-outline"></ion-icon>
-    <ion-icon name="close-outline"></ion-icon>
-  </div>
+     
   <!-- Sidebar -->
-  <div class="barra-lateral">
-    <div style="margin-bottom: 10px;">
-      <div class="nombre-pagina">
-        <ion-icon id="school" name="school-outline"></ion-icon>
-        <span>Libreta Virtual</span>
-      </div>
+  <div class="sidebar ">
+    <div class="logo">
+      <i class='bx bxs-school' ></i>
+      <span class="titulo">Libreta virtual</span>
     </div>
-    <nav class="navegacion">
-      <ul>
-        <li>
-          <a href="userHome.html">
-            <ion-icon name="home-outline"></ion-icon>
-            <span>Inicio</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <ion-icon name="calendar-number-outline"></ion-icon>
-            <span>Asistencias</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <ion-icon name="pencil-outline"></ion-icon>
-            <span>Notas</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" id="btnHistoria">
-            <ion-icon name="document-text-outline"></ion-icon>
-            <span>Historia</span>
-          </a>
-        </li>
-        <li>
-          <a href="user.html" id="btnRoles">
-            <ion-icon name="people-outline"></ion-icon>
-            <span>Usuarios</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <ion-icon name="library-outline"></ion-icon>
-            <span>Materias</span>
-          </a>
-        </li>
-        <li>
-          <button id="btnSalir" class='btnSalir'>
-            <ion-icon name="log-in-outline"></ion-icon>
-            <span>Salir</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
+
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+          <i class='bx bxs-grid'></i>
+          <span class="link_name">Panel</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="" href="#">Materia</a></li>
+          
+         </ul>
+      </li>
+      <li>
+       <div class="icon_link">
+        <a href="#">
+          <i class='bx bx-book-heart'></i>
+          <span class="link_name">Materias</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+       </div>
+       <ul class="sub-menu">
+        <li><a class="" href="#">Materia</a></li>
+        <li><a href="#">materia1</a></li>
+        <li><a href="#">materia2</a></li>
+        <li><a href="#">materia3</a></li>
+       </ul>
+      </li>
+    <li>
+    <div class="profile-details">
+      <div class="profile-content">
+        <img src="asset/home-user/avatar.jpg" alt="">
+      </div>
+      <div class="name-rol">
+        <div class="nombre">Maria Laura</div>
+        <div class="rol">Directora</div>
+      </div>
+      <i class='bx bx-log-out'></i>
+    </div>
+  </li>
+  </ul>
   </div>
+
+
+
   <main>
     <!-- En la seccion del maiin es donde se aplica o se inserta los contenidos que quieran agregar lo recomedable es debajo del banner -->
     <!-- Banner -->

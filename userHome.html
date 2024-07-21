@@ -1,172 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/userHome.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> 
-    <title>Home</title>
-  </head>
-  <body>
-    <!-- Boton oculto para el modo movil -->
-  <div class="menu">
-      <ion-icon name="menu-outline"></ion-icon>
-      <ion-icon name="close-outline"></ion-icon>
-  </div>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/userHome.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/menuLateral.css">
+  <!-- icons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <title>Home</title>
+</head>
+
+<body>
 
   <!-- Sidebar -->
+  <div class="sidebar ">
+    <div class="logo">
+      <i class='bx bxs-school' ></i>
+      <span class="titulo">Libreta virtual</span>
+    </div>
 
-  <div class="barra-lateral">
-      <div style="margin-bottom: 10px;">
-          <div class="nombre-pagina">
-            <ion-icon id="school" name="school-outline"></ion-icon>
-              <span>Libreta Virtual</span>
-          </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+          <i class='bx bxs-grid'></i>
+          <span class="link_name">Panel</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="" href="#">Materia</a></li>
+          
+         </ul>
+      </li>
+      <li>
+       <div class="icon_link">
+        <a href="#">
+          <i class='bx bx-book-heart'></i>
+          <span class="link_name">Materias</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+       </div>
+       <ul class="sub-menu">
+        <li><a class="" href="#">Materia</a></li>
+        <li><a href="#">materia1</a></li>
+        <li><a href="#">materia2</a></li>
+        <li><a href="#">materia3</a></li>
+       </ul>
+      </li>
+    <li>
+    <div class="profile-details">
+      <div class="profile-content">
+        <img src="asset/home-user/avatar.jpg" alt="">
       </div>
-      <nav class="navegacion">
-          <ul>
-              <li>
-                  <a href="#">
-                    <ion-icon name="home-outline"></ion-icon>
-                      <span>Inicio</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="#">
-                    <ion-icon name="calendar-number-outline"></ion-icon>
-                      <span>Asistencias</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="#">
-                    <ion-icon name="pencil-outline"></ion-icon>
-                      <span>Notas</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="#" id="btnHistoria">
-                      <ion-icon name="document-text-outline"></ion-icon>
-                      <span>Historia</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="user.html" id="btnRoles">
-                    <ion-icon name="people-outline"></ion-icon>
-                      <span>Usuarios</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="#">
-                     <ion-icon name="library-outline"></ion-icon>
-                      <span>Materias</span>
-                  </a>
-              </li>
-              <li>
-                <button id="btnSalir"class='btnSalir' >
-                  <ion-icon name="log-in-outline"></ion-icon>
-                  <span>Salir</span>
-              </button>
-              </li>
-          </ul>
-      </nav>
+      <div class="name-rol">
+        <div class="nombre">Maria Laura</div>
+        <div class="rol">Directora</div>
+      </div>
+      <i class='bx bx-log-out'></i>
+    </div>
+  </li>
+  </ul>
   </div>
-  
-    <main>
-      <!-- En la seccion del maiin es donde se aplica o se inserta los contenidos que quieran agregar lo recomedable es debajo del banner -->
-      <!-- Banner -->
-      <div class="banner">
-          <h1>Colegio San Ignacio</h1>
-      </div>
 
 
-      <!-- Perfil -->
-      <div class="contenedor-card">
-        <div class="col-md-6">
-            <div class="card"> 
-              <img class="card-img-top" src="asset/home-user/perfil.jpg" alt="Card image cap">
-                <div class="card-body little-profile text-center">
-                    <div class="pro-img"><img src="asset/home-user/avatar.jpg" alt="user"></div>
-                    <h3 class="m-b-0"><span id="nombreUser"></span></h3>
-                    <div id="space">
-                    <a href="#" class="boton-card" >Ver Perfil</a>
-                  </div>
-                </div>
+ 
+  <main class="home-section">
+    <!-- En la seccion del maiin es donde se aplica o se inserta los contenidos que quieran agregar lo recomedable es debajo del banner -->
+    <!-- Banner -->
+    <div class="banner">
+      <h1>Colegio San Ignacio</h1>
+    </div>
+
+
+    <!-- Perfil -->
+    <div class="contenedor-card">
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top" src="asset/home-user/perfil.jpg" alt="Card image cap">
+          <div class="card-body little-profile text-center">
+            <div class="pro-img"><img src="asset/home-user/avatar.jpg" alt="user"></div>
+            <h3 class="m-b-0"><span id="nombreUser"></span></h3>
+            <div id="space">
+              <a href="#" class="boton-card">Ver Perfil</a>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Div de espacio -->
     <div id="space"></div>
 
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <!-- Seccion de Administrador -->
-          <div class="col" id="contenedor-admUser">
-            <div class="card h-100">
-              <img src="asset/home-user/usuarios.jpg" class="img-fluid mx-auto d-block w-50" />
-              <div class="card-body">
-                <h4 class="text-center">Administrar usuarios</h4>
-                <a href="user.html" class="boton-card d-flex justify-content-center w-" >Ir a Usuarios</a>
-   
-              </div>
-            </div>
-          </div>
-  
-          <div class="col" id="contenedor-admAlumnos">
-            <div class="card h-100">
-              <img src="asset/home-user/alumnos.avif" class="img-fluid mx-auto d-block w-50" />
-              <div class="card-body">
-                <h4 class="text-center">Administrar Alumnos</h4>
-                <a href="#" class="boton-card d-flex justify-content-center w-" >Ir a Alumnos</a>
-   
-              </div>
-            </div>
-          </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Seccion de Administrador -->
+      <div class="col" id="contenedor-admUser">
+        <div class="card h-100">
+          <img src="asset/home-user/usuarios.jpg" class="img-fluid mx-auto d-block w-50" />
+          <div class="card-body">
+            <h4 class="text-center">Administrar usuarios</h4>
+            <a href="user.html" class="boton-card d-flex justify-content-center w-">Ir a Usuarios</a>
 
-          <div class="col" id="contenedor-notas">
-            <div class="card h-100">
-              <img src="asset/home-user/notas.jpg" class="img-fluid mx-auto d-block w-50" />
-              <div class="card-body">
-                <h4 class="text-center">Ver Todas las Notas</h4>
-                <a href="#" class="boton-card d-flex justify-content-center w-" >Ir a Notas</a>
-   
-              </div>
-            </div>
-          </div>
-
-
-<!-- Seccion de Tutor -->
-
-        <div class="col" id="contenedor-asistencias">
-          <div class="card h-100">
-            <img src="asset/home-user/asistencia.jpg" class="img-fluid mx-auto d-block w-50"/>
-            <div class="card-body">
-              
-              <h4 class="text-center">Ver Todas las asistencias</h4>
-              <a href="#" class="boton-card d-flex justify-content-center " >Ir a asistencias</a>
-            </div>
-            
           </div>
         </div>
-        <div class="col" id="contenedor-materias">
-          <div class="card h-100">
-            <img src="asset/home-user/materias.jpg" class="img-fluid mx-auto d-block w-50"
-              />
-            <div class="card-body">
-              <h4 class="text-center">Ver Todas las materias</h4>
-              <a href="#" class="boton-card d-flex justify-content-center w-" >Ir a Materias</a> 
-              </p>
-            </div>
-            
+      </div>
+
+      <div class="col" id="contenedor-admAlumnos">
+        <div class="card h-100">
+          <img src="asset/home-user/alumnos.avif" class="img-fluid mx-auto d-block w-50" />
+          <div class="card-body">
+            <h4 class="text-center">Administrar Alumnos</h4>
+            <a href="#" class="boton-card d-flex justify-content-center w-">Ir a Alumnos</a>
+
           </div>
         </div>
+      </div>
+
+      <div class="col" id="contenedor-notas">
+        <div class="card h-100">
+          <img src="asset/home-user/notas.jpg" class="img-fluid mx-auto d-block w-50" />
+          <div class="card-body">
+            <h4 class="text-center">Ver Todas las Notas</h4>
+            <a href="#" class="boton-card d-flex justify-content-center w-">Ir a Notas</a>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Seccion de Tutor -->
+
+      <div class="col" id="contenedor-asistencias">
+        <div class="card h-100">
+          <img src="asset/home-user/asistencia.jpg" class="img-fluid mx-auto d-block w-50" />
+          <div class="card-body">
+
+            <h4 class="text-center">Ver Todas las asistencias</h4>
+            <a href="#" class="boton-card d-flex justify-content-center ">Ir a asistencias</a>
+          </div>
+
+        </div>
+      </div>
+      <div class="col" id="contenedor-materias">
+        <div class="card h-100">
+          <img src="asset/home-user/materias.jpg" class="img-fluid mx-auto d-block w-50" />
+          <div class="card-body">
+            <h4 class="text-center">Ver Todas las materias</h4>
+            <a href="#" class="boton-card d-flex justify-content-center w-">Ir a Materias</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
 
 
 
 
-     <!--    <div class="col" id="contenedor-admRoles">
+      <!--    <div class="col" id="contenedor-admRoles">
           <div class="card h-100">
             <img src="asset/home-user/Roles.jpg" class="img-fluid mx-auto d-block w-50 h-100" />
             <div class="card-body">
@@ -181,16 +174,17 @@
 
 
 
-      </div>
-    </main>
-    <footer class="footer" id="footer">
-      <div class="container">
-        <h6 class="mb-0">@Libreta Virtual Todos los Derechos reservados | Equipo @ 2024</h6>
-      </div>
-    </footer>
-  </body>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="/js/userHome.js"></script>
-  <script src="/js/menuLateral.js"></script>
+    </div>
+  </main>
+  <footer class="footer" id="footer">
+    <div class="container">
+      <h6 class="mb-0">@Libreta Virtual Todos los Derechos reservados | Equipo @ 2024</h6>
+    </div>
+  </footer> 
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="/js/userHome.js"></script> 
+<script src="/js/menuLateral.js"></script>
+
 </html>

@@ -13,13 +13,30 @@ document.addEventListener('DOMContentLoaded', function () {
         // Si falta alguna variable de sesión, redirigir al usuario al inicio de sesión
         window.location.href = 'login.html';
     } else {
- 
+
+
+
+        /* asigno nombre de usuario al mensaje y al menu en HTML*/
+        const nombreUser = document.getElementById('nombreUser');
+        nombreUser.innerText = 'Hola, ' + nombre + ' ' + apellido;
+        const nombreMenu = document.getElementById('nombre-user');
+        nombreMenu.innerText = nombre;
+        const idRol = document.getElementById('rol-user');
+        switch (rol) {
+            case '1':
+                idRol.innerText = 'Administrador';
+                break;
+            case '2':
+                idRol.innerText = 'Director';
+                break;
+            case '3':
+                idRol.innerText = 'Preceptor';
+                break;
+            case '4':
+                idRol.innerText = 'Tutor';
+                break;
+        }
        
-
-        /* asigno nombre de usuario al mensaje en HTML*/
-        var nombreUser = document.getElementById('nombreUser');
-        nombreUser.innerText = 'Hola ' + nombre + ' ' + apellido;
-
 
         /* ocultar botones segun rol */
 
@@ -40,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btnRoles.style.display = 'none';
         }
 
- 
+
     }
 });
 

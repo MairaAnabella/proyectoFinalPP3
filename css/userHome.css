@@ -28,7 +28,7 @@ body{
  main{
     
     margin-left: 90px;
-    padding: 20px;
+    /* padding: 20px; */
     transition: margin-left 0.5s ease;
 }
 main.min-main{
@@ -36,19 +36,19 @@ main.min-main{
 }
  
 
-/* .sidebar.close  ~ .home-section{
-    left: 78px;
-    width: calc(100%-78px);
-}
- */
 
 
 
 .banner {
-    padding: 100px;
-    text-align: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   /*  padding: 100px; */
+    /* text-align: center; */
     overflow: hidden;
-    border-bottom: 5px solid #ccc;
+    /* border-bottom: 5px solid #ccc; */
     background-image: url('/asset/home-user/banner.jpg');
     background-position: center;
     background-color: rgb(254,187,82);
@@ -59,7 +59,8 @@ main.min-main{
 
 .banner  h1{
     line-height: 1;
-    margin: 0;
+    margin-bottom: 25px;
+    /* margin: 0; */
     color: var(--fondo);
     font-size: 40px;
   }
@@ -91,7 +92,7 @@ main.min-main{
 }
 
 .pro-img {
-    margin-top: -80px;
+    margin-top: -50px;
     margin-bottom: 20px
 }
 
@@ -134,7 +135,21 @@ footer {
   }
 
 
+  @media (max-width: 576px) {
+   .banner{display: none;}
+   .contenedor-card{
+    margin-top: 50px;
+   }
+  
+  }
 
+  @media (max-width: 768px) {
+   
+    main{
+        margin-left: 0!important;
+    }
+    
+}
 
 
 

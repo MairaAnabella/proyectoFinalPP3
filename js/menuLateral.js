@@ -3,7 +3,7 @@
 
 // Código adicional para manejar la lógica de la barra lateral aquí
 
-/* var btnSalir = document.getElementById('btnSalir');
+var btnSalir = document.getElementById('btnSalir');
 
 btnSalir.addEventListener('click', () => {
     logout();
@@ -15,81 +15,25 @@ function logout() {
     localStorage.removeItem('nombre');
     localStorage.removeItem('apellido');
     localStorage.removeItem('rol');
-} */
+}
 
-/*Boton para ocultar en modo escritorio y volverlo hacer visible en modo movil, tambien realizar que con un boton se oculta la barra lateral*/
-/* const cloud = document.getElementById("school");
-const barraLateral = document.querySelector(".barra-lateral");
-const spans = document.querySelectorAll("span");
-const circulo = document.querySelector(".circulo");
-const menu = document.querySelector(".menu");
-const main = document.querySelector("main");
-document.addEventListener("DOMContentLoaded", () => {
-    const cloud = document.getElementById("school");
-    const barraLateral = document.querySelector(".barra-lateral");
-    const spans = document.querySelectorAll(".barra-lateral span");
-    const menu = document.querySelector(".menu");
-    const main = document.querySelector("main");
 
-    // Cargar en formato mini por defecto
-    barraLateral.classList.add("mini-barra-lateral");
-    spans.forEach((span) => {
-        span.classList.add("oculto");
-    });
-
-    menu.addEventListener("click", () => {
-        barraLateral.classList.toggle("max-barra-lateral");
-        barraLateral.classList.toggle("mini-barra-lateral");
-
-        if (barraLateral.classList.contains("max-barra-lateral")) {
-            menu.children[0].style.display = "none";
-            menu.children[1].style.display = "block";
-            spans.forEach((span) => {
-                span.classList.remove("oculto");
-            });
-        } else {
-            menu.children[0].style.display = "block";
-            menu.children[1].style.display = "none";
-            spans.forEach((span) => {
-                span.classList.add("oculto");
-            });
-        }
-    });
-
-    cloud.addEventListener("click", () => {
-        barraLateral.classList.toggle("mini-barra-lateral");
-        main.classList.toggle("min-main");
-        spans.forEach((span) => {
-            span.classList.toggle("oculto");
-        });
-    });
-});
- */
-
-/* lateral nuevo
- */
-
+/* MENU LATERAL */
 
 let arrow = document.querySelectorAll('.arrow');
 console.log(arrow)
-for(var i=0; i< arrow.length;i++){
+for (var i = 0; i < arrow.length; i++) {
     console.log(arrow[i])
-    arrow[i].addEventListener("click",(e)=>{
-         let arrowParent= e.target.parentElement.parentElement; 
+    arrow[i].addEventListener("click", (e) => {
+        let arrowParent = e.target.parentElement.parentElement;
         console.log(arrowParent)
         arrowParent.classList.toggle('showMenu');
     })
 }
 
-/* let sidebar = document.querySelector('.close');
-let sidebarBtn = document.querySelector('.bxs-school');
-console.log(sidebar)
 
-sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.remove('close');
-}) */
 
-    let sidebar = document.querySelector('.close');
+let sidebar = document.querySelector('.close');
 let sidebarBtn = document.querySelector('.bxs-school');
 console.log(sidebar);
 
@@ -100,3 +44,40 @@ sidebarBtn.addEventListener("click", () => {
         sidebar.classList.add('close');
     }
 });
+
+// cargo los elementos del Dom
+const toggleSidebarBtn = document.querySelector('.toggle-sidebar-btn');
+const menu = document.querySelector('.sidebar');
+const abierto=document.getElementById('abierto');
+const cerrado=document.getElementById('cerrado');
+
+
+// evento del boton flotante
+toggleSidebarBtn.addEventListener('click', () => {
+    menu.classList.toggle('close');
+   
+    if (menu.classList.contains('close')) {
+        menu.style.transform = 'translateX(-100%)';
+        cerrado.style.display = 'none';
+        abierto.style.display = 'block';
+      
+    } else {
+        menu.style.transform = 'translateX(0)';
+        cerrado.style.display = 'block';
+        abierto.style.display = 'none';
+    }
+});
+// Verifico el tamaño de la pantalla para que me muestre el menu
+function checkScreenSize() {
+    const screenWidth = window.innerWidth;
+    const sidebar = document.querySelector('.sidebar');
+  
+    if (screenWidth < 768) {
+      sidebar.style.transform = 'translateX(-100%)';
+    } else {
+      sidebar.style.transform = 'translateX(0)';
+    }
+  }
+  
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);

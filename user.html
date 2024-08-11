@@ -21,26 +21,52 @@
 
 <body>
 
-  <!-- Boton oculto para el modo movil -->
-     
+  <button class="toggle-sidebar-btn"><i class='bx bx-menu' id="abierto"></i>
+    <i class='bx bx-x' id="cerrado" style="display: none;"></i></button>
   <!-- Sidebar -->
-  <div class="sidebar ">
+  <div class="sidebar close ">
     <div class="logo">
-      <i class='bx bxs-school' ></i>
+      <img class="bxs-school" src="/asset/logoblanco.png" >
+     
       <span class="titulo">Libreta virtual</span>
+    
     </div>
 
     <ul class="nav-links">
       <li>
-        <a href="#">
-          <i class='bx bxs-grid'></i>
-          <span class="link_name">Panel</span>
+        <a href="/userHome.html">
+          <i class='bx bx-home'></i>
+          <span class="link_name">Inicio</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="" href="#">Materia</a></li>
-          
+          <li><a class="" href="/userHome.html">Inicio</a></li>
          </ul>
       </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-envelope'></i>
+          <span class="link_name">Comunicado</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="" href="#">Comunicado</a></li>
+         </ul>
+      </li>
+
+      <li>
+        <div class="icon_link">
+         <a href="#">
+          <i class='bx bxs-graduation'></i>
+           <span class="link_name">Cursos</span>
+         </a>
+         <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+         <li><a class="" href="#">Añadir Curso</a></li>
+         <li><a href="#">Editar Curso</a></li>
+
+        </ul>
+       </li>
+
       <li>
        <div class="icon_link">
         <a href="#">
@@ -50,22 +76,72 @@
         <i class='bx bxs-chevron-down arrow'></i>
        </div>
        <ul class="sub-menu">
-        <li><a class="" href="#">Materia</a></li>
-        <li><a href="#">materia1</a></li>
-        <li><a href="#">materia2</a></li>
-        <li><a href="#">materia3</a></li>
+        <li><a class="" href="#">Crear Materia</a></li>
+        <li><a href="#">Editar Materia</a></li>
+        
+  <!--       <li><a href="#">materia2</a></li>
+        <li><a href="#">materia3</a></li> -->
        </ul>
       </li>
+
+      <li>
+        <div class="icon_link">
+         <a href="#">
+          <i class='bx bx-group'></i>
+           <span class="link_name">Estudiantes</span>
+         </a>
+         <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+         <li><a class="" href="#">Agregar Estudiante</a></li>
+         <li><a href="#">Gestionar Estudiantes</a></li>
+         
+   <!--       <li><a href="#">materia2</a></li>
+         <li><a href="#">materia3</a></li> -->
+        </ul>
+       </li>
+
+       <li>
+        <div class="icon_link">
+         <a href="#">
+          <i class='bx bx-edit'></i>
+           <span class="link_name">Notas</span>
+         </a>
+         <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+     <!--    <ul class="sub-menu">
+         <li><a class="" href="#">Agregar Estudiante</a></li>
+         <li><a href="#">Gestionar Estudiantes</a></li>
+         
+         <li><a href="#">materia2</a></li>
+         <li><a href="#">materia3</a></li> 
+        </ul> -->
+       </li>
+
+      <li>
+        <a href="#">
+          <i class='bx bx-user-plus'></i>
+          <span class="link_name">Usuarios</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="" href="#">Usuarios</a></li>
+         </ul>
+      </li>
+
+
+
+
     <li>
     <div class="profile-details">
       <div class="profile-content">
         <img src="asset/home-user/avatar.jpg" alt="">
       </div>
       <div class="name-rol">
-        <div class="nombre">Maria Laura</div>
-        <div class="rol">Directora</div>
+        <div  ><span class="nombre" id="nombre-user"></span></div>
+        <div  ><span class="rol" id="rol-user"></span></div>
       </div>
-      <i class='bx bx-log-out'></i>
+      <a id="btnSalir"><i class='bx bx-log-out'></i></a>
+      
     </div>
   </li>
   </ul>

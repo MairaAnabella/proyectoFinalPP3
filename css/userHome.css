@@ -9,6 +9,9 @@
     --opcion1: #fd7d1463;
     --opcion2: #f7ab54;
 }
+::-webkit-scrollbar {
+    display: none;
+  }
 
 *{
     margin: 0 ;
@@ -17,8 +20,7 @@
     font-family: "Poppins", sans-serif ;
 }
 body{
-    height: 100vh;
-    width: 100%;
+   
     background-color: var(--fondo);
 }
 
@@ -49,12 +51,23 @@ main.min-main{
     /* text-align: center; */
     overflow: hidden;
     /* border-bottom: 5px solid #ccc; */
-    background-image: url('/asset/home-user/banner.jpg');
+    
     background-position: center;
-    background-color: rgb(254,187,82);
-    background-color: linear-gradient(186deg, rgba(254,187,82,1) 0%, rgba(235,148,51,1) 100%);
+    background-color:      #1d1b31;
     
+  
     
+}
+.card-body h3{
+    color: #f8f6f4;
+}
+.contenedor-card a{
+    background-color:  #1d1b31;
+    color: #f8f6f4;
+}
+.contenedor-card a:hover{
+    background-color:#f8f6f4;
+    color: #1d1b31;
 }
 
 .banner  h1{
@@ -71,9 +84,11 @@ main.min-main{
     justify-content: center;
 }
 
+
   .card-img-top{
     height:230px;
 }
+
 
 .card-no-border .card {
     /*border-color: #d7dfe3;*/
@@ -82,15 +97,39 @@ main.min-main{
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
 }
+.card-small {
+    width: 70%;
+    margin: 20px auto 20px;
+    padding: 10px;
+    border-radius: 4px;
+    
+    box-shadow: 0px 5px 15px 0px rgba(235, 149, 51, 0.397);
+   
+  }
+  
+  
+ .contenedor-accion{
+    display: grid;
+    justify-items: center;
+    text-align: center;
+ }
+ .contenedor-accion a{
+    margin-top: 15px;
+ }
+  .card-small .boton-card {
+    font-size: 16px; 
+    padding: 5px 10px; 
+  }
+  .card-small img{
+    width: 100%;
+  }
 
-.card-body {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
+ .card-body {
+    
     padding: 1.25rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    background-color:var(--opcion1);
-}
-
+    background-color:var(--opcion2);
+} 
 .pro-img {
     margin-top: -50px;
     margin-bottom: 20px
@@ -124,6 +163,7 @@ main.min-main{
 }
 
 footer {
+    margin-top: 60px;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -140,11 +180,15 @@ footer {
    .contenedor-card{
     margin-top: 50px;
    }
-  
+   .card-small{
+    height: 50vh !important;
+}
   }
 
+ 
+
   @media (max-width: 768px) {
-   
+    
     main{
         margin-left: 0!important;
     }

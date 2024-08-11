@@ -46,17 +46,32 @@ document.addEventListener('DOMContentLoaded', function () {
         var contenedorNotas=document.getElementById('contenedor-notas'); */
         var contenedorAdmUser = document.getElementById('contenedor-admUser');
         var contenedorAdmAlumnos = document.getElementById('contenedor-admAlumnos');
-        var contenedorAdmRoles = document.getElementById('contenedor-admRoles');
-        var btnHistoria = document.getElementById('btnHistoria');
-        var btnRoles = document.getElementById('btnRoles');
-
+        var contenedorNotificados=document.getElementById('contenedor-comunicado');
+        var contenedorMaterias=document.getElementById('contenedor-materias');
+        var accionesCardNotas=document.getElementById('notas-adm');
+        var accionesCardNotasPadres=document.getElementById('notas-padres');
+        var btnEstudiantes = document.getElementById('btnEstudiantes');
+        var btnUser = document.getElementById('btnUser');
+        var btnMaterias = document.getElementById('btnMaterias');
+        var btnCursos  = document.getElementById('btnCursos');
+        var btnComunicados  = document.getElementById('btnComunicados');
+        console.log(rol)
         if (rol == 4) {
             contenedorAdmAlumnos.style.display = 'none';
-            contenedorAdmRoles.style.display = 'none';
             contenedorAdmUser.style.display = 'none';
-            btnHistoria.style.display = 'none';
-            btnRoles.style.display = 'none';
+            contenedorNotificados.style.display='none';
+            contenedorMaterias.style.display='none';
+            accionesCardNotas.style.display='none';
+            btnEstudiantes.style.display = 'none';
+            btnUser.style.display = 'none';
+            btnMaterias.style.display = 'none';
+            btnCursos.style.display = 'none';
+            btnComunicados.style.display = 'none';
+
+        }else{
+            accionesCardNotasPadres.style.display='none';
         }
+        
 
 
     }

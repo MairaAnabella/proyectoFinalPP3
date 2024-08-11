@@ -37,7 +37,7 @@
           <li><a class="" href="#">Inicio</a></li>
          </ul>
       </li>
-      <li>
+      <li id="btnComunicados">
         <a href="notificacion.html">
           <i class='bx bx-envelope'></i>
           <span class="link_name">Comunicado</span>
@@ -47,7 +47,7 @@
          </ul>
       </li>
 
-      <li>
+      <li id="btnCursos">
         <div class="icon_link">
          <a href="#">
           <i class='bx bxs-graduation'></i>
@@ -62,7 +62,7 @@
         </ul>
        </li>
 
-      <li>
+      <li id="btnMaterias">
        <div class="icon_link">
         <a href="#">
           <i class='bx bx-book-heart'></i>
@@ -79,7 +79,9 @@
        </ul>
       </li>
 
-      <li>
+ 
+
+      <li id="btnEstudiantes">
         <div class="icon_link">
          <a href="#">
           <i class='bx bx-group'></i>
@@ -96,7 +98,7 @@
         </ul>
        </li>
 
-       <li>
+       <li id="btnNotas">
         <div class="icon_link">
          <a href="#">
           <i class='bx bx-edit'></i>
@@ -113,7 +115,24 @@
         </ul> -->
        </li>
 
-      <li>
+       <li id="btnAsistencia">
+        <div class="icon_link">
+         <a href="#">
+          <i class='bx bx-edit-alt'></i>
+           <span class="link_name">Asistencias</span>
+         </a>
+         <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+     <!--    <ul class="sub-menu">
+         <li><a class="" href="#">Agregar Estudiante</a></li>
+         <li><a href="#">Gestionar Estudiantes</a></li>
+         
+         <li><a href="#">materia2</a></li>
+         <li><a href="#">materia3</a></li> 
+        </ul> -->
+       </li>
+
+      <li id="btnUser">
         <a href="/user.html">
           <i class='bx bx-user-plus'></i>
           <span class="link_name">Usuarios</span>
@@ -177,11 +196,12 @@
       <div class="col" id="contenedor-admUser">
         <div class="card-small h-100">
           <img src="asset/home-user/gestionar-user.png" />
-          <div class="contenedor-accion">
+          <div class="contenedor-accion" >
             <span>Añade, elimina y edita usuarios fácilmente.</span>
             <a href="user.html" class="boton-card ">Gestión de Usuarios</a>
 
           </div>
+
         </div>
       </div>
 
@@ -199,16 +219,21 @@
       <div class="col" id="contenedor-notas">
         <div class="card-small h-100">
           <img src="asset/home-user/calificar.png"  />
-          <div class="contenedor-accion">
+          <div class="contenedor-accion" id="notas-adm">
             <span>Consulta y modifica las notas de los estudiantes.</span>
             <a href="#" class="boton-card ">Gestión de Notas</a>
+
+          </div>
+          <div class="contenedor-accion" id="notas-padres">
+            <span>Consulta las notas de los estudiantes.</span>
+            <a href="#" class="boton-card ">Visualizar Notas</a>
 
           </div>
         </div>
       </div>
 
 
-      <!-- Seccion de Tutor -->
+
 
       <div class="col" id="contenedor-asistencias">
         <div class="card-small h-100">
@@ -221,6 +246,20 @@
 
         </div>
       </div>
+
+
+<!--       <div class="col" id="contenedor-asistencias">
+        <div class="card-small h-100">
+          <img src="asset/home-user/asistencia.png"   />
+          <div class="contenedor-accion">
+
+            <span>Visualiza las asistencias de los estudiantes.</span>
+            <a href="#" class="boton-card ">Asistencias</a>
+          </div>
+
+        </div>
+      </div> -->
+
       <div class="col" id="contenedor-materias">
         <div class="card-small h-100">
           <img src="asset/home-user/materias.png"  />
@@ -241,7 +280,7 @@
             <img src="asset/home-user/comunicado.png"  />
             <div class="contenedor-accion">
              <span>Informa a los padres sobre sanciones y reuniones.</span>
-              <a href="#" class="boton-card " >Notificaciones a Padres</a>
+              <a href="/notificacion.html" class="boton-card " >Notificaciones a Padres</a>
  
             </div>
           </div>

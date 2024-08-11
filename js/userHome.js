@@ -2,6 +2,7 @@
 
 // Verificar si el usuario está autenticado al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Verificar si las variables de sesión están presentes en localStorage
     var email = localStorage.getItem('email');
     var nombre = localStorage.getItem('nombre');

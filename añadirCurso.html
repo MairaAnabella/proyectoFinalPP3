@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/menuLateral.css">
   <link rel="stylesheet" href="/css/notificacion.css">
+  <link rel="stylesheet" href="/css/curso.css">
    <!-- icons -->
    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -18,7 +19,7 @@
    <link rel="icon" href="/asset/logo-ico.ico" type="image/x-icon">
   
 
-  <title>comunicados</title>
+  <title>Añadir Curso</title>
 </head>
 
 <body>
@@ -45,25 +46,25 @@
          </ul>
       </li>
       <li>
-        <a href="#">
+        <a href="/notificacion.html">
           <i class='bx bx-envelope'></i>
           <span class="link_name">Comunicado</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="" href="#">Comunicado</a></li>
+          <li><a class="" href="/notificacion.html">Comunicado</a></li>
          </ul>
       </li>
 
       <li>
         <div class="icon_link">
-         <a href="/añadirCurso.html">
+         <a href="#">
           <i class='bx bxs-graduation'></i>
            <span class="link_name">Cursos</span>
          </a>
          <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-         <li><a class="" href="/añadirCurso.html">Añadir Curso</a></li>
+         <li><a class="" href="#">Añadir Curso</a></li>
          <li><a href="#">Editar Curso</a></li>
 
         </ul>
@@ -154,47 +155,33 @@
   <main>
     
     <!-- Banner -->
-    <div class="banner-noti">
-      <h1>Comunicados a Padres</h1>
+    <div class="banner-curso">
+      <h1>Añadir Curso</h1>
     </div>
+    <div class="container-form">
+    <form action="" class="form-curso">
+      <div>
+          <label for="">Año:</label>
+          <input type="text" name="año" id="">
+          <span class="sug-año">Ejemplo: 1°,2°,3°,4°,etc</span>
+      </div>
+      <div>
+          <label for="">Comisión/división:</label>
+          <input type="text" name="comision" id="">
+          <span class="sug-comision">Ejemplo: D,C o 4°,5°</span>
+      </div>
+      <div>
+          <button type="submit" class="btn-añadir">Añadir <i class='bx bx-check'></i></button>
+      </div>
+  </form>
+</div>
 
-    <form>
-        
-        <div class="row">
-          <div class="col">
-            <label for="grado">Grado:</label>
-            <select id="grado" name="grado">
-              <option value="">Seleccione un grado</option>
-              <option value="primero">Primero</option>
-              <option value="segundo">Segundo</option>
-              <option value="tercero">Tercero</option>
-              <!-- Agrega más opciones según sea necesario -->
-            </select>
-          </div>
-          <div class="col">
-            <label for="email_destinatario">Destinatario (email):</label>
-            <select id="email_destinatario" name="email_destinatario">
-              <option value="">Seleccione un destinatario</option>
-              <option value="email1@example.com">email1@example.com</option>
-              <option value="email2@example.com">email2@example.com</option>
-              <option value="email3@example.com">email3@example.com</option>
-              <!-- Agrega más opciones según sea necesario -->
-            </select>
-          </div>
-        </div>
-        <label for="nombre_destinatario">Asunto:</label>
-        <input type="text" id="nombre_destinatario" name="nombre_destinatario" required>
-       
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" name="mensaje" required></textarea>
-        <button type="submit">Enviar correo electrónico</button>
-      </form>
   </main>
   <footer class="footer" id="footer">
     <div class="container">
       <h6 class="mb-0">@Libreta Virtual Todos los Derechos reservados | Equipo @ 2024</h6>
     </div>
-  </footer>
+  </footer> 
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

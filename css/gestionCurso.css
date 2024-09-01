@@ -1,0 +1,61 @@
+:root {
+
+    --letra: #fd7e14;
+    --sugerencia: #f7ab54;
+}
+
+main {
+    display: grid;
+    justify-items: center;
+    margin-bottom:8%;
+
+}
+
+.banner-curso {
+    width: 100%;
+    background-color: #1d1b31;
+    color: aliceblue;
+    text-align: center;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px !important;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--letra) !important;
+    color:whitesmoke !important;
+}
+#buscador{
+    width: 100%;
+    border-radius: 5px;
+    border:2px solid var(--sugerencia);
+}
+
+#paginador {
+    margin-top: 10px;
+}
+
+#paginador button {
+    background-color: var(--sugerencia) !important;
+    color: #fff;
+    width: 25px;
+    margin: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#paginador button:hover {
+    background-color: var(--letra) !important;
+    color: whitesmoke !important;
+}

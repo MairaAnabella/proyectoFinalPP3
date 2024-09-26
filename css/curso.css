@@ -7,6 +7,7 @@
 main {
     display: grid;
     justify-items: center;
+    margin-bottom:8%;
 
 }
 
@@ -21,7 +22,7 @@ main {
     width: 70%;
     margin-top: 60px;
     margin-bottom: 120px;
-    background-color: rgba(134, 130, 130, 0.05);
+    background-color: rgba(78, 76, 75, 0.199);
     border-radius: 15px;
 }
 
@@ -29,7 +30,7 @@ main {
     color: var(--letra);
     margin-top: 10px;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .form-curso input {
@@ -40,7 +41,8 @@ main {
 
 .sug-año,
 .sug-comision {
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--sugerencia);
 }
 

@@ -5,8 +5,9 @@
 const API_URL = 'http://localhost/backend/';
 
 
-function agregarMateria() {
-    alert('hoooolaaaaaaaaa')
+const boton = document.getElementById('btn-enviar');
+boton.addEventListener('click', function () {
+
   let materia = document.getElementById('agregarMateria').value;
   fetch(API_URL + 'gestionMaterias.php', {
     method: 'POST',
@@ -23,7 +24,7 @@ function agregarMateria() {
     .then(data => {
       if (data.status === 'success') {
         Swal.fire({
-          title: "Se agrego la materia: "+materia+"con exitó!",
+          title: "Se agrego la materia: " + materia + "con exitó!",
           width: 600,
           padding: "3em",
           color: "#fd7e14",
@@ -35,7 +36,7 @@ function agregarMateria() {
 
         }).then((result) => {
           if (result.isConfirmed) {  // Verifica si el usuario hizo clic en "OK"
-             // Borra todos los datos del localStorage
+            // Borra todos los datos del localStorage
             location.reload();       // Refresca la página
           }
         });
@@ -43,5 +44,5 @@ function agregarMateria() {
 
     });
 
+})
 
-}

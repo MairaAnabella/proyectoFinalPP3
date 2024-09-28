@@ -36,7 +36,7 @@ function cargarCursos() {
 
 
 
-function eliminarCurso(idMateria) {
+function eliminarMateria(idMateria) {
   console.log(idMateria)
   Swal.fire({
     title: "¿Estas seguro de eliminar la materia?",
@@ -110,7 +110,7 @@ fetch(API_URL + 'gestionMaterias.php', {
             <td>${item.fecha_creacion}</td>
             <td>${item.fecha_actualizacion}</td>
              <td>
-                <button class="btn btn-danger btn-sm"  onclick="eliminarCurso(${item.id})"><i class='bx bx-trash'></i></button>
+                <button class="btn btn-danger btn-sm"  onclick="eliminarMateria(${item.id})"><i class='bx bx-trash'></i></button>
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.id}"><i class='bx bx-edit-alt'></i></button>
                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#unirModal" onclick="setModalData(${item.id}, '${item.nombre}')"><i class='bx bx-add-to-queue'></i></button>
             </td>

@@ -1,9 +1,9 @@
 //URL -> servidor aws 
-//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 
 
-const API_URL = 'http://localhost/backend/';
-const filasPorPagina = 5; // número de filas por página
+//const API_URL = 'http://localhost/backend/';
+const filasPorPagina = 10; // número de filas por página
 let paginaActual = 1;
 
 
@@ -36,7 +36,7 @@ function cargarCursos() {
 
 
 
-function eliminarMateria(idMateria) {
+/* function eliminarMateria(idMateria) {
   console.log(idMateria)
   Swal.fire({
     title: "¿Estas seguro de eliminar la materia?",
@@ -45,7 +45,8 @@ function eliminarMateria(idMateria) {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Si,Claro!"
+    confirmButtonText: "Si,Claro!",
+    allowOutsideClick: false // Evita que se cierre al hacer clic fuera
   }).then((result) => {
     if (result.isConfirmed) {
       fetch(API_URL + 'gestionMaterias.php', {
@@ -60,7 +61,7 @@ function eliminarMateria(idMateria) {
       })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Hubo un problema al modificar el usuario.');
+            throw new Error('Hubo un problema al eliminar la Materia');
           }
           return response.json();
         })
@@ -70,7 +71,11 @@ function eliminarMateria(idMateria) {
             Swal.fire({
               title: "Eliminado!",
               text: "La materia fue eliminada!",
-              icon: "success"
+              icon: "success",
+              allowOutsideClick: false
+            }).then(() => {
+              // Recargar la página cuando el usuario haga clic en "OK"
+              window.location.reload(); 
             });
           }
         });
@@ -81,7 +86,7 @@ function eliminarMateria(idMateria) {
     }
   });
 }
-
+ */
 
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -105,14 +110,14 @@ fetch(API_URL + 'gestionMaterias.php', {
     data.forEach(item => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-            <td id='idMateria'>${item.id}</td>
+            <td id='idMateria'>${item.idMateria}</td>
             <td>${item.nombre}</td>
             <td>${item.fecha_creacion}</td>
             <td>${item.fecha_actualizacion}</td>
              <td>
-                <button class="btn btn-danger btn-sm"  onclick="eliminarMateria(${item.id})"><i class='bx bx-trash'></i></button>
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.id}"><i class='bx bx-edit-alt'></i></button>
-                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#unirModal" onclick="setModalData(${item.id}, '${item.nombre}')"><i class='bx bx-add-to-queue'></i></button>
+               
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idMateria}"><i class='bx bx-edit-alt'></i></button>
+                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#unirModal" onclick="setModalData(${item.idMateria}, '${item.nombre}')"><i class='bx bx-add-to-queue'></i></button>
             </td>
         `;
       tbody.appendChild(tr);

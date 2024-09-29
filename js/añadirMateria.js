@@ -1,8 +1,8 @@
 //URL -> servidor aws 
-//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 
 
-const API_URL = 'http://localhost/backend/';
+//const API_URL = 'http://localhost/backend/';
 
 
 const boton = document.getElementById('btn-enviar');
@@ -24,7 +24,7 @@ boton.addEventListener('click', function () {
     .then(data => {
       if (data.status === 'success') {
         Swal.fire({
-          title: "Se agrego la materia: " + materia + "con exitó!",
+          title: "Se agrego la materia: " + materia + " con exitó!",
           width: 600,
           padding: "3em",
           color: "#fd7e14",

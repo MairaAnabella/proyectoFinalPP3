@@ -15,8 +15,8 @@ function cargarCursos() {
 
            for (var i = 0; i < cursos.length; i++) {
                 var option = document.createElement('option');
-                option.value = cursos[i].Gradoid;
-                option.textContent = cursos[i].Curso;
+                option.value = cursos[i].idCurso;
+                option.textContent = cursos[i].nombre;
                 selectCurso.appendChild(option);
             }
         }

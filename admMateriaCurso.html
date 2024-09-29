@@ -6,12 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/userHome.css" />
   <link rel="stylesheet" href="css/user.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
   <link rel="stylesheet" href="/css/menuLateral.css">
-  <link rel="stylesheet" href="/css/notificacion.css">
-  <link rel="stylesheet" href="/css/anadirMateria.css">
+  <link rel="stylesheet" href="/css/gestionCurso.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <!-- icons -->
    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -19,7 +17,7 @@
    <link rel="icon" href="/asset/logo-ico.ico" type="image/x-icon">
   
 
-  <title>Añadir Materia</title>
+  <title>Administrar Materias por Curso</title>
 </head>
 
 <body>
@@ -57,22 +55,22 @@
 
       <li>
         <div class="icon_link">
-         <a href="/añadirCurso.html">
+         <a href="añadirCurso.html">
           <i class='bx bxs-graduation'></i>
            <span class="link_name">Cursos</span>
          </a>
          <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-         <li><a class="" href="/añadirCurso.html">Añadir Curso</a></li>
-         <li><a href="/gestionCurso.html">Editar Curso</a></li>
+         <li><a class="" href="añadirCurso.html">Añadir Curso</a></li>
+         <li><a href="gestionCurso.html">Editar Curso</a></li>
 
         </ul>
        </li>
 
       <li>
        <div class="icon_link">
-        <a href="#">
+        <a href="/añadirMateria.html">
           <i class='bx bx-book-heart'></i>
           <span class="link_name">Materias</span>
         </a>
@@ -157,41 +155,47 @@
     
     <!-- Banner -->
     <div class="banner-curso">
-      <h1>Añadir Materia</h1>
+      <h1>Gestión de Asignaciones</h1>
     </div>
-    <div class="container-form">
-    <form action="" class="form-curso">
-      <div>
-          <label for="">Nombre:</label>
-          <input type="text" name="nombreMateria" id="agregarMateria">
-          <span class="sug-año">Ejemplo: Matematica, Literatura etc..</span>
-      </div>
-<!--  <div>
-          <label for="">Comisión/división:</label>
-          <input type="text" name="comision" id="">
-          <span class="sug-comision">Ejemplo: D,C o 4°,5°</span>
-      </div>  -->  
-      <div>
-          <button type="button" class="btn-enviar" id="btn-enviar">Añadir <i class='bx bx-check'></i></button>
-      </div>
-  </form>
-</div>
+    <div class="container" style="margin-top: 10px;padding: 5px; ">
+        <input type="search" id="buscador" placeholder="    Buscar...">
+        <div class="table-wrapper">
+        <table class="table" id="tabla">
+            <thead>
+                <tr class="column">
+                    <th scope="col">#</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Materia</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div id="paginador"></div>
+    </div>
+
+
+
 
   </main>
-  <footer class="footer" id="footer" style="margin-top: 18%;">
+  <footer class="footer" id="footer" >
     <div class="container">
       <h6 class="mb-0">@Libreta Virtual Todos los Derechos reservados | Equipo @ 2024</h6>
     </div>
   </footer> 
 
 </body>
-<script src="/js/añadirMateria.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="/js/menuLateral.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
-
+<script src="/js/admMateriaCurso.js"></script>
 
 
 

@@ -1,10 +1,10 @@
 
 
 //URL -> servidor aws 
-//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 
 
-const API_URL = 'http://localhost/backend/';
+//const API_URL = 'http://localhost/backend/';
 
 
 
@@ -41,7 +41,7 @@ const API_URL = 'http://localhost/backend/';
           .then(data => {
             if (data.status === 'success') {
               Swal.fire({
-                title: "Se agrego el curso: " + curso + "con exitó!",
+                title: "Se agrego el curso: " + curso + " con exitó!",
                 width: 600,
                 padding: "3em",
                 color: "#fd7e14",

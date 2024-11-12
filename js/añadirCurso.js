@@ -41,7 +41,7 @@ const API_URL = 'http://3.83.173.143/backend/';
           .then(data => {
             if (data.status === 'success') {
               Swal.fire({
-                title: "Se agrego el curso: " + curso + " con exitó!",
+                title: "El curso: " + curso + " ha sido añadido exitosamente y esta disponible para los usuarios.",
                 width: 600,
                 padding: "3em",
                 color: "#fd7e14",

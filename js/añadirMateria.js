@@ -24,7 +24,7 @@ boton.addEventListener('click', function () {
     .then(data => {
       if (data.status === 'success') {
         Swal.fire({
-          title: "Se agrego la materia: " + materia + " con exitó!",
+          title: "La materia: " + materia + " ha sido añadido exitosamente y esta disponible para los usuarios",
           width: 600,
           padding: "3em",
           color: "#fd7e14",

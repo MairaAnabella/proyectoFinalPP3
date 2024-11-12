@@ -1,8 +1,8 @@
 //URL -> servidor aws 
-const API_URL = 'http://3.83.173.143/backend/';
+//const API_URL = 'http://3.83.173.143/backend/';
 
 
-//const API_URL = 'http://localhost/backend/';
+const API_URL = 'http://localhost/backend/';
 const filasPorPagina = 6; // número de filas por página
 let paginaActual = 1;
 
@@ -70,7 +70,7 @@ function eliminarCurso(idCurso) {
 
 // función para cargar los datos
 
-fetch(API_URL + 'gestionCursos.php', {
+fetch(API_URL + '.php', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'

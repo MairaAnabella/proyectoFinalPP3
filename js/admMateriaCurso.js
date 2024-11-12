@@ -34,7 +34,7 @@ function desactivar(id,estado){
       })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Hubo un problema al eliminar la Materia');
+            throw new Error('Hubo un problema al desactivar la Materia');
           }
           return response.json();
         })

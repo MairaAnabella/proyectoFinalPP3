@@ -1,5 +1,4 @@
-// Datos iniciales
-
+// Datos inicialesimport {format} from 'date-fns';
 const API_URL = 'http://3.83.173.143/backend/';
 const datosIniciales = [];
 
@@ -46,15 +45,32 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function formatearFecha(fechaStr) {
+  const fecha = new Date(fechaStr);
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
 
+  return `${dia}/${mes}/${anio}`; // ejemplo: "11/11/2024"
+}
 
 
 function cargarDatosIniciales() {
+  var fechaBajaFormat;
   let tabla = document.getElementById('tabla');
   fetch(API_URL + 'obtenerDatosUsuarios.php')
     .then(res => res.json())
     .then(data => {
+
       data.forEach(dato => {
+        
+       if(dato.FechaBaja === null){
+        fechaBajaFormat='--/--/----'
+
+       }else{
+        fechaBajaFormat=formatearFecha(dato.FechaBaja);
+       }
+      
         let fila = tabla.insertRow();
         let celda1 = fila.insertCell();
         let celda2 = fila.insertCell();
@@ -72,12 +88,13 @@ function cargarDatosIniciales() {
         celda4.textContent = dato.Apellido;
         celda5.textContent = dato.Email;
         celda6.textContent = dato.Contraseña;
-        celda7.textContent = dato.FechaAlta;
-        celda8.textContent = dato.FechaBaja;
+        celda7.textContent = formatearFecha(dato.FechaAlta);
+        celda8.textContent =  fechaBajaFormat;
         celda9.textContent = dato.Descripcion;
+        
       });
     })
-
+    
 }
 
 // Precargar los datos
@@ -219,9 +236,17 @@ function modificar() {
            <input type="text" id="apellido" class="swal2-input" placeholder="Apellido" value="${seleccionado.cells[3].innerHTML}">
            <input type="text" id="email" class="swal2-input" placeholder="Email" value="${seleccionado.cells[4].innerHTML}">
         
-           <input type="date" id="fechaAlta" class="swal2-input" placeholder="Fecha de Alta" value="${seleccionado.cells[6].innerHTML}">
-           <input type="date" id="fechaBaja" class="swal2-input" placeholder="Fecha de Baja" value="${seleccionado.cells[7].innerHTML}">
-             <select id="rol" class="swal2-input">${opcionesHTML}</select>`,
+            <div id="fechaAlta" class="swal2-input" style="font-size: 18px; padding-top:7px; color: #333;">
+            ${seleccionado.cells[6].innerHTML} <!-- Asumiendo que la fecha de alta está en la columna 6 -->
+            </div>
+                <label style="font-size: 16px; color: #333;">
+            <input type="checkbox" id="fechaBajaCheckbox" ${seleccionado.cells[7].innerHTML ? 'checked' : ''} 
+                   style="transform: scale(1.5); margin-right: 10px;">
+            Tiene fecha de baja
+        </label>
+           <div id="rol" class="swal2-input" style="font-size: 18px; padding-top:7px;  color: #333;">
+            ${seleccionado.cells[8].innerHTML} <!-- El rol también es solo lectura -->
+        </div>`,/* input modificar fecha --> <input type="date" id="fechaBaja" class="swal2-input" placeholder="Fecha de Baja" value="${seleccionado.cells[7].innerHTML}"> */
       confirmButtonText: 'Modificar',
       cancelButtonText: 'Cancelar',
       customClass: {
@@ -237,7 +262,8 @@ function modificar() {
         const email = Swal.getPopup().querySelector('#email').value
         // const contraseña = Swal.getPopup().querySelector('#contraseña').value
         const fechaAlta = Swal.getPopup().querySelector('#fechaAlta').value
-        const fechaBaja = Swal.getPopup().querySelector('#fechaBaja').value
+        const fechaBaja = Swal.getPopup().querySelector('#fechaBajaCheckbox').checked;
+        /* const fechaBaja = Swal.getPopup().querySelector('#fechaBaja').value */
         const rol = Swal.getPopup().querySelector('#rol').value
 
         // Validación de email
@@ -248,7 +274,7 @@ function modificar() {
         }
 
         // Verificación de que todos los campos estén llenos
-        if (!nombre || !apellido || !email || !fechaAlta || !rol) {
+        if (!nombre || !apellido || !email  ) {
           Swal.showValidationMessage(`Por favor ingresa todos los campos`);
           return;
         }

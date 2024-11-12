@@ -19,26 +19,38 @@ main {
 }
 
 .container-form {
+    display: flex;
     width: 70%;
     margin-top: 60px;
     margin-bottom: 120px;
     background-color: rgba(209, 205, 203, 0.199);
     border-radius: 15px;
 }
+.form-estudiante{
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
 
-.form-curso label {
+.form-estudiante label {
     color: var(--letra);
     margin-top: 10px;
     font-size: 20px;
     font-weight: 600;
 }
 
-.form-curso input {
+.form-estudiante input {
     margin-bottom: 0;
 
 }
 
-
+.form-estudiante div{
+    margin:10px;
+}
+ 
 .sug-año,
 .sug-comision {
     font-size: 14px;
@@ -57,7 +69,9 @@ main {
 }
 
 /* Botón de envío */
-.btn-añadir {
+
+
+.btn-enviar{
     background-color: #fd7e14;
     color: #fff;
     padding: 10px 20px;
@@ -66,7 +80,7 @@ main {
     cursor: pointer;
 }
 
-.btn-añadir:hover {
+.btn-enviar:hover{
     background-color: #f7ab54;
 }
 
@@ -90,57 +104,3 @@ main {
   }
   
 
-  
-.titulo{
-    color: var(--letra); 
-    font-weight: 600;
-}
-.sug-año{
-    color: var(--sugerencia);
-}
-.container-form label{
-    color: var(--letra); 
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.btn-guardar{
-    background-color: #fd7e14;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-guardar:hover{
-    background-color: #f7ab54;
-}
-
-.btn-cerrar:hover{
-    background-color: red;
-    color: #ddd;
-}
-
-
-
-label {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    display: block;
-   
-  }
-  
- select{
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-  }
-  
-  select {
-    width: 100%;
-    padding: 10px;
-  }
-  
- 

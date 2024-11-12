@@ -164,7 +164,7 @@ fetch(API_URL + 'gestionMaterias.php', {
               .then(data => {
                 if (data.status === 'success') {
                   Swal.fire({
-                    title: "Se realizo el cambio con exitó!",
+                    title: "La modificación ha sido procesada correctamente. Todos los datos están actualizados.",
                     width: 600,
                     padding: "3em",
                     color: "#fd7e14",
@@ -231,7 +231,7 @@ fetch(API_URL + 'gestionMaterias.php', {
           .then(data => {
             if (data.status === 'success') {
               Swal.fire({
-                title: "Se agrego la materia: " + nombreMateria + " al curso con exitó!",
+                title: "La materia: " + nombreMateria + " se ha vinculado exitosamente al curso.",
                 width: 600,
                 padding: "3em",
                 color: "#fd7e14",

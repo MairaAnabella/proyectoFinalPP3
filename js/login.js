@@ -32,7 +32,8 @@ function login() {
                 var nombre = data.nombre;
                 var apellido = data.apellido;
                 var rol = data.rol;
-                var userId = data.userId;
+                var userId = data.Userid;
+           
 
                 localStorage.setItem('nombre', nombre);
                 localStorage.setItem('apellido', apellido);

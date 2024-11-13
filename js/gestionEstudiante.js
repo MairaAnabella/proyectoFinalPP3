@@ -3,7 +3,7 @@
 
 
 const API_URL = 'http://localhost/backend/';
-const filasPorPagina = 6; // número de filas por página
+const filasPorPagina = 15; // número de filas por página
 let paginaActual = 1;
 
 /* 
@@ -70,13 +70,13 @@ function eliminarCurso(idCurso) {
 
 // función para cargar los datos
 
-fetch(API_URL + '.php', {
+fetch(API_URL + 'gestionEstudiante.php', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   },
   body: new URLSearchParams({
-    accion: 'obtenerCursos'
+    accion: 'obtenerEstudiantes'
   })
 })
   .then(response => response.json())
@@ -86,14 +86,27 @@ fetch(API_URL + '.php', {
     tbody.innerHTML = ''; // Limpia la tabla
 
     data.forEach(item => {
+      console.log(item)
       const tr = document.createElement('tr');
       tr.innerHTML = `
-            <td>${item.idCurso}</td>
-            <td>${item.nombre}</td>
-            <td>${item.fecha_creacion}</td>
+            <td>${item.Alumnoid}</td>
+            <td>${item.Nombre}</td>
+            <td>${item.Apellido}</td>
+            <td>${item.DNI}</td>
+            <td>${item.fechaNacimiento}</td>
+            <td>${item.Direccion}</td>
+            <td>${item.Localidad}</td>
+            <td>${item.Telefono}</td>
+            <td>${item.nombreTutor + ' '+item.apellidoTutor}</td>
+            <td>${item.descripcionCurso}</td>
+            <td>${item.descripcionEstados}</td>      
+            <td>${item.FechaAlta}</td>
+            <td>${item.FechaBaja}</td>
+            <td>${item.fechaModificacion}</td>
+            <td>${item.usuarioMod}</td>
              <td>
                
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idCurso}"><i class='bx bx-edit-alt'></i></button>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.Alumnoid}"><i class='bx bx-edit-alt'></i></button>
             </td>
         `;
       tbody.appendChild(tr);
@@ -167,37 +180,54 @@ fetch(API_URL + '.php', {
 //CONSULTA EDITAR CURSO
 document.getElementById('editarModal').addEventListener('shown.bs.modal', function () {
   // Obtener el ID de la materia seleccionada
-  let idCurso = selectedId;
+  let idEstudiante = selectedId;
 
 
   // Realizar solicitud AJAX para obtener los datos de la materia
-  fetch(API_URL + 'gestionCursos.php', {
+  fetch(API_URL + 'gestionEstudiante.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: new URLSearchParams({
-      accion: 'obtenerCurso',
-      idCurso: idCurso
+      accion: 'obtenerEstudianteSeleccionado',
+      idEstudiante: idEstudiante
     })
   })
     .then(response => response.json())
     .then(data => {
       // Rellenar el formulario con los datos de la materia
-      document.getElementById('nombreCurso').value = data.nombre;
+      document.getElementById('nombre').value = data.Nombre;
+      document.getElementById('apellido').value = data.Apellido;
+      document.getElementById('dni').value = data.DNI;
+      document.getElementById('fechaNac').value = data.fechaNacimiento;
+      document.getElementById('direccion').value = data.Direccion;
+      document.getElementById('localidad').value = data.Localidad;
+      document.getElementById('telefono').value = data.Telefono;
+      document.getElementById('tutor').value = data.nombreTutor +' '+ data.apellidoTutor ;
+      document.getElementById('curso').value = data.descripcionCurso ;
 
       document.getElementById('btnEditar').onclick = function () {
-        let nombreCurso = document.getElementById('nombreCurso').value;
+        console.log('hola editarrrrr')
+        let direccion = document.getElementById('direccion').value;
+        let localidad = document.getElementById('localidad').value;
+        let telefono= document.getElementById('telefono').value;
+        let curso= document.getElementById('curso').value;
+        //let userMod=localStorage.get('userId')
 
-        fetch(API_URL + 'gestionCursos.php', {
+        fetch(API_URL + 'gestionEstudiante.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
           body: new URLSearchParams({
-            accion: 'editarCuso',
-            idCurso: idCurso,
-            nombreCurso: nombreCurso
+            accion: 'editarEstudiante',
+            idEstudiante: idEstudiante,
+            domicilio: direccion,
+            localidad:localidad,
+            telefono:telefono,
+           /*  curso:curso, */
+           // idUserMod:userMod
           })
         })
           .then(response => response.json())

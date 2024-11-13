@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="css/userHome.css" />
   <link rel="stylesheet" href="css/user.css" />
   <link rel="stylesheet" href="/css/menuLateral.css">
-  <link rel="stylesheet" href="/css/gestionCurso.css">
+  <link rel="stylesheet" href="/css/gestionEstudiante.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-   <!-- icons -->
-   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- icons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-   <!-- Favicon -->
-   <link rel="icon" href="/asset/logo-ico.ico" type="image/x-icon">
-  
+  <!-- Favicon -->
+  <link rel="icon" href="/asset/logo-ico.ico" type="image/x-icon">
+
 
   <title>Gestión Estudiantes</title>
 </head>
@@ -27,10 +27,10 @@
   <!-- Sidebar -->
   <div class="sidebar close ">
     <div class="logo">
-      <img class="bxs-school" src="/asset/logoblanco.png" >
-     
+      <img class="bxs-school" src="/asset/logoblanco.png">
+
       <span class="titulo">Libreta virtual</span>
-    
+
     </div>
 
     <ul class="nav-links">
@@ -41,7 +41,7 @@
         </a>
         <ul class="sub-menu blank">
           <li><a class="" href="userHome.html">Inicio</a></li>
-         </ul>
+        </ul>
       </li>
       <li id="btnComunicados">
         <a href="notificacion.html">
@@ -50,94 +50,94 @@
         </a>
         <ul class="sub-menu blank">
           <li><a class="" href="notificacion.html">Comunicado</a></li>
-         </ul>
+        </ul>
       </li>
 
       <li id="btnCursos">
         <div class="icon_link">
-         <a href="/añadirCurso.html">
-          <i class='bx bxs-graduation'></i>
-           <span class="link_name">Cursos</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="/añadirCurso.html">
+            <i class='bx bxs-graduation'></i>
+            <span class="link_name">Cursos</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-         <li><a class="" href="/añadirCurso.html">Añadir Curso</a></li>
-         <li><a href="/gestionCurso.html">Gestión Cursos</a></li>
+          <li><a class="" href="/añadirCurso.html">Añadir Curso</a></li>
+          <li><a href="/gestionCurso.html">Gestión Cursos</a></li>
 
         </ul>
-       </li>
-
-      <li id="btnMaterias">
-       <div class="icon_link">
-        <a href="/añadirMateria.html">
-          <i class='bx bx-book-heart'></i>
-          <span class="link_name">Materias</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow'></i>
-       </div>
-       <ul class="sub-menu">
-        <li><a class="" href="/añadirMateria.html">Crear Materia</a></li>
-        <li><a href="/gestionMaterias.html">Gestión Materias</a></li>
-        <li><a href="/admMateriaCurso.html">Administrar Materias <br> por Curso</a></li>
-        
-  <!--       <li><a href="#">materia2</a></li>
-        <li><a href="#">materia3</a></li> -->
-       </ul>
       </li>
 
- 
+      <li id="btnMaterias">
+        <div class="icon_link">
+          <a href="/añadirMateria.html">
+            <i class='bx bx-book-heart'></i>
+            <span class="link_name">Materias</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="" href="/añadirMateria.html">Crear Materia</a></li>
+          <li><a href="/gestionMaterias.html">Gestión Materias</a></li>
+          <li><a href="/admMateriaCurso.html">Administrar Materias <br> por Curso</a></li>
+
+          <!--       <li><a href="#">materia2</a></li>
+        <li><a href="#">materia3</a></li> -->
+        </ul>
+      </li>
+
+
 
       <li id="btnEstudiantes">
         <div class="icon_link">
-         <a href="#">
-          <i class='bx bx-group'></i>
-           <span class="link_name">Estudiantes</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="#">
+            <i class='bx bx-group'></i>
+            <span class="link_name">Estudiantes</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-         <li><a class="" href="#">Agregar Estudiante</a></li>
-         <li><a href="#">Gestionar Estudiantes</a></li>
-         
-   <!--       <li><a href="#">materia2</a></li>
+          <li><a class="" href="#">Agregar Estudiante</a></li>
+          <li><a href="#">Gestionar Estudiantes</a></li>
+
+          <!--       <li><a href="#">materia2</a></li>
          <li><a href="#">materia3</a></li> -->
         </ul>
-       </li>
+      </li>
 
-       <li id="btnNotas">
+      <li id="btnNotas">
         <div class="icon_link">
-         <a href="#">
-          <i class='bx bx-edit'></i>
-           <span class="link_name">Notas</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="#">
+            <i class='bx bx-edit'></i>
+            <span class="link_name">Notas</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-     <!--    <ul class="sub-menu">
+        <!--    <ul class="sub-menu">
          <li><a class="" href="#">Agregar Estudiante</a></li>
          <li><a href="#">Gestionar Estudiantes</a></li>
          
          <li><a href="#">materia2</a></li>
          <li><a href="#">materia3</a></li> 
         </ul> -->
-       </li>
+      </li>
 
-       <li id="btnAsistencia">
+      <li id="btnAsistencia">
         <div class="icon_link">
-         <a href="#">
-          <i class='bx bx-edit-alt'></i>
-           <span class="link_name">Asistencias</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="#">
+            <i class='bx bx-edit-alt'></i>
+            <span class="link_name">Asistencias</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-     <!--    <ul class="sub-menu">
+        <!--    <ul class="sub-menu">
          <li><a class="" href="#">Agregar Estudiante</a></li>
          <li><a href="#">Gestionar Estudiantes</a></li>
          
          <li><a href="#">materia2</a></li>
          <li><a href="#">materia3</a></li> 
         </ul> -->
-       </li>
+      </li>
 
       <li id="btnUser">
         <a href="/user.html">
@@ -146,104 +146,153 @@
         </a>
         <ul class="sub-menu blank">
           <li><a class="" href="/user.html">Usuarios</a></li>
-         </ul>
+        </ul>
       </li>
 
 
 
 
-    <li>
-    <div class="profile-details">
-      <div class="profile-content">
-        <img src="asset/home-user/avatar.jpg" alt="">
-      </div>
-      <div class="name-rol">
-        <div  ><span class="nombre" id="nombre-user"></span></div>
-        <div  ><span class="rol" id="rol-user"></span></div>
-      </div>
-      <a id="btnSalir"><i class='bx bx-log-out'></i></a>
-      
-    </div>
-  </li>
-  </ul>
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <img src="asset/home-user/avatar.jpg" alt="">
+          </div>
+          <div class="name-rol">
+            <div><span class="nombre" id="nombre-user"></span></div>
+            <div><span class="rol" id="rol-user"></span></div>
+          </div>
+          <a id="btnSalir"><i class='bx bx-log-out'></i></a>
+
+        </div>
+      </li>
+    </ul>
   </div>
 
 
   <main>
-    
+
     <!-- Banner -->
     <div class="banner-curso">
       <h1>Gestión estudiante </h1>
     </div>
-    <div class="container" style="margin-top: 10px;padding: 5px; ">
-        <input type="search" id="buscador" placeholder="    Buscar...">
-        <div class="table-wrapper">
+    <div style="margin-top: 10px;padding: 5px; ">
+      <input type="search" id="buscador" placeholder="    Buscar...">
+      <div class="table-wrapper">
         <table class="table" id="tabla">
-            <thead>
-                <tr class="column">
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Fecha de Nacimiento</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Localidad</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Tutor</th>
-                    <th scope="col">Grado</th>
-                    <th scope="col">Fecha de creación</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
+          <thead>
+            <tr class="column">
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">DNI</th>
+              <th scope="col">Fecha de Nacimiento</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Localidad</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Tutor</th>
+              <th scope="col">Curso</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Fecha de creación</th>
+              <th scope="col">Fecha de baja</th>
+              <th scope="col">Fecha de modificación</th>
+              <th scope="col">Usuario</th>
+              
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
         </table>
         <div id="paginador"></div>
-    </div>
+      </div>
 
 
-   <!-- MODAL EDITAR -->
+      <!-- MODAL EDITAR -->
 
-   <div class="modal fade modal-lg" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel"
-   aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
-   <div class="modal-dialog">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title titulo">Editar </h5>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <div class="container-form">
-           <form action="">
-            <div>
-              <label for="">Nombre:</label>
-              <input type="text" name="año" id="nombreCurso">
-              <span class="sug-año">Ejemplo: 1°D, 2°1° , etc ...</span>
+      <div class="modal fade modal-lg" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel"
+        aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title titulo">Editar </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container-form">
+                <form action="">
+                  <div>
+                    <label for="">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="noEdit" readonly>
+                  </div>
+
+                  <div>
+                    <label for="">Apellido:</label>
+                    <input type="text" name="apellido" id="apellido" class="noEdit" readonly>
+                  </div>
+
+                  <div>
+                    <label for="">DNI:</label>
+                    <input type="text" name="dni" id="dni" class="noEdit" readonly>
+
+                  </div>
+
+                  <div>
+                    <label for="">Fecha de nacimiento:</label>
+                    <input type="text" name="fecha_nac" id="fechaNac" class="noEdit" readonly>
+
+                  </div>
+
+                  <div>
+                    <label for="">Dirección:</label>
+                    <input type="text" name="direccion" id="direccion">
+
+                  </div>
+
+                  <div>
+                    <label for="">Localidad:</label>
+                    <input type="text" name="localidad" id="localidad">
+
+                  </div>
+
+                  <div>
+                    <label for="">Telefono:</label>
+                    <input type="text" name="telefono" id="telefono">
+
+                  </div>
+
+                  <div>
+                    <label for="">Tutor:</label>
+                   <input type="text" name="tutor" id="tutor" class="noEdit" readonly>
+
+                  </div>
+
+                  <div>
+                    <label for="">Curso:</label>
+                    <select name="curso" id="curso">
+                      <option value="">Seleccione el Curso</option>
+                    </select>
+
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn-guardar" id="btnEditar">Guardar Cambios <i class='bx bx-save'></i>
+              </button>
+            </div>
           </div>
-             <!--  <div>
-                   <label for="">Comisión/división:</label>
-                   <input type="text" name="comision" id="">
-                   <span class="sug-comision">Ejemplo: D,C o 4°,5°</span>
-               </div>  -->
-
-           </form>
-         </div>
-       </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-         <button type="button" class="btn-guardar" id="btnEditar" >Guardar Cambios <i class='bx bx-save'></i>
-         </button>
-       </div>
-     </div>
-   </div>
- </div>
+        </div>
+      </div>
 
   </main>
-  <footer class="footer" id="footer" >
+  <footer class="footer" id="footer">
     <div class="container">
       <h6 class="mb-0">@Libreta Virtual Todos los Derechos reservados | Equipo @ 2024</h6>
     </div>
-  </footer> 
+  </footer>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -251,10 +300,9 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="/js/menuLateral.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<script src="/js/gestionarCurso.js"></script>
+<script src="/js/gestionEstudiante.js"></script>
 
 
 

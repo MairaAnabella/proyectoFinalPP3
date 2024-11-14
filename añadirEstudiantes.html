@@ -12,12 +12,12 @@
   <link rel="stylesheet" href="/css/menuLateral.css">
   <link rel="stylesheet" href="/css/notificacion.css">
   <link rel="stylesheet" href="/css/añadirEstudiantes.css">
-   <!-- icons -->
-   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- icons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-   <!-- Favicon -->
-   <link rel="icon" href="/asset/logo-ico.ico" type="image/x-icon">
-  
+  <!-- Favicon -->
+  <link rel="icon" href="/asset/logo-ico.ico" type="image/x-icon">
+
 
   <title>Añadir Estudiante</title>
 </head>
@@ -29,10 +29,10 @@
   <!-- Sidebar -->
   <div class="sidebar close ">
     <div class="logo">
-      <img class="bxs-school" src="/asset/logoblanco.png" >
-     
+      <img class="bxs-school" src="/asset/logoblanco.png">
+
       <span class="titulo">Libreta virtual</span>
-    
+
     </div>
 
     <ul class="nav-links">
@@ -43,7 +43,7 @@
         </a>
         <ul class="sub-menu blank">
           <li><a class="" href="userHome.html">Inicio</a></li>
-         </ul>
+        </ul>
       </li>
       <li id="btnComunicados">
         <a href="notificacion.html">
@@ -52,94 +52,94 @@
         </a>
         <ul class="sub-menu blank">
           <li><a class="" href="notificacion.html">Comunicado</a></li>
-         </ul>
+        </ul>
       </li>
 
       <li id="btnCursos">
         <div class="icon_link">
-         <a href="/añadirCurso.html">
-          <i class='bx bxs-graduation'></i>
-           <span class="link_name">Cursos</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="/añadirCurso.html">
+            <i class='bx bxs-graduation'></i>
+            <span class="link_name">Cursos</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-         <li><a class="" href="/añadirCurso.html">Añadir Curso</a></li>
-         <li><a href="/gestionCurso.html">Gestión Cursos</a></li>
+          <li><a class="" href="/añadirCurso.html">Añadir Curso</a></li>
+          <li><a href="/gestionCurso.html">Gestión Cursos</a></li>
 
         </ul>
-       </li>
-
-      <li id="btnMaterias">
-       <div class="icon_link">
-        <a href="/añadirMateria.html">
-          <i class='bx bx-book-heart'></i>
-          <span class="link_name">Materias</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow'></i>
-       </div>
-       <ul class="sub-menu">
-        <li><a class="" href="/añadirMateria.html">Crear Materia</a></li>
-        <li><a href="/gestionMaterias.html">Gestión Materias</a></li>
-        <li><a href="/admMateriaCurso.html">Administrar Materias <br> por Curso</a></li>
-        
-  <!--       <li><a href="#">materia2</a></li>
-        <li><a href="#">materia3</a></li> -->
-       </ul>
       </li>
 
- 
+      <li id="btnMaterias">
+        <div class="icon_link">
+          <a href="/añadirMateria.html">
+            <i class='bx bx-book-heart'></i>
+            <span class="link_name">Materias</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="" href="/añadirMateria.html">Crear Materia</a></li>
+          <li><a href="/gestionMaterias.html">Gestión Materias</a></li>
+          <li><a href="/admMateriaCurso.html">Administrar Materias <br> por Curso</a></li>
+
+          <!--       <li><a href="#">materia2</a></li>
+        <li><a href="#">materia3</a></li> -->
+        </ul>
+      </li>
+
+
 
       <li id="btnEstudiantes">
         <div class="icon_link">
-         <a href="#">
-          <i class='bx bx-group'></i>
-           <span class="link_name">Estudiantes</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="#">
+            <i class='bx bx-group'></i>
+            <span class="link_name">Estudiantes</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-         <li><a class="" href="#">Agregar Estudiante</a></li>
-         <li><a href="#">Gestionar Estudiantes</a></li>
-         
-   <!--       <li><a href="#">materia2</a></li>
+          <li><a class="" href="#">Agregar Estudiante</a></li>
+          <li><a href="#">Gestionar Estudiantes</a></li>
+
+          <!--       <li><a href="#">materia2</a></li>
          <li><a href="#">materia3</a></li> -->
         </ul>
-       </li>
+      </li>
 
-       <li id="btnNotas">
+      <li id="btnNotas">
         <div class="icon_link">
-         <a href="#">
-          <i class='bx bx-edit'></i>
-           <span class="link_name">Notas</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="#">
+            <i class='bx bx-edit'></i>
+            <span class="link_name">Notas</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-     <!--    <ul class="sub-menu">
+        <!--    <ul class="sub-menu">
          <li><a class="" href="#">Agregar Estudiante</a></li>
          <li><a href="#">Gestionar Estudiantes</a></li>
          
          <li><a href="#">materia2</a></li>
          <li><a href="#">materia3</a></li> 
         </ul> -->
-       </li>
+      </li>
 
-       <li id="btnAsistencia">
+      <li id="btnAsistencia">
         <div class="icon_link">
-         <a href="#">
-          <i class='bx bx-edit-alt'></i>
-           <span class="link_name">Asistencias</span>
-         </a>
-         <i class='bx bxs-chevron-down arrow'></i>
+          <a href="#">
+            <i class='bx bx-edit-alt'></i>
+            <span class="link_name">Asistencias</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-     <!--    <ul class="sub-menu">
+        <!--    <ul class="sub-menu">
          <li><a class="" href="#">Agregar Estudiante</a></li>
          <li><a href="#">Gestionar Estudiantes</a></li>
          
          <li><a href="#">materia2</a></li>
          <li><a href="#">materia3</a></li> 
         </ul> -->
-       </li>
+      </li>
 
       <li id="btnUser">
         <a href="/user.html">
@@ -148,93 +148,97 @@
         </a>
         <ul class="sub-menu blank">
           <li><a class="" href="/user.html">Usuarios</a></li>
-         </ul>
+        </ul>
       </li>
 
 
 
 
-    <li>
-    <div class="profile-details">
-      <div class="profile-content">
-        <img src="asset/home-user/avatar.jpg" alt="">
-      </div>
-      <div class="name-rol">
-        <div  ><span class="nombre" id="nombre-user"></span></div>
-        <div  ><span class="rol" id="rol-user"></span></div>
-      </div>
-      <a id="btnSalir"><i class='bx bx-log-out'></i></a>
-      
-    </div>
-  </li>
-  </ul>
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <img src="asset/home-user/avatar.jpg" alt="">
+          </div>
+          <div class="name-rol">
+            <div><span class="nombre" id="nombre-user"></span></div>
+            <div><span class="rol" id="rol-user"></span></div>
+          </div>
+          <a id="btnSalir"><i class='bx bx-log-out'></i></a>
+
+        </div>
+      </li>
+    </ul>
   </div>
 
 
   <main>
-    
+
     <!-- Banner -->
     <div class="banner-curso">
       <h1>Añadir Estudiante</h1>
     </div>
     <div class="container-form">
-    <form action="" class="form-estudiante">
-      <div>
+      <form action="" class="form-estudiante">
+        <div>
           <label for="">Nombre:</label>
           <input type="text" name="nombre" id="nombre">
-      </div>
+        </div>
 
-      <div>
-        <label for="">Apellido:</label>
-        <input type="text" name="apellido" id="apellido">
-    </div>
+        <div>
+          <label for="">Apellido:</label>
+          <input type="text" name="apellido" id="apellido">
+        </div>
 
-    <div>
-        <label for="">DNI:</label>
-        <input type="text" name="dni" id="dni">
-      
-    </div>
+        <div>
+          <label for="">DNI:</label>
+          <input type="text" name="dni" id="dni">
 
-    <div>
-        <label for="">Fecha de nacimiento:</label>
-        <input type="date" name="fecha_nac" id="fechaNac">
-      
-    </div>
+        </div>
 
-    <div>
-        <label for="">Dirección:</label>
-        <input type="text" name="direccion" id="direccion">
-      
-    </div>
+        <div>
+          <label for="">Fecha de nacimiento:</label>
+          <input type="date" name="fecha_nac" id="fechaNac">
 
-    <div>
-        <label for="">Localidad:</label>
-        <input type="text" name="localidad" id="localidad">
-      
-    </div>
+        </div>
 
-    <div>
-        <label for="">Telefono:</label>
-        <input type="text" name="telefono" id="telefono">
-      
-    </div>
+       <!--  <div>
+          <label for="">Calle:</label>
+          <input type="text" name="calle" id="calle">
 
-    <div>
-        <label for="">Tutor:</label>
-        <select name="tutor" id="tutor">
-          <option value="">Seleccione el tutor</option>
-        </select>
-      
-    </div>
+        </div>
 
-    <div>
-        <label for="">Curso:</label>
-        <select name="curso" id="curso">
-          <option value="">Seleccione el Curso</option>
-        </select>
-      
-    </div>
-<!-- 
+        <div>
+          <label for="">numero:</label>
+          <input type="text" name="numero" id="numero">
+        </div>
+
+        <div>
+          <label for="">localidad:</label>
+          <input type="text" name="localidad" id="localidad">
+        </div>
+
+        <div>
+          <label for="">provincia:</label>
+          <input type="text" name="provincia" id="provincia">
+        </div>
+ -->
+
+        <div>
+          <label for="">Tutor:</label>
+          <select name="tutor" id="tutor">
+            <option value="">Seleccione el tutor</option>
+          </select>
+
+        </div>
+
+        <div>
+          <label for="">Curso:</label>
+          <select name="curso" id="curso">
+            <option value="">Seleccione el Curso</option>
+          </select>
+
+        </div>
+        <!-- 
     <div>
         <label for="">Fecha de creación:</label>
         <input type="text" name="fecha" id="agregarMateria">
@@ -242,21 +246,21 @@
     </div>
  -->
 
-      <div>
+        <div>
           <button type="button" class="btn-enviar" id="btn-enviar">Añadir <i class='bx bx-check'></i></button>
-      </div>
-  </form>
-</div>
+        </div>
+      </form>
+    </div>
 
   </main>
   <footer class="footer" id="footer" style="margin-top: 18%;">
     <div class="container">
       <h6 class="mb-0">@Libreta Virtual Todos los Derechos reservados | Equipo @ 2024</h6>
     </div>
-  </footer> 
+  </footer>
 
 </body>
-<script src="/js/añadirMateria.js"></script>
+<script src="/js/añadirEstudiante.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

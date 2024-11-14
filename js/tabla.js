@@ -1,5 +1,7 @@
 // Datos inicialesimport {format} from 'date-fns';
-const API_URL = 'http://3.83.173.143/backend/';
+//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://localhost/backend/';  
+
 const datosIniciales = [];
 
 // Verificar si el usuario está autenticado al cargar la página
@@ -83,14 +85,14 @@ function cargarDatosIniciales() {
         let celda9 = fila.insertCell();
 
         celda1.innerHTML = '<button class="seleccionar" onclick="seleccionarFila(this)">Seleccionar</button>';
-        celda2.textContent = dato.Userid;
-        celda3.textContent = dato.Nombre;
-        celda4.textContent = dato.Apellido;
-        celda5.textContent = dato.Email;
-        celda6.textContent = dato.Contraseña;
-        celda7.textContent = formatearFecha(dato.FechaAlta);
+        celda2.textContent = dato.idUser;
+        celda3.textContent = dato.nombre;
+        celda4.textContent = dato.apellido;
+        celda5.textContent = dato.email;
+        celda6.textContent = dato.telefono;
+        celda7.textContent = formatearFecha(dato.fechaAlta);
         celda8.textContent =  fechaBajaFormat;
-        celda9.textContent = dato.Descripcion;
+        celda9.textContent = dato.descripcion;
         
       });
     })
@@ -109,21 +111,47 @@ function agregar() {
     html: `
              <label for="nombre">Nombre</label>
              <input type="text" id="nombre" class="swal2-input" placeholder="Nombre">
+
              <label for="apellido">Apellido</label>
              <input type="text" id="apellido" class="swal2-input" placeholder="Apellido">
+
+             <select id="sexo" class="swal2-input">
+               <option value="">Seleccionar sexo</option>
+               <option value="F">Femenino</option>
+               <option value="M">Masculino</option>
+             </select>
+
              <label for="email">Email</label>
              <input type="text" id="email" class="swal2-input" placeholder="Email">
+
+              <label for="telefono">Telefono</label>
+             <input type="text" id="telefono" class="swal2-input" placeholder="Telefono">
+
              <label for="contraseña">Contraseña</label>
              <input type="password" id="contraseña" class="swal2-input" placeholder="Contraseña">
-             <label for="fechaAlta">Fecha de Alta</label>
-             <input type="date" id="fechaAlta" class="swal2-input">
+
              <select id="rol" class="swal2-input">
                <option value="">Selecciona un rol</option>
                <option value="1">Administrador</option>
                <option value="2">Directivo</option>
                <option value="3">Preceptor</option>
                <option value="4">Tutor</option>
-             </select>`,
+             </select>
+
+               <label for="calle">Calle</label>
+             <input type="text" id="calle" class="swal2-input">
+
+               <label for="numero">Numero</label>
+             <input type="text" id="numero" class="swal2-input">
+
+               <label for="localidad">Localidad</label>
+             <input type="text" id="localidad" class="swal2-input">
+
+               <label for="provincia">Provincia</label>
+             <input type="text" id="provincia" class="swal2-input">
+             
+             
+             `,
     confirmButtonText: 'Agregar',
     cancelButtonText: 'Cancelar',
     customClass: {
@@ -133,12 +161,18 @@ function agregar() {
     showCancelButton: true,
     focusConfirm: false,
     preConfirm: () => {
-      const nombre = Swal.getPopup().querySelector('#nombre').value;
       const apellido = Swal.getPopup().querySelector('#apellido').value;
+      const nombre = Swal.getPopup().querySelector('#nombre').value;
+      const sexo = Swal.getPopup().querySelector('#sexo').value;
       const email = Swal.getPopup().querySelector('#email').value;
-      const contraseña = Swal.getPopup().querySelector('#contraseña').value;
-      const fechaAlta = Swal.getPopup().querySelector('#fechaAlta').value;
+      const telefono = Swal.getPopup().querySelector('#telefono').value;
+       const contraseña = Swal.getPopup().querySelector('#contraseña').value; 
       const rol = Swal.getPopup().querySelector('#rol').value;
+      const calle = Swal.getPopup().querySelector('#calle').value;
+      const numero = Swal.getPopup().querySelector('#numero').value;
+      const localidad = Swal.getPopup().querySelector('#localidad').value;
+      const provincia = Swal.getPopup().querySelector('#provincia').value;
+
 
       // Validación de email
       const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -148,28 +182,32 @@ function agregar() {
       }
 
       // Validación de contraseña segura
-      const regexContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  /*     const regexContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
       if (!regexContraseña.test(contraseña)) {
         Swal.showValidationMessage(`La contraseña debe tener al menos 8 caracteres, incluir números, letras mayúsculas y minúsculas, y caracteres especiales`);
         return;
       }
-
+ */
       // Verificación de que todos los campos estén llenos
-      if (!nombre || !apellido || !email || !contraseña || !fechaAlta || !rol) {
+ /*      if (!nombre || !apellido || !email || !contraseña || !rol || !telefono || !calle || !numero || !localidad || provincia || !sexo) {
         Swal.showValidationMessage(`Por favor ingresa todos los campos`);
         return;
       }
-
+ */
       //return { nombre, apellido, email, contraseña, fechaAlta, rol };
 
       const usuario = {
         nombre: nombre,
         apellido: apellido,
+        sexo:sexo,
         email: email,
-        contraseña: contraseña,
-        fechaAlta: fechaAlta,
-
-        rol: rol
+        telefono:telefono,
+        contraseña: contraseña,  
+        rol: rol,
+        calle:calle,
+        numero:numero,
+        localidad:localidad,
+        provincia:provincia
       }
       return fetch(API_URL + 'agregarUsuario.php', {
         method: 'POST',
@@ -215,10 +253,10 @@ function agregar() {
 }
 
 function modificar() {
-
+console.log(seleccionado)
   if (seleccionado) {
     let idActual = seleccionado.cells[1].innerHTML;
-    let rolActual = seleccionado.cells[8].innerHTML;
+    let rolActual = seleccionado.cells[7].innerHTML;
 
     let opcionesRol = [
       { valor: "1", texto: "Administrador" },
@@ -232,8 +270,10 @@ function modificar() {
     ).join('');
     Swal.fire({
       title: 'Modificar Usuario',
-      html: `<input type="text" id="nombre" class="swal2-input" placeholder="Nombre" value="${seleccionado.cells[2].innerHTML}">
-           <input type="text" id="apellido" class="swal2-input" placeholder="Apellido" value="${seleccionado.cells[3].innerHTML}">
+      html: `
+            <input type="text" id="apellido" class="swal2-input" placeholder="Apellido" value="${seleccionado.cells[2].innerHTML}">
+            <input type="text" id="nombre" class="swal2-input" placeholder="Nombre" value="${seleccionado.cells[3].innerHTML}">
+           
            <input type="text" id="email" class="swal2-input" placeholder="Email" value="${seleccionado.cells[4].innerHTML}">
         
             <div id="fechaAlta" class="swal2-input" style="font-size: 18px; padding-top:7px; color: #333;">

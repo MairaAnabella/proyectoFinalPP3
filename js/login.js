@@ -1,7 +1,7 @@
 
 
 
-const API_URL_LOGIN = 'http://3.83.173.143/backend/';
+/* const API_URL_LOGIN = 'http://3.83.173.143/backend/'; */
 
 
 
@@ -9,7 +9,7 @@ const API_URL_LOGIN = 'http://3.83.173.143/backend/';
 
 
 
-/* const API_URL_LOGIN = 'http://localhost/backend/';  */
+ const API_URL_LOGIN = 'http://localhost/backend/';  
 
 function login() {
     var email = document.getElementById('email').value;

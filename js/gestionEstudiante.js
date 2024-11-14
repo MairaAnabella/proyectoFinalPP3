@@ -89,24 +89,24 @@ fetch(API_URL + 'gestionEstudiante.php', {
       console.log(item)
       const tr = document.createElement('tr');
       tr.innerHTML = `
-            <td>${item.Alumnoid}</td>
-            <td>${item.Nombre}</td>
-            <td>${item.Apellido}</td>
-            <td>${item.DNI}</td>
+            <td>${item.idAlumno}</td>
+            <td>${item.nombre}</td>
+            <td>${item.apellido}</td>
+            <td>${item.dni}</td>
             <td>${item.fechaNacimiento}</td>
-            <td>${item.Direccion}</td>
-            <td>${item.Localidad}</td>
-            <td>${item.Telefono}</td>
             <td>${item.nombreTutor + ' '+item.apellidoTutor}</td>
+            <td>${item.calle}</td>
+            <td>${item.numero}</td>
+            <td>${item.localidad}</td>
+            <td>${item.provincia}</td>
             <td>${item.descripcionCurso}</td>
             <td>${item.descripcionEstados}</td>      
-            <td>${item.FechaAlta}</td>
-            <td>${item.FechaBaja}</td>
+            <td>${item.fechaAlta}</td>
             <td>${item.fechaModificacion}</td>
             <td>${item.usuarioMod}</td>
              <td>
                
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.Alumnoid}"><i class='bx bx-edit-alt'></i></button>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idAlumno}"><i class='bx bx-edit-alt'></i></button>
             </td>
         `;
       tbody.appendChild(tr);
@@ -177,10 +177,41 @@ fetch(API_URL + 'gestionEstudiante.php', {
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-//CONSULTA EDITAR CURSO
+document.addEventListener("DOMContentLoaded", function() {
+  // Realizar la solicitud AJAX
+  fetch(API_URL+'datosSelectEstudiante.php')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // Llenar el select de tutores
+      const tutorSelect = document.getElementById('tutor');
+      data.tutores.forEach(tutor => {
+        const option = document.createElement('option');
+        option.value = tutor.idUser;
+        option.textContent = tutor.nombre + ' '+ tutor.apellido;
+        tutorSelect.appendChild(option);
+      });
+
+      // Llenar el select de cursos
+      const cursoSelect = document.getElementById('curso');
+      data.cursos.forEach(curso => {
+        const option = document.createElement('option');
+        option.value = curso.idCurso;
+        option.textContent = curso.nombre;
+        cursoSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+
+
+
+//CONSULTA EDITAR ESTUDIANTE
 document.getElementById('editarModal').addEventListener('shown.bs.modal', function () {
   // Obtener el ID de la materia seleccionada
   let idEstudiante = selectedId;
+  console.log(idEstudiante)
 
 
   // Realizar solicitud AJAX para obtener los datos de la materia
@@ -196,24 +227,25 @@ document.getElementById('editarModal').addEventListener('shown.bs.modal', functi
   })
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       // Rellenar el formulario con los datos de la materia
-      document.getElementById('nombre').value = data.Nombre;
-      document.getElementById('apellido').value = data.Apellido;
-      document.getElementById('dni').value = data.DNI;
+      document.getElementById('nombre').value = data.nombre;
+      document.getElementById('apellido').value = data.apellido;
+      document.getElementById('dni').value = data.dni;
       document.getElementById('fechaNac').value = data.fechaNacimiento;
-      document.getElementById('direccion').value = data.Direccion;
-      document.getElementById('localidad').value = data.Localidad;
-      document.getElementById('telefono').value = data.Telefono;
+      document.getElementById('direccion').value = data.calle +' '+ data.numero;
+      document.getElementById('ciudad').value = data.localidad +', '+ data.provincia;
       document.getElementById('tutor').value = data.nombreTutor +' '+ data.apellidoTutor ;
       document.getElementById('curso').value = data.descripcionCurso ;
 
       document.getElementById('btnEditar').onclick = function () {
-        console.log('hola editarrrrr')
-        let direccion = document.getElementById('direccion').value;
-        let localidad = document.getElementById('localidad').value;
-        let telefono= document.getElementById('telefono').value;
+        console.log('holaaaaaaaaaaaaaaaaaaaaaaaaa')
+        let nombre = document.getElementById('nombre').value;
+        let apellido = document.getElementById('apellido').value;
+        let dni= document.getElementById('dni').value;
         let curso= document.getElementById('curso').value;
-        //let userMod=localStorage.get('userId')
+        let fechaNac= document.getElementById('fechaNac').value;
+        let userMod=localStorage.getItem('userId')
 
         fetch(API_URL + 'gestionEstudiante.php', {
           method: 'POST',
@@ -223,11 +255,12 @@ document.getElementById('editarModal').addEventListener('shown.bs.modal', functi
           body: new URLSearchParams({
             accion: 'editarEstudiante',
             idEstudiante: idEstudiante,
-            domicilio: direccion,
-            localidad:localidad,
-            telefono:telefono,
-           /*  curso:curso, */
-           // idUserMod:userMod
+            nombre:nombre,
+            apellido:apellido,
+            dni:dni,
+            fechaNac:fechaNac,
+            curso:curso, 
+            idUserMod:userMod
           })
         })
           .then(response => response.json())

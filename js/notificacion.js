@@ -1,7 +1,7 @@
- const API_URL= 'http://3.83.173.143/backend/'; 
+// const API_URL= 'http://3.83.173.143/backend/'; 
 
 //const URL_API = 'http://localhost:3000/pp3/proyecto-loading/'
-
+const API_URL = 'http://localhost/backend/';  
 
 // Función para cargar cursos desde el servidor
 function cargarCursos() {

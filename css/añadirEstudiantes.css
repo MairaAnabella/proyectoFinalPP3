@@ -1,0 +1,106 @@
+:root {
+
+    --letra: #fd7e14;
+    --sugerencia: #f7ab54;
+}
+
+main {
+    display: grid;
+    justify-items: center;
+    margin-bottom:8%;
+
+}
+
+.banner-curso {
+    width: 100%;
+    background-color: #1d1b31;
+    color: aliceblue;
+    text-align: center;
+}
+
+.container-form {
+    display: flex;
+    width: 70%;
+    margin-top: 60px;
+    margin-bottom: 120px;
+    background-color: rgba(209, 205, 203, 0.199);
+    border-radius: 15px;
+}
+.form-estudiante{
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-estudiante label {
+    color: var(--letra);
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.form-estudiante input {
+    margin-bottom: 0;
+
+}
+
+.form-estudiante div{
+    margin:10px;
+}
+ 
+.sug-año,
+.sug-comision {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sugerencia);
+}
+
+.btn-añadir {
+    margin-top: 10px;
+    border: 1px solid green;
+
+}
+
+.form-curso div {
+    text-align: left;
+}
+
+/* Botón de envío */
+
+
+.btn-enviar{
+    background-color: #fd7e14;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-enviar:hover{
+    background-color: #f7ab54;
+}
+
+  /* Media queries para responsividad */
+  @media (max-width: 768px) {
+ /*    .form-container {
+      margin: 20px auto;
+      padding: 10px;
+    }
+    form {
+      padding: 10px;
+    }
+    input, select, textarea {
+      margin-bottom: 10px;
+    } */
+    .container-form {
+      margin-bottom: 90px !important;
+
+      
+    }
+  }
+  
+

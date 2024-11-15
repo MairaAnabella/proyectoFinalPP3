@@ -1,81 +1,91 @@
 
-/* obtener datos del login */
-const nombre=sessionStorage.getItem('nombre');
-const apellido=sessionStorage.getItem('apellido');
-const rolUser=sessionStorage.getItem('rol');
-const userId=sessionStorage.getItem('userId');
 
-/* asigno nombre de usuario al mensaje en HTML*/
-var nombreUser=document.getElementById('nombreUser');
-nombreUser.innerText='Hola '+nombre+' '+apellido;
+// Verificar si el usuario está autenticado al cargar la página
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // Verificar si las variables de sesión están presentes en localStorage
+    var email = localStorage.getItem('email');
+    var nombre = localStorage.getItem('nombre');
+    var apellido = localStorage.getItem('apellido');
+    var rol = localStorage.getItem('rol');
+    const userId = sessionStorage.getItem('userId');
+
+    if (!email && !nombre && !apellido && !rol) {
+        // Si falta alguna variable de sesión, redirigir al usuario al inicio de sesión
+        window.location.href = 'login.html';
+    } else {
 
 
-/* ocultar botones segun rol */
 
-/* var contenedorAsistencias=document.getElementById('contenedor-asistencias');
-var contenedorMaterias=document.getElementById('contenedor-materias');
-var contenedorNotas=document.getElementById('contenedor-notas'); */
-var contenedorAdmUser=document.getElementById('contenedor-admUser');
-var contenedorAdmAlumnos=document.getElementById('contenedor-admAlumnos');
-var contenedorAdmRoles=document.getElementById('contenedor-admRoles');
-var btnHistoria=document.getElementById('btnHistoria');
-var btnRoles=document.getElementById('btnRoles');
+        /* asigno nombre de usuario al mensaje y al menu en HTML*/
+        const nombreUser = document.getElementById('nombreUser');
+        nombreUser.innerText = 'Hola, ' + nombre + ' ' + apellido;
+        const nombreMenu = document.getElementById('nombre-user');
+        nombreMenu.innerText = nombre;
+        const idRol = document.getElementById('rol-user');
+        switch (rol) {
+            case '1':
+                idRol.innerText = 'Administrador';
+                break;
+            case '2':
+                idRol.innerText = 'Director';
+                break;
+            case '3':
+                idRol.innerText = 'Preceptor';
+                break;
+            case '4':
+                idRol.innerText = 'Tutor';
+                break;
+        }
+       
 
-if(rolUser==4){
-    contenedorAdmAlumnos.style.display='none';
-    contenedorAdmRoles.style.display='none';
-    contenedorAdmUser.style.display='none';
-    btnHistoria.style.display='none';
-    btnRoles.style.display='none';
-}
+        /* ocultar botones segun rol */
 
-/* CERRAR SESION */
+        /* var contenedorAsistencias=document.getElementById('contenedor-asistencias');
+        var contenedorMaterias=document.getElementById('contenedor-materias');
+        var contenedorNotas=document.getElementById('contenedor-notas'); */
+        var contenedorAdmUser = document.getElementById('contenedor-admUser');
+        var contenedorAdmAlumnos = document.getElementById('contenedor-admAlumnos');
+        var contenedorNotificados=document.getElementById('contenedor-comunicado');
+        var contenedorMaterias=document.getElementById('contenedor-materias');
+        var accionesCardNotas=document.getElementById('notas-adm');
+        var accionesCardNotasPadres=document.getElementById('notas-padres');
+        var btnEstudiantes = document.getElementById('btnEstudiantes');
+        var btnUser = document.getElementById('btnUser');
+        var btnMaterias = document.getElementById('btnMaterias');
+        var btnCursos  = document.getElementById('btnCursos');
+        var btnComunicados  = document.getElementById('btnComunicados');
+        console.log(rol)
+        if (rol == 4) {
+            contenedorAdmAlumnos.style.display = 'none';
+            contenedorAdmUser.style.display = 'none';
+            contenedorNotificados.style.display='none';
+            contenedorMaterias.style.display='none';
+            accionesCardNotas.style.display='none';
+            btnEstudiantes.style.display = 'none';
+            btnUser.style.display = 'none';
+            btnMaterias.style.display = 'none';
+            btnCursos.style.display = 'none';
+            btnComunicados.style.display = 'none';
 
-var btnSalir=document.getElementById('btnSalir');
+        }else{
+            accionesCardNotasPadres.style.display='none';
+        }
+        
 
-btnSalir.addEventListener('click',()=>{
-   logout();
-    window.location.href='index.html';
-})
 
-function logout(){
-    sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('apellido');
-    sessionStorage.removeItem('rol');
-}
-
-/*Boton para ocultar en modo escritorio y volverlo hacer visible en modo movil, tambien realizar que con un boton se oculta la barra lateral*/ 
-const cloud = document.getElementById("school");
-const barraLateral = document.querySelector(".barra-lateral");
-const spans = document.querySelectorAll("span");
-const circulo = document.querySelector(".circulo");
-const menu = document.querySelector(".menu");
-const main = document.querySelector("main");
-
-menu.addEventListener("click",()=>{
-    barraLateral.classList.toggle("max-barra-lateral");
-    if(barraLateral.classList.contains("max-barra-lateral")){
-        menu.children[0].style.display = "none";
-        menu.children[1].style.display = "block";
-    }
-    else{
-        menu.children[0].style.display = "block";
-        menu.children[1].style.display = "none";
-    }
-    if(window.innerWidth<=320){
-        barraLateral.classList.add("mini-barra-lateral");
-        main.classList.add("min-main");
-        spans.forEach((span)=>{
-            span.classList.add("oculto");
-        })
     }
 });
 
-cloud.addEventListener("click",()=>{
-    barraLateral.classList.toggle("mini-barra-lateral");
-    main.classList.toggle("min-main");
-    spans.forEach((span)=>{
-        span.classList.toggle("oculto");
-    });
-});
+
+
+
+
+
+
+
+
+
+
+
+

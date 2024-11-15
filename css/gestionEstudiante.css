@@ -138,3 +138,8 @@ main {
     color: #7e7979;
 
 }
+
+table th, table td {
+  text-align: center; /* Centrar horizontalmente */
+  vertical-align: middle; /* Centrar verticalmente */
+}

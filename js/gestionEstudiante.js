@@ -64,6 +64,112 @@ function eliminarCurso(idCurso) {
 
 
 
+// Funcion cambia estado
+function desactivar(id,estado){
+  Swal.fire({
+    title: "¿Estás seguro de que deseas dar de baja al estudiante seleccionado?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si,Claro!",
+    allowOutsideClick: false // Evita que se cierre al hacer clic fuera
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(API_URL + 'gestionEstudiante.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          accion: 'cambioEstado',
+          idEstudiante: id,
+          estado:estado
+        })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Hubo un problema en dar de baja al estudiante');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.status === 'success') {
+
+            Swal.fire({
+              title: "Desactivado!",
+              text: "Se dio de baja correctamente al estudiante!",
+              icon: "success",
+              allowOutsideClick: false
+            }).then(() => {
+              // Recargar la página cuando el usuario haga clic en "OK"
+              window.location.reload(); 
+            });
+          }
+        });
+
+
+
+
+    }
+  });
+}
+
+
+// Funcion cambia estado
+function activar(id,estado){
+  Swal.fire({
+    title: "¿Estás seguro de que deseas dar de alta al estudiante seleccionado?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si,Claro!",
+    allowOutsideClick: false // Evita que se cierre al hacer clic fuera
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(API_URL + 'gestionEstudiante.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          accion: 'cambioEstado',
+          idEstudiante: id,
+          estado:estado
+        })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Hubo un problema al activar el estudiante');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.status === 'success') {
+
+            Swal.fire({
+              title: "Activado!",
+              text: "El usuario fue activado con exitó!",
+              icon: "success",
+              allowOutsideClick: false
+            }).then(() => {
+              // Recargar la página cuando el usuario haga clic en "OK"
+              window.location.reload(); 
+            });
+          }
+        });
+
+
+
+
+    }
+  });
+}
+
+
+
+
 
 
 
@@ -84,9 +190,9 @@ fetch(API_URL + 'gestionEstudiante.php', {
     const tabla = document.getElementById('tabla');
     const tbody = tabla.querySelector('tbody');
     tbody.innerHTML = ''; // Limpia la tabla
-
+    console.log(data)
     data.forEach(item => {
-      console.log(item)
+      
       const tr = document.createElement('tr');
       tr.innerHTML = `
             <td>${item.idAlumno}</td>
@@ -107,6 +213,13 @@ fetch(API_URL + 'gestionEstudiante.php', {
              <td>
                
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idAlumno}"><i class='bx bx-edit-alt'></i></button>
+                          ${
+              item.estado == 1 
+              ? `<button class="btn btn-danger btn-sm"  onclick="desactivar(${item.idAlumno},${item.estado})">
+                 <i class='bx bx-x'></i> </button>`
+              : `<button class="btn btn-success btn-sm" onclick="activar(${item.idAlumno},${item.estado})">
+                   <i class='bx bx-check'></i></button>`
+          }
             </td>
         `;
       tbody.appendChild(tr);
@@ -211,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById('editarModal').addEventListener('shown.bs.modal', function () {
   // Obtener el ID de la materia seleccionada
   let idEstudiante = selectedId;
-  console.log(idEstudiante)
+
 
 
   // Realizar solicitud AJAX para obtener los datos de la materia
@@ -239,13 +352,13 @@ document.getElementById('editarModal').addEventListener('shown.bs.modal', functi
       document.getElementById('curso').value = data.descripcionCurso ;
 
       document.getElementById('btnEditar').onclick = function () {
-        console.log('holaaaaaaaaaaaaaaaaaaaaaaaaa')
+       
         let nombre = document.getElementById('nombre').value;
         let apellido = document.getElementById('apellido').value;
         let dni= document.getElementById('dni').value;
         let curso= document.getElementById('curso').value;
         let fechaNac= document.getElementById('fechaNac').value;
-        let userMod=localStorage.getItem('userId')
+        let userMod=localStorage.getItem('nombre') +' '+localStorage.getItem('apellido')
 
         fetch(API_URL + 'gestionEstudiante.php', {
           method: 'POST',
@@ -260,7 +373,7 @@ document.getElementById('editarModal').addEventListener('shown.bs.modal', functi
             dni:dni,
             fechaNac:fechaNac,
             curso:curso, 
-            idUserMod:userMod
+            userMod:userMod
           })
         })
           .then(response => response.json())

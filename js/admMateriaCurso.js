@@ -86,7 +86,7 @@ function activar(id,estado){
       })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Hubo un problema al eliminar la Materia');
+            throw new Error('Hubo un problema al activar la Materia');
           }
           return response.json();
         })
@@ -133,22 +133,23 @@ fetch(API_URL + 'administrarMateriaCurso.php', {
     tbody.innerHTML = ''; // Limpia la tabla
 
     data.forEach(item => {
+      console.log(data)
       const tr = document.createElement('tr');
-      let estado='';
+    /*   let estado='';
       
 
       if(item.estado == 1){
         estado='Activo';
       }else{
         estado='Inactivo'
-      }
+      } */
 
 
       tr.innerHTML = `
       <td>${item.id}</td>
       <td>${item.nombreCurso}</td>
       <td>${item.nombreMateria}</td>
-      <td>${estado}</td>
+      <td>${item.descripcion}</td>
   
       <td>
           ${

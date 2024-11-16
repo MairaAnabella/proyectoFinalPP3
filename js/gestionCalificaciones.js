@@ -9,7 +9,7 @@ let paginaActual = 1;
 
 // función para cargar los datos
 
-fetch(API_URL + 'gestionEstudiante.php', {
+fetch(API_URL + 'gestionCalificaciones.php', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -25,11 +25,11 @@ fetch(API_URL + 'gestionEstudiante.php', {
     tbody.innerHTML = ''; // Limpia la tabla
     console.log(data)
     data.forEach(item => {
-      
+
       const tr = document.createElement('tr');
       tr.innerHTML = `
             <td>${item.idAlumno}</td>
-            <td>${item.nombre+' '+item.apellido}</td>
+            <td>${item.nombre + ' ' + item.apellido}</td>
             <td>${item.descripcionCurso}</td>
             <td>${item.descripcionEstados}</td>      
             <td>${item.fechaAlta}</td>
@@ -107,117 +107,107 @@ fetch(API_URL + 'gestionEstudiante.php', {
 
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
-document.addEventListener("DOMContentLoaded", function() {
-  // Realizar la solicitud AJAX
-  fetch(API_URL+'datosSelectEstudiante.php')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      // Llenar el select de tutores
-      const tutorSelect = document.getElementById('tutor');
-      data.tutores.forEach(tutor => {
-        const option = document.createElement('option');
-        option.value = tutor.idUser;
-        option.textContent = tutor.nombre + ' '+ tutor.apellido;
-        tutorSelect.appendChild(option);
-      });
-
-      // Llenar el select de cursos
-      const cursoSelect = document.getElementById('curso');
-      data.cursos.forEach(curso => {
-        const option = document.createElement('option');
-        option.value = curso.idCurso;
-        option.textContent = curso.nombre;
-        cursoSelect.appendChild(option);
-      });
-    })
-    .catch(error => console.error('Error:', error));
-});
-
-
-
-
-//CONSULTA EDITAR ESTUDIANTE
 document.getElementById('editarModal').addEventListener('shown.bs.modal', function () {
   // Obtener el ID de la materia seleccionada
-  let idEstudiante = selectedId;
-
-
+  let idAlumno = selectedId;
 
   // Realizar solicitud AJAX para obtener los datos de la materia
-  fetch(API_URL + 'gestionEstudiante.php', {
+  fetch(API_URL + 'gestionCalificaciones.php', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
-      accion: 'obtenerEstudianteSeleccionado',
-      idEstudiante: idEstudiante
-    })
+      accion: 'obtenerMateriasEstudianteSeleccionado',
+      idAlumno: idAlumno,
+    }),
   })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      // Rellenar el formulario con los datos de la materia
-      document.getElementById('nombre').value = data.nombre;
-      document.getElementById('apellido').value = data.apellido;
-      document.getElementById('dni').value = data.dni;
-      document.getElementById('fechaNac').value = data.fechaNacimiento;
-      document.getElementById('direccion').value = data.calle +' '+ data.numero;
-      document.getElementById('ciudad').value = data.localidad +', '+ data.provincia;
-      document.getElementById('tutor').value = data.nombreTutor +' '+ data.apellidoTutor ;
-      document.getElementById('curso').value = data.descripcionCurso ;
+    .then((response) => response.json())
+    .then((materias) => {
+      // Seleccionar el contenedor donde se insertarán los elementos
+      const materiasContainer = document.getElementById('materias');
+      materiasContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar los elementos
 
+      // Recorrer las materias y generar los elementos dinámicos
+      materias.forEach((materia, index) => {
+        const materiaDiv = document.createElement('div');
+        materiaDiv.classList.add('form-group');
+
+        // Crear el label con el nombre de la materia
+        const label = document.createElement('label');
+        label.setAttribute('for', `materia-${index}`); // Usar el índice para un ID único
+        label.textContent = materia.nombre;
+
+        // Crear el input con la nota
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.id = `materia-${index}`;
+        input.name = `materia-${index}`;
+        input.value = materia.nota; // Asignar la nota como valor inicial
+        input.dataset.materiaId = materia.idMateria; // Agregar el ID de la materia al input
+
+        // Añadir los elementos al contenedor
+        materiaDiv.appendChild(label);
+        materiaDiv.appendChild(input);
+
+        // Agregar al contenedor principal
+        materiasContainer.appendChild(materiaDiv);
+      });
+
+      /* BOTON EDITAR */
       document.getElementById('btnEditar').onclick = function () {
-       
-        let nombre = document.getElementById('nombre').value;
-        let apellido = document.getElementById('apellido').value;
-        let dni= document.getElementById('dni').value;
-        let curso= document.getElementById('curso').value;
-        let fechaNac= document.getElementById('fechaNac').value;
-        let userMod=localStorage.getItem('nombre') +' '+localStorage.getItem('apellido')
+        // Recoger todas las materias e IDs con sus calificaciones
+        const inputs = document.querySelectorAll('#materias input'); // Seleccionar todos los inputs de materias
+        const calificaciones = [];
 
-        fetch(API_URL + 'gestionEstudiante.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({
-            accion: 'editarEstudiante',
-            idEstudiante: idEstudiante,
-            nombre:nombre,
-            apellido:apellido,
-            dni:dni,
-            fechaNac:fechaNac,
-            curso:curso, 
-            userMod:userMod
+        inputs.forEach((input) => {
+          const materiaId = input.dataset.materiaId; // Obtener el ID de la materia del atributo data-materiaId
+          const calificacion = input.value;
+
+          if (calificacion) {
+            calificaciones.push({
+              materiaId: materiaId,
+              calificacion: calificacion,
+            });
+          }
+        });
+
+        // Verificar si hay calificaciones que guardar
+        if (calificaciones.length > 0) {
+          fetch(API_URL + 'subirCalificacion.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+              accion: 'actualizarCalificaciones',
+              idAlumno: idAlumno,
+              calificaciones: JSON.stringify(calificaciones), // Convertimos el array de calificaciones en un JSON
+            }),
           })
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data.status === 'success') {
-              Swal.fire({
-                title: "La modificación ha sido procesada correctamente. Todos los datos están actualizados.",
-                width: 600,
-                padding: "3em",
-                color: "#fd7e14",
-                backdrop: `
-          rgba(223, 124, 11, 0.616)
-          left top
-          no-repeat
-        `
-
-              }).then((result) => {
-                if (result.isConfirmed) {  // Verifica si el usuario hizo clic en "OK"
-
-                  location.reload();       // Refresca la página
-                }
-              });
-            }
-          });
-
-      }
-
+            .then((response) => response.json()) // Procesar la respuesta
+            .then((result) => {
+              if (result.status === 'success') {
+                // Mostrar alerta de éxito
+                Swal.fire({
+                  title: '¡Calificaciones actualizadas!',
+                  text: 'Las calificaciones se han subido correctamente.',
+                  icon: 'success',
+                  confirmButtonText: 'OK',
+                }).then(() => {
+                  location.reload(); // Recargar la página después de confirmar
+                });
+              } else {
+                console.error('Error del servidor:', result.message);
+              }
+            })
+            .catch((error) => {
+              console.error('Error al guardar las calificaciones:', error);
+            });
+        }
+      };
+    })
+    .catch((error) => {
+      console.error('Error al obtener las materias:', error);
     });
 });

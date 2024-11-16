@@ -1,186 +1,223 @@
-// URL del servidor (local o AWS)
-const API_URL = "http://localhost/backend/"; // Cambia a 'http://3.83.173.143/backend/' en producción
+//URL -> servidor aws 
+//const API_URL = 'http://3.83.173.143/backend/';
 
-// Seleccionar los elementos del DOM
-const cursoSelect = document.getElementById("curso");
-const estudianteSelect = document.getElementById("estudiante");
-const materiasContainer = document.querySelector(".materias");
-const btnAñadir = document.getElementById("btn-añadir");
 
-// Cargar los cursos cuando se carga la página
-fetch(API_URL + "subirCalificacion.php", {
-  method: "POST",
+const API_URL = 'http://localhost/backend/';
+const filasPorPagina = 15; // número de filas por página
+let paginaActual = 1;
+
+
+// función para cargar los datos
+
+fetch(API_URL + 'gestionEstudiante.php', {
+  method: 'POST',
   headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
+    'Content-Type': 'application/x-www-form-urlencoded'
   },
   body: new URLSearchParams({
-    accion: "obtenerCursos",
-  }),
+    accion: 'obtenerEstudiantes'
+  })
 })
-  .then((response) => response.json())
-  .then((cursos) => {
-    cursoSelect.innerHTML = '<option value="">Seleccione un curso</option>';
-    cursos.forEach((curso) => {
-      const option = document.createElement("option");
-      option.value = curso.idCurso;
-      option.textContent = curso.nombre;
-      cursoSelect.appendChild(option);
+  .then(response => response.json())
+  .then(data => {
+    const tabla = document.getElementById('tabla');
+    const tbody = tabla.querySelector('tbody');
+    tbody.innerHTML = ''; // Limpia la tabla
+    console.log(data)
+    data.forEach(item => {
+      
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+            <td>${item.idAlumno}</td>
+            <td>${item.nombre+' '+item.apellido}</td>
+            <td>${item.descripcionCurso}</td>
+            <td>${item.descripcionEstados}</td>      
+            <td>${item.fechaAlta}</td>
+            
+             <td>
+               
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idAlumno}"><i class='bx bx-edit-alt'></i></button>
+        
+            </td>
+        `;
+      tbody.appendChild(tr);
     });
-  });
 
-// Cargar estudiantes cuando se selecciona un curso
-cursoSelect.addEventListener("change", () => {
-  const cursoId = cursoSelect.value;
 
-  if (!cursoId) {
-    estudianteSelect.innerHTML =
-      '<option value="">Seleccione un estudiante</option>';
-    estudianteSelect.disabled = true;
-    return;
-  }
 
-  fetch(API_URL + "subirCalificacion.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      accion: "obtenerEstudiantes",
-      idCurso: cursoId,
-    }),
-  })
-    .then((response) => response.json())
-    .then((estudiantes) => {
-      estudianteSelect.innerHTML =
-        '<option value="">Seleccione un estudiante</option>';
-      estudiantes.forEach((estudiante) => {
-        const option = document.createElement("option");
-        option.value = estudiante.idAlumno;
-        option.textContent = `${estudiante.nombre} ${estudiante.apellido}`;
-        estudianteSelect.appendChild(option);
+
+
+    // crea el paginador
+    const paginador = document.getElementById('paginador');
+    paginador.innerHTML = '';
+    const filas = tabla.querySelectorAll('tbody tr');
+    const numPaginas = Math.ceil(filas.length / filasPorPagina);
+    for (let i = 1; i <= numPaginas; i++) {
+      const boton = document.createElement('button');
+      boton.textContent = i;
+      boton.addEventListener('click', () => {
+        paginaActual = i;
+        mostrarPagina(paginaActual);
       });
-      estudianteSelect.disabled = false;
-    })
-    .catch((error) => {
-      console.error("Error al cargar los estudiantes:", error);
-      estudianteSelect.disabled = true;
-    });
-});
+      paginador.appendChild(boton);
+    }
 
-// Cargar materias cuando se selecciona un estudiante
-estudianteSelect.addEventListener("change", () => {
-  const estudianteId = estudianteSelect.value;
-  const cursoId = cursoSelect.value;
+    // función para mostrar una página
+    function mostrarPagina(pagina) {
+      const inicio = (pagina - 1) * filasPorPagina;
+      const fin = inicio + filasPorPagina;
+      const filas = tabla.querySelectorAll('tbody tr');
 
-  if (!estudianteId || !cursoId) {
-    materiasContainer.innerHTML = ""; // Limpia las materias si no hay selección
-    return;
-  }
-
-  fetch(API_URL + "subirCalificacion.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      accion: "obtenerMaterias",
-      idCurso: cursoId,
-    }),
-  })
-    .then((response) => response.json())
-    .then((materias) => {
-      materiasContainer.innerHTML = ""; // Limpia el contenedor de materias
-
-      // Crear campos de entrada para cada materia
-      materias.forEach((materia) => {
-        const materiaDiv = document.createElement("div");
-        materiaDiv.classList.add("form-group");
-
-        const label = document.createElement("label");
-        label.textContent = materia.nombre;
-
-        const input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "Ingrese calificación";
-        input.dataset.materiaId = materia.idMateria; // Agregar el ID de la materia al input
-
-        materiaDiv.appendChild(label);
-        materiaDiv.appendChild(input);
-        materiasContainer.appendChild(materiaDiv);
-      });
-    })
-    .catch((error) => {
-      console.error("Error al cargar las materias:", error);
-    });
-});
-
-// Evento click para el botón "Añadir"
-btnAñadir.addEventListener("click", async () => {
-  const estudianteId = estudianteSelect.value;
-  const cursoId = cursoSelect.value;
-
-  if (!estudianteId || !cursoId) {
-    alert("Por favor selecciona un curso y un estudiante.");
-    return;
-  }
-
-  // Recoger todas las materias e IDs con sus calificaciones
-  const inputs = document.querySelectorAll(".materias input"); // Seleccionar todos los inputs de materias
-  const calificaciones = [];
-
-  inputs.forEach((input) => {
-    const materiaId = input.dataset.materiaId; // Obtener el ID de la materia del atributo data-materiaId
-    const calificacion = input.value;
-    console.log(materiaId, calificacion); // Para depurar los valores
-
-    // Verificar si el campo tiene valor antes de añadirlo al array
-    if (calificacion) {
-      calificaciones.push({
-        materiaId: materiaId,
-        calificacion: calificacion,
+      filas.forEach((fila, indice) => {
+        if (indice >= inicio && indice < fin) {
+          fila.style.display = 'table-row';
+        } else {
+          fila.style.display = 'none';
+        }
       });
     }
-  });
 
-  // Verificar si hay calificaciones que guardar
-  if (calificaciones.length > 0) {
-    try {
-      const response = await fetch(API_URL + "subirCalificacion.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          accion: "guardarCalificaciones",
-          idAlumno: estudianteId,
-          calificaciones: JSON.stringify(calificaciones), // Convertimos el array de calificaciones en un JSON
-        }),
-      });
+    mostrarPagina(paginaActual);
 
-      const result = await response.json();
-      console.log(result);
-      if (result.status === "success") {
-        Swal.fire({
-          title:
-            "Se cargo  correctamente las calificaciones",
-          width: 600,
-          padding: "3em",
-          color: "#fd7e14",
-          backdrop: `
-      rgba(223, 124, 11, 0.616)
-      left top
-      no-repeat
-    `,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            
-           
-            location.reload(); // Refresca la página
+    // buscador
+    const buscador = document.getElementById('buscador');
+    buscador.addEventListener('input', () => {
+      const textoBusqueda = buscador.value.toLowerCase();
+      const filas = tabla.querySelectorAll('tbody tr');
+
+      if (textoBusqueda === '') {
+        // Restaurar estilo original
+        filas.forEach((fila) => {
+          fila.style.display = '';
+        });
+        mostrarPagina(paginaActual);
+      } else {
+        filas.forEach((fila) => {
+          const textoFila = fila.textContent.toLowerCase();
+          if (textoFila.includes(textoBusqueda)) {
+            fila.style.display = 'table-row';
+          } else {
+            fila.style.display = 'none';
           }
         });
       }
-    } catch (error) {
-      console.error("Error al guardar calificaciones:", error);
-    }
-  }
+    });
+  });
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Realizar la solicitud AJAX
+  fetch(API_URL+'datosSelectEstudiante.php')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // Llenar el select de tutores
+      const tutorSelect = document.getElementById('tutor');
+      data.tutores.forEach(tutor => {
+        const option = document.createElement('option');
+        option.value = tutor.idUser;
+        option.textContent = tutor.nombre + ' '+ tutor.apellido;
+        tutorSelect.appendChild(option);
+      });
+
+      // Llenar el select de cursos
+      const cursoSelect = document.getElementById('curso');
+      data.cursos.forEach(curso => {
+        const option = document.createElement('option');
+        option.value = curso.idCurso;
+        option.textContent = curso.nombre;
+        cursoSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+
+
+
+//CONSULTA EDITAR ESTUDIANTE
+document.getElementById('editarModal').addEventListener('shown.bs.modal', function () {
+  // Obtener el ID de la materia seleccionada
+  let idEstudiante = selectedId;
+
+
+
+  // Realizar solicitud AJAX para obtener los datos de la materia
+  fetch(API_URL + 'gestionEstudiante.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      accion: 'obtenerEstudianteSeleccionado',
+      idEstudiante: idEstudiante
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      // Rellenar el formulario con los datos de la materia
+      document.getElementById('nombre').value = data.nombre;
+      document.getElementById('apellido').value = data.apellido;
+      document.getElementById('dni').value = data.dni;
+      document.getElementById('fechaNac').value = data.fechaNacimiento;
+      document.getElementById('direccion').value = data.calle +' '+ data.numero;
+      document.getElementById('ciudad').value = data.localidad +', '+ data.provincia;
+      document.getElementById('tutor').value = data.nombreTutor +' '+ data.apellidoTutor ;
+      document.getElementById('curso').value = data.descripcionCurso ;
+
+      document.getElementById('btnEditar').onclick = function () {
+       
+        let nombre = document.getElementById('nombre').value;
+        let apellido = document.getElementById('apellido').value;
+        let dni= document.getElementById('dni').value;
+        let curso= document.getElementById('curso').value;
+        let fechaNac= document.getElementById('fechaNac').value;
+        let userMod=localStorage.getItem('nombre') +' '+localStorage.getItem('apellido')
+
+        fetch(API_URL + 'gestionEstudiante.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({
+            accion: 'editarEstudiante',
+            idEstudiante: idEstudiante,
+            nombre:nombre,
+            apellido:apellido,
+            dni:dni,
+            fechaNac:fechaNac,
+            curso:curso, 
+            userMod:userMod
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              Swal.fire({
+                title: "La modificación ha sido procesada correctamente. Todos los datos están actualizados.",
+                width: 600,
+                padding: "3em",
+                color: "#fd7e14",
+                backdrop: `
+          rgba(223, 124, 11, 0.616)
+          left top
+          no-repeat
+        `
+
+              }).then((result) => {
+                if (result.isConfirmed) {  // Verifica si el usuario hizo clic en "OK"
+
+                  location.reload();       // Refresca la página
+                }
+              });
+            }
+          });
+
+      }
+
+    });
 });

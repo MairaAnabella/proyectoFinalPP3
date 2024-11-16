@@ -113,12 +113,7 @@ label {
     padding: 10px;
   }
   
-/*  .table-wrapper {
- /*  overflow-y: auto; 
-  max-height: calc(100vh - 200px); /* ajusta el valor según tus necesidades 
-  padding-bottom: 20px; /* agrega algo de padding para evitar la superposición del pie de página 
-}
- */
+
 main {
   display: grid;
   justify-items: center;

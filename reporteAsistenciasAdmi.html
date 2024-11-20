@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="/css/menuLateral.css">
     <link rel="stylesheet" href="/css/notificacion.css">
-    <link rel="stylesheet" href="/css/tomarAsistencia.css">
+    <link rel="stylesheet" href="/css/reporteAsistencia.css">
     <!-- icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -173,44 +173,40 @@
         <div class="banner-curso">
             <h1>Control de asistencia</h1>
         </div>
-        <div class="inputs">
-            <div class="input-group">
-                <label for="curso">Curso:</label>
-                <select id="curso">
-                    <option value="">Seleccione un curso</option>
-                </select>
+ 
+        <div class="container">
+            <h1>Reporte de Asistencia</h1>
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="dateFrom">Desde:</label>
+                    <input type="date" id="fechaInicio">
+                </div>
+                <div class="filtros-group">
+                    <label for="dateTo">Hasta:</label>
+                    <input type="date" id="fechaFin">
+                </div>
+                <div class="filter-group">
+                    <label for="curso">Curso:</label>
+                    <select id="curso">
+                        <option value="">Seleccione un curso</option>
+                    </select>
+                </div>
             </div>
-        
-            <div class="input-group">
-                <label for="fecha-asistencia">Fecha:</label>
-                <input type="date" name="fecha-asistencia" id="fecha-asistencia">
-            </div>
-        
-            <div class="input-group">
-                <button class="btn-save" id="guardar"><i class='bx bx-save'></i></button>
-            </div>
-        </div>
-        
-        <div class="container-asistencia">
-
-            <div class="buttons">
-                <button class="btn btn-green">Marcar todos</button>
-                <button class="btn btn-yellow">Desmarcar todos</button>
-               
-            </div>
-
-            <table class="table-asistencia">
+            <table id="asistenciaTable">
                 <thead>
                     <tr>
                         <th>Alumno</th>
-                        <th>Asistencia</th>
+                        <th>Asistencias</th>
+                        <th>Faltas</th>
+                        <th>Porcentaje asistencias</th>
                     </tr>
                 </thead>
-                <tbody id="alumnos-body">
-                    
+                <tbody>
+                    <!-- Los datos se llenarán dinámicamente con JavaScript -->
                 </tbody>
             </table>
         </div>
+       
     </main>
     
     <footer class="footer" id="footer" style="margin-top: 33%;">
@@ -220,7 +216,7 @@
     </footer>
 
 </body>
-<script src="/js/tomarAsistencia.js"></script>
+<script src="/js/reporteAsistencia.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

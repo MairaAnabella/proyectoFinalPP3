@@ -35,22 +35,22 @@ alumnoSelect.addEventListener("change",()=>{
     const alumnoId=alumnoSelect.value;
 
 
-    fetch(API_URL + "reporteAsistenciaTutor.php" ,{
+    fetch(API_URL + "reporteNotas.php" ,{
         method:"POST",
         headers:{
             "Content-Type": "application/x-www-form-urlencoded",
         },
         body:new URLSearchParams({
             accion:"reporte",
-            idAlumno:alumnoId,
+            idAlumno:alumnoId
         }),
     })
     .then((response)=>response.json())
-    .then((asitencias)=>{
-        const tableBody = document.querySelector("#asistenciaTable tbody");
+    .then((notas)=>{
+        const tableBody = document.querySelector("#calificacion-table tbody");
        
 
-        console.log(asitencias)
+        console.log(notas)
         // Verifica que el elemento exista antes de usarlo
         if (!tableBody) {
           console.error('No se encontró el tbody de la tabla.');
@@ -59,7 +59,7 @@ alumnoSelect.addEventListener("change",()=>{
   
         tableBody.innerHTML = ""; // Limpia el contenido existente
   
-        if (!asitencias.length) {
+        if (!notas.length) {
           tableBody.innerHTML = "<tr><td colspan='2'>No se encontraron datos.</td></tr>";
           return;
         }
@@ -67,21 +67,34 @@ alumnoSelect.addEventListener("change",()=>{
         let totalNotas = 0;
   
         // Itera sobre los alumnos y crea las filas
-        asitencias.forEach((asistencia) => {
-            console.log(asistencia)
+        notas.forEach((nota) => {
+            console.log(nota)
           const row = document.createElement("tr");
-          
+          document.getElementById('estudianteNombre').textContent=nota.nombreCompleto;
+          document.getElementById('dni').textContent=nota.dni;
+          document.getElementById('cursoAlumno').textContent=nota.curso;
 
   
           row.innerHTML = `
-            <td>${asistencia.nombreCompleto}</td>
-            <td>${asistencia.fecha}</td>
-            <td>${asistencia.estadoAsistencia}</td>
+            <td>${nota.materia}</td>
+            <td>${nota.nota !== null ? nota.nota : 0}</td>
           `;
   
           tableBody.appendChild(row);
   
+          totalNotas += nota.nota; // Suma las notas para calcular el porcentaje
         });
   
+        // Calcula el porcentaje promedio
+        const porcentajePromedio = notas.length ? (totalNotas / notas.length).toFixed(2) : 0;
+  
+        // Crea la fila del porcentaje
+        const porcentajeRow = document.createElement("tr");
+        porcentajeRow.classList.add("percentage-row");
+        porcentajeRow.innerHTML = `
+          <td >Porcentaje</td>
+          <td>${porcentajePromedio}%</td>
+        `;
+        tableBody.appendChild(porcentajeRow);
     })
 })

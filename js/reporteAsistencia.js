@@ -1,6 +1,18 @@
 // URL del servidor (local o AWS)
 const API_URL = "http://localhost/backend/"; // Cambia a 'http://3.83.173.143/backend/' en producción
 const alumnoSelect = document.getElementById("alumno");
+
+
+
+function formatearFecha(fechaStr) {
+  const fecha = new Date(fechaStr);
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+
+  return `${dia}/${mes}/${anio}`; // ejemplo: "11/11/2024"
+}
+
 if (localStorage.getItem('rol') === '4') {
     const idUser = localStorage.getItem('userId');
   
@@ -64,18 +76,25 @@ alumnoSelect.addEventListener("change",()=>{
           return;
         }
   
-        let totalNotas = 0;
+  
   
         // Itera sobre los alumnos y crea las filas
         asitencias.forEach((asistencia) => {
             console.log(asistencia)
           const row = document.createElement("tr");
           
+          if(asistencia.fecha === null){
+            fechaBajaFormat='--/--/----'
+    
+           }else{
+            fechaFormat=formatearFecha(asistencia.fecha);
+           }
+          
 
   
           row.innerHTML = `
             <td>${asistencia.nombreCompleto}</td>
-            <td>${asistencia.fecha}</td>
+            <td>${fechaFormat}</td>
             <td>${asistencia.estadoAsistencia}</td>
           `;
   

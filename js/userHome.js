@@ -41,15 +41,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /* ocultar botones segun rol */
 
-        /* var contenedorAsistencias=document.getElementById('contenedor-asistencias');
-        var contenedorMaterias=document.getElementById('contenedor-materias');
-        var contenedorNotas=document.getElementById('contenedor-notas'); */
         var contenedorAdmUser = document.getElementById('contenedor-admUser');
         var contenedorAdmAlumnos = document.getElementById('contenedor-admAlumnos');
         var contenedorNotificados=document.getElementById('contenedor-comunicado');
         var contenedorMaterias=document.getElementById('contenedor-materias');
         var accionesCardNotas=document.getElementById('notas-adm');
-        var accionesCardNotasPadres=document.getElementById('notas-padres');
+        var accionesCardAsistencia=document.getElementById('asistencia-adm');
+        var accionesCardCalificacionesPadres=document.getElementById('notas-padres');
+        var accionesCardAsistenciaPadres=document.getElementById('asistencia-padres');
         var btnEstudiantes = document.getElementById('btnEstudiantes');
         var btnUser = document.getElementById('btnUser');
         var btnMaterias = document.getElementById('btnMaterias');
@@ -67,9 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
             btnMaterias.style.display = 'none';
             btnCursos.style.display = 'none';
             btnComunicados.style.display = 'none';
+            accionesCardAsistencia.style.display='none';
 
         }else{
-            accionesCardNotasPadres.style.display='none';
+            accionesCardCalificacionesPadres.style.display='none';
+            accionesCardAsistenciaPadres.style.display='none';
         }
         
 
@@ -80,7 +81,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+function togglePopup() {
+    const popup = document.getElementById('accountPopup');
+    popup.classList.toggle('active');
+}
 
+// Close popup when clicking outside
+document.addEventListener('click', function(event) {
+    const popup = document.getElementById('accountPopup');
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const profileSection = document.querySelector('.profile-section');
+    
+    if (!popup.contains(event.target) && !toggleBtn.contains(event.target) && !profileSection.contains(event.target)) {
+        popup.classList.remove('active');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const photoInput = document.getElementById('photoInput');
+    const userPhoto = document.getElementById('userPhoto');
+
+    photoInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                userPhoto.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+});
 
 
 

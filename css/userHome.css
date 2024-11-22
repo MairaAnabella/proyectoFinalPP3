@@ -6,6 +6,7 @@
     --letra: #142f30;
     --fondo: #f8f6f4;
     --hover: #fd7e14;
+    --opcion:#FFBB5C;
     --opcion1: #fd7d1463;
     --opcion2: #f7ab54;
 }
@@ -147,9 +148,11 @@ main.min-main{
     margin-top: 30px;
 }
 .boton-card{
+
     text-decoration: none;
     font-size: 20px;
     border-radius: 20px;
+    border: none;
     padding: 7px 18px;
     background-color:var(--opcion1);
     color: var(--letra);
@@ -199,7 +202,135 @@ footer {
 
 
 
+   /* Reset and general styles */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Profile section styles */
+.profile-section {
+    background: #f4b466;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: absolute;
+    top: 40%;
+    /*left: 100%;*/
+    right: 15%;
+    transform: translateX(-50%);
+    width: 350px;
+    background: var(--sidebar);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    color: white;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup-header {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+
+.edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+}
+
+.manage-account-btn {
+    background: transparent;
+    border: 1px solid #5f6368;
+    color: #8ab4f8;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 80%;
+}
+
+.popup-actions {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    background: #303134;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.popup-footer {
+    padding: 16px;
+    text-align: center;
+    border-top: 1px solid #3c4043;
+}
+
+.popup-footer a {
+    color: #9aa0a6;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.toggle-btn {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 
 

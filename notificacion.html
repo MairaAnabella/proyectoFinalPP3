@@ -34,12 +34,12 @@
 
     <ul class="nav-links">
       <li>
-        <a href="/userHome.html">
+        <a href="userHome.html">
           <i class='bx bx-home'></i>
           <span class="link_name">Inicio</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="" href="/userHome.html">Inicio</a></li>
+          <li><a class="" href="userHome.html">Inicio</a></li>
          </ul>
       </li>
       <li id="btnComunicados">
@@ -80,12 +80,11 @@
         <li><a href="/gestionMaterias.html">Gestión Materias</a></li>
         <li><a href="/admMateriaCurso.html">Administrar Materias <br> por Curso</a></li>
         
-  <!--       <li><a href="#">materia2</a></li>
-        <li><a href="#">materia3</a></li> -->
        </ul>
       </li>
 
  
+
       <li id="btnEstudiantes">
         <div class="icon_link">
          <a href="gestionEstudiantes.html">
@@ -108,14 +107,17 @@
          </a>
          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-        <ul class="sub-menu">
+        <ul class="sub-menu" id="subMenuAdmi">
          <li><a class="" href="/añadirCalificacion.html">Agregar Calificacion</a></li>
          <li><a href="/gestionCalificaciones.html">Gestionar Calificacion</a></li>
         
         </ul> 
+        <ul class="sub-menu" id="subMenuPadre">
+      
+          <li><a href="/reporteNotasTutor.html">Reporte de calificacion</a></li>
+         
+         </ul> 
        </li>
-
-       
 
        <li id="btnAsistencia">
         <div class="icon_link">
@@ -125,13 +127,13 @@
          </a>
          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-     <!--    <ul class="sub-menu">
-         <li><a class="" href="#">Agregar Estudiante</a></li>
-         <li><a href="#">Gestionar Estudiantes</a></li>
-         
-         <li><a href="#">materia2</a></li>
-         <li><a href="#">materia3</a></li> 
-        </ul> -->
+        <ul class="sub-menu"  id="subMenuAdmi">
+         <li><a class="" href="/tomarAsistencia.html">Control de Asistencia</a></li>
+         <li><a href="reporteAsistenciasAdmi.html">Reporte de asistencia</a></li>
+        </ul> 
+        <ul class="sub-menu"  id="subMenuPadre">
+          <li><a href="reporteAsistenciasTutor.html">Reporte de asistencia</a></li>
+         </ul> 
        </li>
 
       <li id="btnUser">
@@ -162,6 +164,8 @@
   </li>
   </ul>
   </div>
+
+
 
 
   <main>
@@ -238,7 +242,7 @@
 <script src="js/menuLateral.js"></script>
 <!-- <script src="/js/comunicados.js"></script> -->
 <script src="js/notificacion.js"></script>
-
+<script src="/js/userHome.js"></script> 
 
 
 </html>

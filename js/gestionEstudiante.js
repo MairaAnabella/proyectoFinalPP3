@@ -220,7 +220,7 @@ fetch(API_URL + 'gestionEstudiante.php', {
             <td>${item.nombre}</td>
             <td>${item.apellido}</td>
             <td>${item.dni}</td>
-            <td>${item.fechaNacimiento}</td>
+            <td>${formatearFecha(item.fechaNacimiento)}</td>
             <td>${item.nombreTutor + ' '+item.apellidoTutor}</td>
             <td>${item.calle}</td>
             <td>${item.numero}</td>

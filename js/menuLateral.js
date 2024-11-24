@@ -53,10 +53,11 @@ var rol = localStorage.getItem('rol');
         var btnComunicados  = document.getElementById('btnComunicados');
         var submenuPadre= document.getElementById('subMenuPadre');
         var submenuPadreAsis= document.getElementById('subMenuPadreAsis');
-        var submenuAdmi= document.getElementById('subMenuAdmi');
-        var submenuAdmiNotas= document.getElementById('subMenuAdmiNotas');
+     /*    var submenuAdmi= document.getElementById('subMenuAdmi'); */
+         var submenuAdmiNotas= document.getElementById('subMenuAdmiNotas'); 
         console.log(rol)
         if (rol == 4) {
+            console.log(rol)
             
             btnEstudiantes.style.display = 'none';
             btnUser.style.display = 'none';
@@ -64,8 +65,8 @@ var rol = localStorage.getItem('rol');
             btnCursos.style.display = 'none';
             btnComunicados.style.display = 'none';
         
-            submenuAdmi.style.display='none';
-            submenuAdmiNotas.style.display='none';
+           /*  submenuAdmi.style.display='none'; */
+            submenuAdmiNotas.style.display='none'; 
 
         }else{
          

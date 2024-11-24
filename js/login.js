@@ -1,15 +1,15 @@
 
 
 
-/* const API_URL_LOGIN = 'http://3.83.173.143/backend/'; */
+const API_URL_LOGIN = 'http://3.83.173.143/backend/'; 
 
 
 
 
 
 
-
- const API_URL_LOGIN = 'http://localhost/backend/';  
+/* 
+ const API_URL_LOGIN = 'http://localhost/backend-laburo/';   */
 
 function login() {
     var email = document.getElementById('email').value;
@@ -32,13 +32,17 @@ function login() {
                 var nombre = data.nombre;
                 var apellido = data.apellido;
                 var rol = data.rol;
-                var userId = data.Userid;
+                var userId = data.idUser;
+                var genero=data.sexo;
            
 
                 localStorage.setItem('nombre', nombre);
                 localStorage.setItem('apellido', apellido);
                 localStorage.setItem('rol', rol);
                 localStorage.setItem('userId', userId);
+                localStorage.setItem('genero',genero);
+                
+                
 
                 var url = 'userHome.html';
                 window.location.href = url;

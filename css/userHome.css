@@ -159,12 +159,12 @@ main.min-main{
    
 }
 
-.boton-card:hover{
+/* .boton-card:hover{
     color: #f8f6f4;
     cursor: pointer;
     background-color: var(--hover);
 }
-
+ */
 footer {
     margin-top: 60px;
     bottom: 0;

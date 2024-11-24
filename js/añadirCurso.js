@@ -1,10 +1,10 @@
 
 
 //URL -> servidor aws 
-//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 
 
-const API_URL = 'http://localhost/backend/';
+/* const API_URL = "http://localhost/backend-laburo/"; */
 
 
 

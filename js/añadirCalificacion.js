@@ -1,6 +1,6 @@
 // URL del servidor (local o AWS)
-const API_URL = "http://localhost/backend/"; // Cambia a 'http://3.83.173.143/backend/' en producción
-
+/* const API_URL = "http://localhost/backend-laburo/"; */ // Cambia a 'http://3.83.173.143/backend/' en producción
+const API_URL = 'http://3.83.173.143/backend/';
 // Seleccionar los elementos del DOM
 const cursoSelect = document.getElementById("curso");
 const estudianteSelect = document.getElementById("estudiante");

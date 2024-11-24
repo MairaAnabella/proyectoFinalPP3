@@ -1,64 +1,72 @@
 // Datos inicialesimport {format} from 'date-fns';
-//const API_URL = 'http://3.83.173.143/backend/';
-const API_URL = 'http://localhost/backend/';  
+const API_URL = 'http://3.83.173.143/backend/';
+//const API_URL = "http://localhost/backend-laburo/";
 
 const datosIniciales = [];
 
 // Verificar si el usuario está autenticado al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
-    
+
   // Verificar si las variables de sesión están presentes en localStorage
   var email = localStorage.getItem('email');
   var nombre = localStorage.getItem('nombre');
   var apellido = localStorage.getItem('apellido');
   var rol = localStorage.getItem('rol');
- 
+
 
   if (!email && !nombre && !apellido && !rol) {
-      // Si falta alguna variable de sesión, redirigir al usuario al inicio de sesión
-      window.location.href = 'login.html';
+    // Si falta alguna variable de sesión, redirigir al usuario al inicio de sesión
+    window.location.href = 'login.html';
   } else {
 
-      /* menu en HTML*/
- 
-      const nombreMenu = document.getElementById('nombre-user');
-      nombreMenu.innerText = nombre;
-      const idRol = document.getElementById('rol-user');
-      switch (rol) {
-          case '1':
-              idRol.innerText = 'Administrador';
-              break;
-          case '2':
-              idRol.innerText = 'Director';
-              break;
-          case '3':
-              idRol.innerText = 'Preceptor';
-              break;
-          case '4':
-              idRol.innerText = 'Tutor';
-              break;
-      }
-     
+    /* menu en HTML*/
+
+    const nombreMenu = document.getElementById('nombre-user');
+    nombreMenu.innerText = nombre;
+    const idRol = document.getElementById('rol-user');
+    switch (rol) {
+      case '1':
+        idRol.innerText = 'Administrador';
+        break;
+      case '2':
+        idRol.innerText = 'Director';
+        break;
+      case '3':
+        idRol.innerText = 'Preceptor';
+        break;
+      case '4':
+        idRol.innerText = 'Tutor';
+        break;
+    }
+
 
   }
 
 
-  
+
 });
 
 
 function formatearFecha(fechaStr) {
+  if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
+
   const fecha = new Date(fechaStr);
+  
+  // Verifica si la fecha es válida
+  if (isNaN(fecha.getTime())) {
+    return '--/--/----'; // Devuelve formato vacío si la fecha no es válida
+  }
+
   const dia = fecha.getDate().toString().padStart(2, '0');
   const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
   const anio = fecha.getFullYear();
 
-  return `${dia}/${mes}/${anio}`; // ejemplo: "11/11/2024"
+  return `${dia}/${mes}/${anio}`; // Ejemplo: "11/11/2024"
 }
 
 
 function cargarDatosIniciales() {
-  var fechaBajaFormat;
+
   let tabla = document.getElementById('tabla');
   fetch(API_URL + 'obtenerDatosUsuarios.php')
     .then(res => res.json())
@@ -66,13 +74,11 @@ function cargarDatosIniciales() {
 
       data.forEach(dato => {
         
-       if(dato.FechaBaja === null){
-        fechaBajaFormat='--/--/----'
 
-       }else{
-        fechaBajaFormat=formatearFecha(dato.FechaBaja);
-       }
-      
+         // Inicializa fechaBajaFormat para cada fila
+         let fechaBajaFormat = formatearFecha(dato.fechaBaja);
+
+        console.log(fechaBajaFormat)
         let fila = tabla.insertRow();
         let celda1 = fila.insertCell();
         let celda2 = fila.insertCell();
@@ -91,12 +97,12 @@ function cargarDatosIniciales() {
         celda5.textContent = dato.email;
         celda6.textContent = dato.telefono;
         celda7.textContent = formatearFecha(dato.fechaAlta);
-        celda8.textContent =  fechaBajaFormat;
+        celda8.textContent = formatearFecha(dato.fechaBaja);
         celda9.textContent = dato.descripcion;
-        
+
       });
     })
-    
+
 }
 
 // Precargar los datos
@@ -166,7 +172,7 @@ function agregar() {
       const sexo = Swal.getPopup().querySelector('#sexo').value;
       const email = Swal.getPopup().querySelector('#email').value;
       const telefono = Swal.getPopup().querySelector('#telefono').value;
-       const contraseña = Swal.getPopup().querySelector('#contraseña').value; 
+      const contraseña = Swal.getPopup().querySelector('#contraseña').value;
       const rol = Swal.getPopup().querySelector('#rol').value;
       const calle = Swal.getPopup().querySelector('#calle').value;
       const numero = Swal.getPopup().querySelector('#numero').value;
@@ -175,39 +181,45 @@ function agregar() {
 
 
       // Validación de email
-      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     /*  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!regexEmail.test(email)) {
         Swal.showValidationMessage(`Por favor ingresa un email válido`);
         return;
       }
 
       // Validación de contraseña segura
-  /*     const regexContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+      const regexContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
       if (!regexContraseña.test(contraseña)) {
         Swal.showValidationMessage(`La contraseña debe tener al menos 8 caracteres, incluir números, letras mayúsculas y minúsculas, y caracteres especiales`);
         return;
       }
- */
-      // Verificación de que todos los campos estén llenos
- /*      if (!nombre || !apellido || !email || !contraseña || !rol || !telefono || !calle || !numero || !localidad || provincia || !sexo) {
-        Swal.showValidationMessage(`Por favor ingresa todos los campos`);
+      // valida telefono y numero de domicilio
+      const regexNumerico = /^[0-9]+$/; // Acepta solo números del 0 al 9 (uno o más dígitos)
+      if (!regexNumerico.test(telefono) || !regexNumerico.test(numero)) {
+        Swal.showValidationMessage(`El campo telefono y numero debe contener solo números`);
         return;
       }
- */
+
+      // Verificación de que todos los campos estén llenos
+      if (!nombre || !apellido || !email || !contraseña || !rol || !telefono || !calle || !numero || !localidad || !provincia || !sexo) {
+        Swal.showValidationMessage(`Por favor ingresa todos los campos`);
+        return;
+      } */
+
       //return { nombre, apellido, email, contraseña, fechaAlta, rol };
 
       const usuario = {
         nombre: nombre,
         apellido: apellido,
-        sexo:sexo,
+        sexo: sexo,
         email: email,
-        telefono:telefono,
-        contraseña: contraseña,  
+        telefono: telefono,
+        contrasenia: contraseña,
         rol: rol,
-        calle:calle,
-        numero:numero,
-        localidad:localidad,
-        provincia:provincia
+        calle: calle,
+        numero: numero,
+        localidad: localidad,
+        provincia: provincia
       }
       return fetch(API_URL + 'agregarUsuario.php', {
         method: 'POST',
@@ -239,7 +251,7 @@ function agregar() {
 
   }).then((result) => {
     if (result.isConfirmed && result.value) {
-      
+
       Swal.fire(
         '¡Agregado!',
         'Tu usuario ha sido creado',
@@ -253,7 +265,7 @@ function agregar() {
 }
 
 function modificar() {
-console.log(seleccionado)
+  console.log(seleccionado)
   if (seleccionado) {
     let idActual = seleccionado.cells[1].innerHTML;
     let rolActual = seleccionado.cells[7].innerHTML;
@@ -314,7 +326,7 @@ console.log(seleccionado)
         }
 
         // Verificación de que todos los campos estén llenos
-        if (!nombre || !apellido || !email  ) {
+        if (!nombre || !apellido || !email) {
           Swal.showValidationMessage(`Por favor ingresa todos los campos`);
           return;
         }
@@ -355,7 +367,7 @@ console.log(seleccionado)
 
     }).then((result) => {
       let rol = '';
-      switch (parseInt(result.value.rol, 10)) { // Asegúrate de que el valor sea un entero
+      switch (parseInt(result.value.rol)) { // Asegúrate de que el valor sea un entero
         case 1:
           rol = "Administrador";
           break;
@@ -374,13 +386,22 @@ console.log(seleccionado)
 
 
       if (result.isConfirmed) {
-        seleccionado.cells[2].innerHTML = result.value.nombre;
+    /*     seleccionado.cells[2].innerHTML = result.value.nombre;
         seleccionado.cells[3].innerHTML = result.value.apellido;
         seleccionado.cells[4].innerHTML = result.value.email;
         //seleccionado.cells[5].innerHTML = result.value.contraseña;
         seleccionado.cells[6].innerHTML = result.value.fechaAlta;
         seleccionado.cells[7].innerHTML = result.value.fechaBaja;
         seleccionado.cells[8].innerHTML = rol;
+ */
+        Swal.fire(
+          '¡Modificado!',
+          'Tu usuario ha sido modificado',
+          'success'
+        ).then(() => {
+          // Actualizar la página
+          location.reload();
+        });
       }
     });
   } else {

@@ -1,8 +1,7 @@
- const API_URL= 'http://3.83.173.143/backend/'; 
 
 
 
-
+const API_URL = 'http://3.83.173.143/backend/';
 
 
 

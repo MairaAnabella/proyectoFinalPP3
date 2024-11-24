@@ -104,7 +104,7 @@
           </a>
           <i class='bx bxs-chevron-down arrow'></i>
         </div>
-        <ul class="sub-menu" id="subMenuAdmi">
+        <ul class="sub-menu" id="subMenuAdmiNotas">
           <li><a class="" href="/añadirCalificacion.html">Agregar Calificacion</a></li>
           <li><a href="/gestionCalificaciones.html">Gestionar Calificacion</a></li>
 
@@ -128,7 +128,7 @@
           <li><a class="" href="/tomarAsistencia.html">Control de Asistencia</a></li>
           <li><a href="reporteAsistenciasAdmi.html">Reporte de asistencia</a></li>
         </ul>
-        <ul class="sub-menu" id="subMenuPadre">
+        <ul class="sub-menu" id="subMenuPadreAsis">
           <li><a href="reporteAsistenciasTutor.html">Reporte de asistencia</a></li>
         </ul>
       </li>
@@ -149,7 +149,7 @@
       <li>
         <div class="profile-details">
           <div class="profile-content">
-            <img src="asset/home-user/avatar.jpg" alt="">
+            <img id="fotoPerfilMenu" src="" alt="user">
           </div>
           <div class="name-rol">
             <div><span class="nombre" id="nombre-user"></span></div>
@@ -178,12 +178,13 @@
         <div class="card">
           <!--  <img class="card-img-top" src="asset/home-user/perfil.jpg" alt="Card image cap"> -->
           <div class="card-body little-profile text-center">
-            <div class="pro-img"><img src="asset/home-user/avatar.jpg" alt="user"></div>
+            <div class="pro-img"><img id="fotoPerfil" src="" alt="user">
+            </div>
             <h3 class="m-b-0"><span id="nombreUser"></span></h3>
             <div id="space">
-              <button class="boton-card" onclick="togglePopup()">Ver Perfil</button>
+              <button class="boton-card" disabled>Ver Perfil</button>
 
-              <div class="popup" id="accountPopup">
+             <!--  <div class="popup" id="accountPopup">
                 <div class="popup-header">
                   <button class="close-btn" onclick="togglePopup()">×</button>
 
@@ -209,7 +210,7 @@
                   </button>
                 </div>
 
-              </div>
+              </div> -->
             </div>
 
 

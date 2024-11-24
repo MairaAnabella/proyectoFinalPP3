@@ -2,13 +2,29 @@
 
 // Verificar si el usuario está autenticado al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     // Verificar si las variables de sesión están presentes en localStorage
     var email = localStorage.getItem('email');
     var nombre = localStorage.getItem('nombre');
     var apellido = localStorage.getItem('apellido');
     var rol = localStorage.getItem('rol');
-    const userId = sessionStorage.getItem('userId');
+    var genero=localStorage.getItem('genero');
+    sessionStorage.getItem('idUser');
+
+
+    
+
+    // Actualizar la foto de perfil si existe en localStorage
+    const fotoPerfilElement = document.getElementById('fotoPerfil');
+    const fotoPerfilMenuElement = document.getElementById('fotoPerfilMenu');
+    if (genero==='F') {
+        fotoPerfilElement.src = "asset/femenino.png"; // Cambiar la fuente de la imagen
+        fotoPerfilMenuElement.src = "asset/femenino.png"; // Cambiar la fuente de la imagen
+    }else{
+        fotoPerfilElement.src = "asset/masculino.png"; // Cambiar la fuente de la imagen
+        fotoPerfilMenuElement.src = "asset/masculino.png"; // Cambiar la fuente de la imagen
+    }
+
 
     if (!email && !nombre && !apellido && !rol) {
         // Si falta alguna variable de sesión, redirigir al usuario al inicio de sesión
@@ -37,49 +53,57 @@ document.addEventListener('DOMContentLoaded', function () {
                 idRol.innerText = 'Tutor';
                 break;
         }
-       
+
 
         /* ocultar botones segun rol */
 
         var contenedorAdmUser = document.getElementById('contenedor-admUser');
         var contenedorAdmAlumnos = document.getElementById('contenedor-admAlumnos');
-        var contenedorNotificados=document.getElementById('contenedor-comunicado');
-        var contenedorMaterias=document.getElementById('contenedor-materias');
-        var accionesCardNotas=document.getElementById('notas-adm');
-        var accionesCardAsistencia=document.getElementById('asistencia-adm');
-        var accionesCardCalificacionesPadres=document.getElementById('notas-padres');
-        var accionesCardAsistenciaPadres=document.getElementById('asistencia-padres');
+        var contenedorNotificados = document.getElementById('contenedor-comunicado');
+        var contenedorMaterias = document.getElementById('contenedor-materias');
+        var accionesCardNotas = document.getElementById('notas-adm');
+        var accionesCardAsistencia = document.getElementById('asistencia-adm');
+        var accionesCardCalificacionesPadres = document.getElementById('notas-padres');
+        var accionesCardAsistenciaPadres = document.getElementById('asistencia-padres');
         var btnEstudiantes = document.getElementById('btnEstudiantes');
         var btnUser = document.getElementById('btnUser');
         var btnMaterias = document.getElementById('btnMaterias');
-        var btnCursos  = document.getElementById('btnCursos');
-        var btnComunicados  = document.getElementById('btnComunicados');
+        var btnCursos = document.getElementById('btnCursos');
+        var btnComunicados = document.getElementById('btnComunicados');
+        var submenuPadre = document.getElementById('subMenuPadre');
+        var submenuPadreAsis = document.getElementById('subMenuPadreAsis');
+        var submenuAdmi = document.getElementById('subMenuAdmi');
+        var submenuAdmiNotas = document.getElementById('subMenuAdmiNotas');
         console.log(rol)
         if (rol == 4) {
             contenedorAdmAlumnos.style.display = 'none';
             contenedorAdmUser.style.display = 'none';
-            contenedorNotificados.style.display='none';
-            contenedorMaterias.style.display='none';
-            accionesCardNotas.style.display='none';
+            contenedorNotificados.style.display = 'none';
+            contenedorMaterias.style.display = 'none';
+            accionesCardNotas.style.display = 'none';
             btnEstudiantes.style.display = 'none';
             btnUser.style.display = 'none';
             btnMaterias.style.display = 'none';
             btnCursos.style.display = 'none';
             btnComunicados.style.display = 'none';
-            accionesCardAsistencia.style.display='none';
+            accionesCardAsistencia.style.display = 'none';
+            submenuAdmi.style.display = 'none';
+            submenuAdmiNotas.style.display = 'none';
 
-        }else{
-            accionesCardCalificacionesPadres.style.display='none';
-            accionesCardAsistenciaPadres.style.display='none';
+        } else {
+            accionesCardCalificacionesPadres.style.display = 'none';
+            accionesCardAsistenciaPadres.style.display = 'none';
+            submenuPadre.style.display = 'none';
+            submenuPadreAsis.style.display = 'none';
         }
-        
+
 
 
     }
 });
 
 
-
+/* 
 
 function togglePopup() {
     const popup = document.getElementById('accountPopup');
@@ -120,3 +144,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+ */

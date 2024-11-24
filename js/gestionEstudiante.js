@@ -1,8 +1,8 @@
 //URL -> servidor aws 
-//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 
 
-const API_URL = 'http://localhost/backend/';
+/* const API_URL = "http://localhost/backend-laburo/"; */
 const filasPorPagina = 15; // número de filas por página
 let paginaActual = 1;
 
@@ -170,7 +170,22 @@ function activar(id,estado){
 
 
 
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
 
+  const fecha = new Date(fechaStr);
+  
+  // Verifica si la fecha es válida
+  if (isNaN(fecha.getTime())) {
+    return '--/--/----'; // Devuelve formato vacío si la fecha no es válida
+  }
+
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+
+  return `${dia}/${mes}/${anio}`; // Ejemplo: "11/11/2024"
+}
 
 
 
@@ -192,6 +207,12 @@ fetch(API_URL + 'gestionEstudiante.php', {
     tbody.innerHTML = ''; // Limpia la tabla
     console.log(data)
     data.forEach(item => {
+      let userMod='';
+      if(item.usuarioMod==null){
+        userMod='--'
+      }else{
+        userMod=item.usuarioMod;
+      }
       
       const tr = document.createElement('tr');
       tr.innerHTML = `
@@ -207,9 +228,9 @@ fetch(API_URL + 'gestionEstudiante.php', {
             <td>${item.provincia}</td>
             <td>${item.descripcionCurso}</td>
             <td>${item.descripcionEstados}</td>      
-            <td>${item.fechaAlta}</td>
-            <td>${item.fechaModificacion}</td>
-            <td>${item.usuarioMod}</td>
+            <td>${formatearFecha(item.fechaAlta)}</td>
+            <td>${formatearFecha(item.fechaModificacion)}</td>
+            <td>${userMod}</td>
              <td>
                
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idAlumno}"><i class='bx bx-edit-alt'></i></button>
@@ -305,14 +326,7 @@ document.addEventListener("DOMContentLoaded", function() {
         tutorSelect.appendChild(option);
       });
 
-      // Llenar el select de cursos
-      const cursoSelect = document.getElementById('curso');
-      data.cursos.forEach(curso => {
-        const option = document.createElement('option');
-        option.value = curso.idCurso;
-        option.textContent = curso.nombre;
-        cursoSelect.appendChild(option);
-      });
+  
     })
     .catch(error => console.error('Error:', error));
 });
@@ -349,14 +363,14 @@ document.getElementById('editarModal').addEventListener('shown.bs.modal', functi
       document.getElementById('direccion').value = data.calle +' '+ data.numero;
       document.getElementById('ciudad').value = data.localidad +', '+ data.provincia;
       document.getElementById('tutor').value = data.nombreTutor +' '+ data.apellidoTutor ;
-      document.getElementById('curso').value = data.descripcionCurso ;
+     
 
       document.getElementById('btnEditar').onclick = function () {
        
         let nombre = document.getElementById('nombre').value;
         let apellido = document.getElementById('apellido').value;
         let dni= document.getElementById('dni').value;
-        let curso= document.getElementById('curso').value;
+     
         let fechaNac= document.getElementById('fechaNac').value;
         let userMod=localStorage.getItem('nombre') +' '+localStorage.getItem('apellido')
 
@@ -372,7 +386,7 @@ document.getElementById('editarModal').addEventListener('shown.bs.modal', functi
             apellido:apellido,
             dni:dni,
             fechaNac:fechaNac,
-            curso:curso, 
+      
             userMod:userMod
           })
         })

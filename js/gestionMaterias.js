@@ -1,26 +1,28 @@
 //URL -> servidor aws 
-//const API_URL = 'http://3.83.173.143/backend/';
+const API_URL = 'http://3.83.173.143/backend/';
 
 
-const API_URL = 'http://localhost/backend/';
+/* const API_URL = "http://localhost/backend-laburo/"; */
 const filasPorPagina = 10; // número de filas por página
 let paginaActual = 1;
 
 
-function cargarCursos() {
-  fetch(API_URL + 'gestionCursos.php', {
+function cargarCursos(idMateria) {
+  fetch(API_URL + 'administrarMateriaCurso.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: new URLSearchParams({
       accion: 'obtenerCursos',
+      idMateria:idMateria
 
 
     })
   })
     .then(response => response.json())
     .then(cursos => {
+      console.log(cursos)
       var selectCurso = document.getElementById('curso');
       selectCurso.innerHTML = '<option value="">Seleccione un curso</option>';
       for (var i = 0; i < cursos.length; i++) {
@@ -90,6 +92,25 @@ function cargarCursos() {
 
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------------------- */
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
+
+  const fecha = new Date(fechaStr);
+  
+  // Verifica si la fecha es válida
+  if (isNaN(fecha.getTime())) {
+    return '--/--/----'; // Devuelve formato vacío si la fecha no es válida
+  }
+
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+
+  return `${dia}/${mes}/${anio}`; // Ejemplo: "11/11/2024"
+}
+
+
+
 
 // función para cargar los datos
 fetch(API_URL + 'gestionMaterias.php', {
@@ -112,8 +133,8 @@ fetch(API_URL + 'gestionMaterias.php', {
       tr.innerHTML = `
             <td id='idMateria'>${item.idMateria}</td>
             <td>${item.nombre}</td>
-            <td>${item.fecha_creacion}</td>
-            <td>${item.fecha_actualizacion}</td>
+            <td>${formatearFecha(item.fecha_creacion)}</td>
+            <td>${formatearFecha(item.fecha_actualizacion)}</td>
              <td>
                
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idMateria}"><i class='bx bx-edit-alt'></i></button>
@@ -205,7 +226,7 @@ fetch(API_URL + 'gestionMaterias.php', {
     document.getElementById('unirModal').addEventListener('shown.bs.modal', function () {
       // Obtener el ID de la materia seleccionada
 
-      cargarCursos();
+      cargarCursos(idMateria);
 
       document.getElementById('materia-add').value = nombreMateria;
       if (document.getElementById('materia-add')) {

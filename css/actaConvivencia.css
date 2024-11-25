@@ -47,5 +47,6 @@
     .pdf-viewer {
         height: calc(100vh - 140px); /* Adjust for mobile */
     }
+   
 }
 

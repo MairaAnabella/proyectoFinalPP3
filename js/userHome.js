@@ -75,8 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var submenuPadreAsistencia = document.getElementById(
       "subMenuPadreAsistencia"
     );
+    var footer=document.getElementById('footer');
     console.log(rol);
     if (rol == 4) {
+      footer.style.marginTop='5%';
       contenedorAdmAlumnos.style.display = "none";
       contenedorAdmUser.style.display = "none";
       contenedorNotificados.style.display = "none";

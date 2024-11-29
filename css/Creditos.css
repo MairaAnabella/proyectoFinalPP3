@@ -1,0 +1,212 @@
+:root {
+    --Orange: #fd7e14;
+    --pink: hsl(0, 59%, 94%);
+    --light-bg: hsl(204, 37%, 92%);
+    --light-gray-bg: hsl(0, 0%, 94%);
+    --white: hsl(0, 0%, 100%);
+    --dark: hsl(0, 0%, 7%);
+    --text-gray: hsl(0, 0%, 30%);
+  }
+  
+  body {
+    background: var(--light-bg);
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+  }
+
+  .banner {
+    background-image: url('/asset/nuestroEquipo.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    padding: 100px 0;
+    text-align: center;
+    color: white; 
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+}
+  
+  h3 {
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  p {
+    font-size: 1.5em;
+    line-height: 1.7;
+    font-weight: 300;
+    color: var(--text-gray);
+  }
+  
+  .description {
+    white-space: wrap;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 18px;
+  }
+  
+  
+    /* ------------------Nuevo sobre Nosotros------------------------- */
+     .container{
+      width: 500px;
+      margin: 0 auto;
+      padding: 15px;
+
+    }
+   
+    h1{
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 5px;
+  }
+
+  .credito{
+    background-color: #fff;      
+    border: 1px solid #000;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+  }
+  .credito:hover {
+      transform: translateX(10px);
+  }
+  .credito img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+  }
+  .credit-info {
+      flex-grow: 1;
+      padding: 10px;
+   } 
+  .credit-info h3 {
+      margin: 0 0 5px 0;
+      color: #2c3e50;
+  }
+  .credit-info p {
+      margin: 0;
+      color: #7f8c8d;
+  }
+  .linkedin-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  .linkedin-link:hover {
+      color: #2980b9;
+  }
+  @media (max-width: 600px) {
+      .container{
+          padding: 10px;
+      }
+
+      .credito{
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .credito img{
+          margin-right: 0;
+          margin-bottom: 10px;
+      }
+
+      .credit-info{
+        width: 100%;
+      }
+
+  }
+
+    /* ------------------------Fin sobre nosotros----------------------------------- */
+
+  
+  /* RESPONSIVE QUERIES */
+  
+  @media (min-width: 320px) {
+    .title-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+    }
+    .user-follow-info {
+      margin-top: 6px;
+    }
+  }
+  
+  @media (min-width: 460px) {
+    .title-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+    }
+    .user-follow-info {
+      margin-top: 6px;
+    }
+  }
+  
+  @media (min-width: 640px) {
+    .box {
+      flex-basis: calc(50% - 12px);
+    }
+    .title-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+    }
+    .user-follow-info {
+      margin-top: 6px;
+    }
+  }
+  
+  @media (min-width: 840px) {
+    .title-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+    }
+    .user-follow-info {
+      margin-top: 6px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .box {
+      flex-basis: calc(33.3% - 16px);
+    }
+    .title-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+    }
+    .user-follow-info {
+      margin-top: 6px;
+    }
+  }
+  
+  @media (min-width: 1100px) {
+    .box {
+      flex-basis: calc(25% - 18px);
+    }
+  }

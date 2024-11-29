@@ -1,0 +1,52 @@
+
+
+.banner-curso {
+    width: 100%;
+    background-color: #1d1b31;
+    color: aliceblue;
+    text-align: center;
+}
+
+
+
+.pdf-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: calc(100vh - 180px); /* Adjust this value based on your header and footer heights */
+    border: none;
+}
+
+.toggle-sidebar-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+ 
+
+    main {
+        margin-left: 0;
+    }
+
+    .pdf-viewer {
+        height: calc(100vh - 140px); /* Adjust for mobile */
+    }
+   
+}
+

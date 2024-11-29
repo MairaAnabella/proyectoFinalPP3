@@ -1,0 +1,61 @@
+:root {
+
+    --letra: #fd7e14;
+    --sugerencia: #f7ab54;
+}
+
+main {
+    display: grid;
+    justify-items: center;
+    margin-bottom:8%;
+
+}
+
+.banner-curso {
+    width: 100%;
+    background-color: #1d1b31;
+    color: aliceblue;
+    text-align: center;
+}
+
+
+
+
+.form-container{
+    width: 50%;
+}
+.form-group {
+    margin-bottom: 0.3rem;
+}
+
+label {
+    color: var(--letra);
+    font-size: 20px;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+select, input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.materias {
+    margin: 2rem 0;
+}
+.materia {
+    margin-bottom: 1.5rem;
+}
+button {
+    background-color: var(--letra);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: var(--sugerencia);
+}

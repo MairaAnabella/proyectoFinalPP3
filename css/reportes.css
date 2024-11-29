@@ -1,0 +1,68 @@
+:root {
+
+    --letra: #fd7e14;
+    --sugerencia: #f7ab54;
+}
+
+.banner-curso {
+    width: 100%;
+    background-color: #1d1b31;
+    color: aliceblue;
+    text-align: center;
+}
+
+
+.report-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.student-info {
+    margin-bottom: 20px;
+}
+
+.student-info p {
+    margin: 5px 0;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f5f5f5;
+}
+
+.total-row {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.percentage-row {
+    background-color: #f5f5f5;
+}
+
+.download-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}

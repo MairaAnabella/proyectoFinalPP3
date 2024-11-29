@@ -1,224 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /*Varialbes utilizadas en css*/
 :root {
     --sidebar:#ffd6a3;
     --letra: #142f30;
     --fondo: #f8f6f4;
     --hover: #fd7e14;
+    --opcion:#FFBB5C;
     --opcion1: #fd7d1463;
     --opcion2: #f7ab54;
 }
+::-webkit-scrollbar {
+    display: none;
+  }
 
 *{
     margin: 0 ;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
+    font-family: "Poppins", sans-serif ;
 }
 body{
-    height: 100vh;
-    width: 100%;
+   
     background-color: var(--fondo);
 }
 
-/*Menu para celular*/
-.menu{
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: var(--opcion2);
-    color: var(--color);
-    right: 15px;
-    top: 15px;
-    z-index: 100;
-}
-
-
-/*Barra Lateral Escritorio*/
-.barra-lateral{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 250px;
-    height: 100%;
-    overflow: hidden;
-    padding: 20px 15px;
-    background-color: var(--sidebar);
-    transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
-    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
-    z-index: 50;
-}
-
-/* Aumenta la especificidad para anular el margen de los elementos ul de Bootstrap */
-body ul {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-left: 0 !important; 
-  }  
-
-.mini-barra-lateral{
-    width: 80px;
-}
-.barra-lateral span{
-    width: 120px;
-    white-space: wrap;
-    font-size: 18px;
-    text-align: center;
-    opacity: 1;
-    transition: opacity 0.5s ease,width 0.5s ease;
-}
-.barra-lateral span.oculto{
-    opacity: 0;
-    width: 0;
-}
-
-
-/*Nombre de la página */
-
-
-
-
-
-.barra-lateral .nombre-pagina{
-    width: 100%;
-    height: 45px;
-    color: var(--color-texto);
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    
-}
-.barra-lateral .nombre-pagina ion-icon{
-    min-width: 50px;
-    font-size: 40px;
-    cursor: pointer;
-}
-.barra-lateral .nombre-pagina span{
- 
-    margin-left: 15px;
-    font-size: 25px;
-}
-
-
-/*Botón*/
-.barra-lateral .boton{
-    width: 100%;
-    height: 45px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 10px;
-    background-color: var(--color);
-    color: var(--color);
-}
-.barra-lateral .boton ion-icon{
-    min-width: 50px;
-    font-size: 25px;
-}
-
-
-/*Menu Navegación*/
-.barra-lateral .navegacion{
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-.barra-lateral .navegacion::-webkit-scrollbar{
-    width: 5px;
-}
-.barra-lateral .navegacion::-webkit-scrollbar-thumb{
-    background-color: var(--color);
-    border-radius: 5px;
-}
-.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover{
-    background-color: var(--color);
-}
-.barra-lateral .navegacion li{  
-    list-style: none;
-    display: flex;
-    margin-bottom: 5px;
-}
-.barra-lateral .navegacion a{
-    width: 100%;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 10px;
-    color: var(--color);
-    transition: background-color 0.3s ease; 
-}
-
-.barra-lateral .navegacion a:hover {
-    color: #f8f6f4;
-    background-color: var(--hover);
-    color: var(--color);
-}
-.btnSalir {
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-   
-    border: none;
-    background-color: transparent;
-    display: inline-flex;
-    align-items: center; /* Centra verticalmente */
-    
-    gap: 8px; /* Espacio entre el icono y el texto */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-}
-.btnSalir:hover{
-    
-    background-color: var(--hover);
-    color: var(--color); 
-}
- .navegacion li:hover {
-    color: #f8f6f4;
-}
-.barra-lateral .navegacion ion-icon{
-    min-width: 50px;
-    font-size: 25px;
-}
 
 
 /*main*/
-main{
-    margin-left: 250px;
-    padding: 20px;
+ main{
+    
+    margin-left: 90px;
+    /* padding: 20px; */
     transition: margin-left 0.5s ease;
 }
 main.min-main{
     margin-left: 80px;
 }
+ 
+
 
 
 
 .banner {
-    padding: 100px;
-    text-align: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   /*  padding: 100px; */
+    /* text-align: center; */
     overflow: hidden;
-    border-bottom: 5px solid #ccc;
-    background-image: url('/asset/home-user/banner.jpg');
+    /* border-bottom: 5px solid #ccc; */
+    
     background-position: center;
-    background-color: rgb(254,187,82);
-    background-color: linear-gradient(186deg, rgba(254,187,82,1) 0%, rgba(235,148,51,1) 100%);
+    background-color:      #1d1b31;
     
+  
     
+}
+.card-body h3{
+    color: #f8f6f4;
+}
+.contenedor-card a{
+    background-color:  #1d1b31;
+    color: #f8f6f4;
+}
+.contenedor-card a:hover{
+    background-color:#f8f6f4;
+    color: #1d1b31;
 }
 
 .banner  h1{
     line-height: 1;
-    margin: 0;
+    margin-bottom: 25px;
+    /* margin: 0; */
     color: var(--fondo);
     font-size: 40px;
   }
@@ -229,9 +85,11 @@ main.min-main{
     justify-content: center;
 }
 
+
   .card-img-top{
     height:230px;
 }
+
 
 .card-no-border .card {
     /*border-color: #d7dfe3;*/
@@ -240,17 +98,41 @@ main.min-main{
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
 }
+.card-small {
+    width: 70%;
+    margin: 20px auto 20px;
+    padding: 10px;
+    border-radius: 4px;
+    
+    box-shadow: 0px 5px 15px 0px rgba(235, 149, 51, 0.397);
+   
+  }
+  
+  
+ .contenedor-accion{
+    display: grid;
+    justify-items: center;
+    text-align: center;
+ }
+ .contenedor-accion a{
+    margin-top: 15px;
+ }
+  .card-small .boton-card {
+    font-size: 16px; 
+    padding: 5px 10px; 
+  }
+  .card-small img{
+    width: 100%;
+  }
 
-.card-body {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
+ .card-body {
+    
     padding: 1.25rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    background-color:var(--opcion1);
-}
-
+    background-color:var(--opcion2);
+} 
 .pro-img {
-    margin-top: -80px;
+    margin-top: -50px;
     margin-bottom: 20px
 }
 
@@ -266,22 +148,25 @@ main.min-main{
     margin-top: 30px;
 }
 .boton-card{
+
     text-decoration: none;
     font-size: 20px;
     border-radius: 20px;
+    border: none;
     padding: 7px 18px;
     background-color:var(--opcion1);
     color: var(--letra);
    
 }
 
-.boton-card:hover{
+/* .boton-card:hover{
     color: #f8f6f4;
     cursor: pointer;
     background-color: var(--hover);
 }
-
+ */
 footer {
+    margin-top: 170px !important;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -293,57 +178,22 @@ footer {
   }
 
 
-/* Responsive para movil, los media querys van siempre abajo de todo , porfavor respeten esa modalidad*/
-@media (max-height: 660px){
-    .barra-lateral .nombre-pagina{
-        margin-bottom: 5px;
-    }
-    .barra-lateral .modo-oscuro{
-        margin-bottom: 3px;
-    }
+  @media (max-width: 576px) {
+   .banner{display: none;}
+   .contenedor-card{
+    margin-top: 50px;
+   }
+   .card-small{
+    height: 50vh !important;
 }
-@media (max-width: 600px){
-    .barra-lateral{
-        position: fixed;
-        left: -250px;
-    }
-    .max-barra-lateral{
-        left: 0;
-    }
-    .menu{
-        display: flex;
-    }
-    .menu ion-icon:nth-child(2){
-        display: none;
-    }
-    main{
-        margin-left: 0;
-    }
-    main.min-main{
-        margin-left: 0;
-    }
-    
-}
+  }
 
-@media (max-width: 740px){
-    .barra-lateral{
-        position: fixed;
-        left: -250px;
-    }
-    .max-barra-lateral{
-        left: 0;
-    }
-    .menu{
-        display: flex;
-    }
-    .menu ion-icon:nth-child(2){
-        display: none;
-    }
+ 
+
+  @media (max-width: 768px) {
+    
     main{
-        margin-left: 0;
-    }
-    main.min-main{
-        margin-left: 0;
+        margin-left: 0!important;
     }
     
 }
@@ -352,24 +202,135 @@ footer {
 
 
 
+   /* Reset and general styles */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Profile section styles */
+.profile-section {
+    background: #f4b466;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: absolute;
+    top: 40%;
+    /*left: 100%;*/
+    right: 15%;
+    transform: translateX(-50%);
+    width: 350px;
+    background: var(--sidebar);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    color: white;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup-header {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
 
 
 
+.edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+}
 
+.manage-account-btn {
+    background: transparent;
+    border: 1px solid #5f6368;
+    color: #8ab4f8;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 80%;
+}
 
+.popup-actions {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
 
+.action-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    background: #303134;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
 
+.popup-footer {
+    padding: 16px;
+    text-align: center;
+    border-top: 1px solid #3c4043;
+}
 
+.popup-footer a {
+    color: #9aa0a6;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 0 10px;
+}
 
-
-
-
-
-
-
-
-
-
+.toggle-btn {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 
 

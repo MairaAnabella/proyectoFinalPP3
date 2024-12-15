@@ -28,11 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   console.log(genero);
   // Actualizar la foto de perfil si existe en localStorage
-  const fotoPerfilElement = document.getElementById("fotoPerfil");
+  const fotoPerfilMenuElement = document.getElementById("fotoPerfilMenu");
   if (genero === "F") {
-    fotoPerfilElement.src = "asset/femenino.png"; // Cambiar la fuente de la imagen
+  
+    fotoPerfilMenuElement.src = "asset/femenino.png"; // Cambiar la fuente de la imagen
   } else {
-    fotoPerfilElement.src = "asset/masculino.png"; // Cambiar la fuente de la imagen
+   
+    fotoPerfilMenuElement.src = "asset/masculino.png"; // Cambiar la fuente de la imagen
   }
 });
 

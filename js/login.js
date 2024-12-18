@@ -1,14 +1,8 @@
-
-
-
 const API_URL_LOGIN = 'http://3.83.173.143/backend/';  
 
-
-
-
-
 /* 
- const API_URL_LOGIN = 'http://localhost/backend/';    */
+const API_URL_LOGIN = 'http://localhost/backend/';    
+*/
 
 function login() {
     var email = document.getElementById('email').value;
@@ -32,37 +26,20 @@ function login() {
                 var apellido = data.apellido;
                 var rol = data.rol;
                 var userId = data.idUser;
-                var genero=data.sexo;
-           
+                var genero = data.sexo;
 
+                // Guardar datos en el localStorage
                 localStorage.setItem('nombre', nombre);
                 localStorage.setItem('apellido', apellido);
                 localStorage.setItem('rol', rol);
                 localStorage.setItem('userId', userId);
-                localStorage.setItem('genero',genero);
-                
-                
+                localStorage.setItem('genero', genero);
 
+                // Redirigir al usuario
                 var url = 'userHome.html';
                 window.location.href = url;
-
-                /* Swal.fire({
-                    title: '¡Éxito!',
-                    text: data.mensaje,
-                    width: 600,
-                    padding: '3em',
-                    color: '#ECB390',
-                    background: '#fff ',
-                    backdrop: `
-                    rgba(255, 165, 0, 0.4)
-                       url("/asset/correcto.gif")
-                        left top
-                        no-repeat 
-                    `,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }); */
             } else if (data.error) {
+                // Verificar el mensaje de error para mostrar el mensaje de cuenta bloqueada o dado de baja
                 if (data.error.includes('bloqueada')) {
                     Swal.fire({
                         title: 'Error',
@@ -72,11 +49,22 @@ function login() {
                         color: '#BD574E',
                         background: '#fff',
                         backdrop: `
-                    rgba(255, 165, 0, 0.4)
-                    /* url("/asset/credenciales.gif")
-                    left top
-                    no-repeat */
-                    `,
+                            rgba(255, 165, 0, 0.4)
+                        `,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                } else if (data.error.includes('dada de baja')) {  // Validar si la cuenta está dada de baja
+                    Swal.fire({
+                        title: 'Error',
+                        text: data.error,  // El mensaje de "Su cuenta está dada de baja. No puede iniciar sesión."
+                        width: 600,
+                        padding: '3em',
+                        color: '#BD574E',
+                        background: '#fff',
+                        backdrop: `
+                            rgba(255, 165, 0, 0.4)
+                        `,
                         icon: 'error',
                         confirmButtonText: 'OK'
                     });
@@ -89,17 +77,13 @@ function login() {
                         color: '#BD574E',
                         background: '#fff',
                         backdrop: `
-                    rgba(255, 165, 0, 0.4)
-                    /* url("/asset/credenciales.gif")
-                    left top
-                    no-repeat */
-                    `,
+                            rgba(255, 165, 0, 0.4)
+                        `,
                         icon: 'error',
                         confirmButtonText: 'OK'
                     });
                 }
             }
-
         })
         .catch(error => {
             console.error('Error:', error);
@@ -109,17 +93,13 @@ function login() {
                 width: 600,
                 padding: '3em',
                 color: '#BD574E',
-                background: '#fff ',
+                background: '#fff',
                 backdrop: `
-            rgba(255, 165, 0, 0.4)
-               /*  url("/asset/error1.gif")
-                left top
-                no-repeat */
-            `,
+                    rgba(255, 165, 0, 0.4)
+                `,
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
-            // Aquí puedes agregar código para manejar errores
         });
 }
 
@@ -127,28 +107,24 @@ function restablecerPass() {
     var email = document.getElementById('emailRecu').value;
 
     // Realizar la solicitud fetch al backend
-   
-        var datos = new FormData();
-        datos.append('email', email);
+    var datos = new FormData();
+    datos.append('email', email);
 
-        // Mostrar spinner de carga
+    // Mostrar spinner de carga
     document.getElementById('spinner').style.display = 'block';
-        
-    
-        // Realizar la solicitud fetch al backend
-        fetch(API_URL_LOGIN + 'restablecerPass.php', {
-            method: 'POST',
-            body: datos
-        })
+
+    // Realizar la solicitud fetch al backend
+    fetch(API_URL_LOGIN + 'restablecerPass.php', {
+        method: 'POST',
+        body: datos
+    })
     .then(res => res.json())
-     .then(data => {
+    .then(data => {
         console.log(data);
         document.getElementById('spinner').style.display = 'none';
         // Manejar la respuesta JSON
         if (data.success) {
-            
             Swal.fire({
-                
                 text: data.mensaje,
                 icon: 'success',
                 confirmButtonText: 'OK'
@@ -161,9 +137,8 @@ function restablecerPass() {
         } else {
             // Mostrar mensaje de error
             Swal.fire({
-                
                 text: data.mensaje,
-                icon: 'success',
+                icon: 'error',
                 width: 600,
                 padding: '3em',
                 color: '#ECB390',
@@ -171,7 +146,6 @@ function restablecerPass() {
                 backdrop: `
                     rgba(255, 165, 0, 0.4)
                 `,
-                
                 confirmButtonText: 'OK'
             });
         }
@@ -186,8 +160,7 @@ function restablecerPass() {
             icon: 'error',
             confirmButtonText: 'OK'
         }); 
-  
-});
+    });
 }
 
 // Escuchar el evento click en el botón de enviar
@@ -195,15 +168,17 @@ document.getElementById('btnentrar').addEventListener('click', function (e) {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     login();
 });
-// Escuchar el evento click en el botón de enviar
+
+// Escuchar el evento click en el botón de enviar para restablecer la contraseña
 document.getElementById('btnBuscar').addEventListener('click', function (e) {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     restablecerPass();
 });
+
+// Regresar a la página de inicio
 document.getElementById('backHome').addEventListener('click', function() {
     window.location.href = 'index.html'; // Cambia esto a la URL de tu página de inicio
 });
-
 
 /* visibilidad de la contraseña */
 const togglePassword = document.querySelector('#togglePassword');
@@ -230,30 +205,18 @@ document.getElementById('volverLogin').addEventListener('click', function () {
 
 /* validacion del mail */
 
-/* const email = document.getElementById('email');
-const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+// const email = document.getElementById('email');
+// const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-email.addEventListener('input', function () {
-    if (email.value.match(pattern)) {
-        // Correo válido
-        // document.getElementById('emailValidationMessage').textContent = 'Correo válido';
-        document.getElementById('emailValidationMessage').classList.add('valid');
-        document.getElementById('emailValidationMessage').classList.remove('invalid');
-    } else {
-        // Correo inválido
-        document.getElementById('emailValidationMessage').textContent = 'Correo inválido';
-        document.getElementById('emailValidationMessage').classList.add('invalid');
-        document.getElementById('emailValidationMessage').classList.remove('valid');
-    }
-}); */
-
-
-
-
-
-
-
-
-
-
-
+// email.addEventListener('input', function () {
+//     if (email.value.match(pattern)) {
+//         // Correo válido
+//         document.getElementById('emailValidationMessage').classList.add('valid');
+//         document.getElementById('emailValidationMessage').classList.remove('invalid');
+//     } else {
+//         // Correo inválido
+//         document.getElementById('emailValidationMessage').textContent = 'Correo inválido';
+//         document.getElementById('emailValidationMessage').classList.add('invalid');
+//         document.getElementById('emailValidationMessage').classList.remove('valid');
+//     }
+// });

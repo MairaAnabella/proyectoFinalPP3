@@ -138,8 +138,9 @@ function cargarCursos(idMateria) {
 function formatearFecha(fechaStr) {
   if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
 
-  const fecha = new Date(fechaStr);
-  
+  const partes = fechaStr.split('-'); // Divide la cadena "YYYY-MM-DD" en partes
+  const fecha = new Date(partes[0], partes[1] - 1, partes[2]); // Crea la fecha ajustada a la zona horaria local
+
   // Verifica si la fecha es válida
   if (isNaN(fecha.getTime())) {
     return '--/--/----'; // Devuelve formato vacío si la fecha no es válida

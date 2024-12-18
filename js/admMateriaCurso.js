@@ -59,6 +59,7 @@ function desactivar(id,estado){
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Si,Claro!",
+    cancelButtonText: 'Cancelar',
     allowOutsideClick: false // Evita que se cierre al hacer clic fuera
   }).then((result) => {
     if (result.isConfirmed) {
@@ -86,6 +87,7 @@ function desactivar(id,estado){
               title: "Desactivado!",
               text: "La relación fue desactivada con exitó!",
               icon: "success",
+              
               allowOutsideClick: false
             }).then(() => {
               // Recargar la página cuando el usuario haga clic en "OK"
@@ -111,6 +113,7 @@ function activar(id,estado){
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Si,Claro!",
+    cancelButtonText: 'Cancelar',
     allowOutsideClick: false // Evita que se cierre al hacer clic fuera
   }).then((result) => {
     if (result.isConfirmed) {

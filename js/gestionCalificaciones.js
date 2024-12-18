@@ -7,6 +7,25 @@ const filasPorPagina = 15; // número de filas por página
 let paginaActual = 1;
 
 
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
+
+  const partes = fechaStr.split('-'); // Divide la cadena "YYYY-MM-DD" en partes
+  const fecha = new Date(partes[0], partes[1] - 1, partes[2]); // Crea la fecha ajustada a la zona horaria local
+
+  // Verifica si la fecha es válida
+  if (isNaN(fecha.getTime())) {
+    return '--/--/----'; // Devuelve formato vacío si la fecha no es válida
+  }
+
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+
+  return `${dia}/${mes}/${anio}`; // Ejemplo: "11/11/2024"
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ocultar botones segun rol */
@@ -73,7 +92,7 @@ fetch(API_URL + 'gestionCalificaciones.php', {
             <td>${item.nombre + ' ' + item.apellido}</td>
             <td>${item.descripcionCurso}</td>
             <td>${item.descripcionEstados}</td>      
-            <td>${item.fechaAlta}</td>
+            <td>${formatearFecha(item.fechaAlta)}</td>
             
              <td>
                

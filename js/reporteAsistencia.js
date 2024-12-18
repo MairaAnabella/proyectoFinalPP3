@@ -47,13 +47,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function formatearFecha(fechaStr) {
-  const fecha = new Date(fechaStr);
+  if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
+
+  const partes = fechaStr.split('-'); // Divide la cadena "YYYY-MM-DD" en partes
+  const fecha = new Date(partes[0], partes[1] - 1, partes[2]); // Crea la fecha ajustada a la zona horaria local
+
+  // Verifica si la fecha es válida
+  if (isNaN(fecha.getTime())) {
+    return '--/--/----'; // Devuelve formato vacío si la fecha no es válida
+  }
+
   const dia = fecha.getDate().toString().padStart(2, '0');
   const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
   const anio = fecha.getFullYear();
 
-  return `${dia}/${mes}/${anio}`; // ejemplo: "11/11/2024"
+  return `${dia}/${mes}/${anio}`; // Ejemplo: "11/11/2024"
 }
+
 
 if (localStorage.getItem('rol') === '4') {
     const idUser = localStorage.getItem('userId');

@@ -140,7 +140,7 @@ alumnoSelect.addEventListener("change",()=>{
         const porcentajeRow = document.createElement("tr");
         porcentajeRow.classList.add("percentage-row");
         porcentajeRow.innerHTML = `
-          <td >Porcentaje</td>
+          <td >Promedio</td>
           <td>${porcentajePromedio}%</td>
         `;
         tableBody.appendChild(porcentajeRow);

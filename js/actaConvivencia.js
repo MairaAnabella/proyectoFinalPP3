@@ -1,6 +1,8 @@
 
-document.addEventListener("DOMContentLoaded", function () {
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  verificarAccesoPermitido();
     /* ocultar botones segun rol */
     var btnEstudiantes = document.getElementById("btnEstudiantes");
     var btnUser = document.getElementById("btnUser");

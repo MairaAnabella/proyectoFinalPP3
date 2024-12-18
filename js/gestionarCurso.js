@@ -5,6 +5,23 @@ const API_URL = 'http://3.83.173.143/backend/';
 /* const API_URL = "http://localhost/backend-laburo/"; */
 const filasPorPagina = 6; // número de filas por página
 let paginaActual = 1;
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return '--/--/----'; // Si la fecha es null o undefined, devuelve el formato vacío
+
+  const partes = fechaStr.split('-'); // Divide la cadena "YYYY-MM-DD" en partes
+  const fecha = new Date(partes[0], partes[1] - 1, partes[2]); // Crea la fecha ajustada a la zona horaria local
+
+  // Verifica si la fecha es válida
+  if (isNaN(fecha.getTime())) {
+    return '--/--/----'; // Devuelve formato vacío si la fecha no es válida
+  }
+
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+
+  return `${dia}/${mes}/${anio}`; // Ejemplo: "11/11/2024"
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -133,7 +150,7 @@ fetch(API_URL + 'gestionCursos.php', {
       tr.innerHTML = `
             <td>${item.idCurso}</td>
             <td>${item.nombre}</td>
-            <td>${item.fecha_creacion}</td>
+            <td>${formatearFecha(item.fecha_creacion)}</td>
              <td>
                
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal" onclick="selectedId = ${item.idCurso}"><i class='bx bx-edit-alt'></i></button>
